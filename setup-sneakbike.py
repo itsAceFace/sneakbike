@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Make dir if not exists.
 obs_path = os.path.expanduser("~/Sneakbike_Profile")
-Path("/my/directory").mkdir(parents=True, exist_ok=True)
+Path(obs_path).mkdir(parents=True, exist_ok=True)
 
 # The IP addr + port.  "xxx.xxx.xxx.xxx:pppp"
 ip_addr = sys.argv[1]
@@ -58,8 +58,8 @@ service_json = {
     "type": "rtmp_custom"
 }
 
-with open(os.path.join(obs_path, "basic.ini")) as bi:
+with open(os.path.join(obs_path, "basic.ini"), "w+") as bi:
     bi.write(sneaksnake_ini)
 
-with open(os.path.join(obs_path, "service.json")) as sj:
+with open(os.path.join(obs_path, "service.json"), "w+") as sj:
     json.dump(service_json, sj)
