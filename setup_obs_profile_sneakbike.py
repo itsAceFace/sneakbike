@@ -15,15 +15,15 @@ sneaksnake_ini = """[General]
 Name=SneakSnake
 
 [Video]
-BaseCX=800
-BaseCY=600
-OutputCX=800
-OutputCY=600
+BaseCX=640
+BaseCY=480
+OutputCX=640
+OutputCY=480
 FPSType=0
-FPSCommon=60
+FPSCommon=30
 
 [SimpleOutput]
-VBitrate=1500
+VBitrate=1000
 StreamEncoder=nvenc
 RecEncoder=nvenc
 RecQuality=Small
