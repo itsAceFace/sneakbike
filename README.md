@@ -19,6 +19,21 @@ This guide will get you started in setting up your OBS + Computer for the Sneakb
 
 ---
 
+### Step 0: Backing Everything Up For Safety
+
+If you've already been using OBS, it's better to be safe than sorry. We'll back up your major things:
+
+1. Go to `Profile > Export`. Save your profile in a safe place. It wants you to pick a folder, just pick whatever you want and it'll make its own folder inside of it.
+
+   - You can re-import your profile if something goes wrong.
+   - Don't worry, this hasn't happened to me yet.
+
+2. Go to `Scene Collection > Export`. Save your scene collection in a safe place.
+   - You can re-import your scenes if something goes wrong.
+   - Don't worry, this hasn't happened to me yet either.
+
+---
+
 ### Step 1: Necessary Software
 
 For a consistent experience, we use the following:
@@ -43,28 +58,13 @@ For a consistent experience, we use the following:
 
 ---
 
-### Step 2: Backing Everything Up For Safety
-
-If you've been using OBS, it's better to be safe than sorry. We'll back up your major things:
-
-1. Go to `Profile > Export`. Save your profile in a safe place.
-
-   - You can re-import your profile if something goes wrong.
-   - Don't worry, this hasn't happened to me yet.
-
-2. Go to `Scene Collection > Export`. Save your scene collection in a safe place.
-   - You can re-import your scenes if something goes wrong.
-   - Don't worry, this hasn't happened to me yet either.
-
----
-
-### Step 3: Download this Repository
+### Step 2: Download this Repository
 
 1. Go to "Clone or Download" on this webpage and download the zip file of this repository. Unzip it when it's done downloading.
 
 ---
 
-### Step 4. Import things
+### Step 3. Import things
 
 There are two things we need to import, Scenes and a Profile.
 
@@ -82,7 +82,7 @@ We'll be using the `Sneakbike` scenes for these races.
 
 ---
 
-### Step 5. The Final Touches (Race time!)
+### Step 4. The Final Touches (Race time!)
 
 1. When we're beginning the race, we'll give out an address that you'll need to stream to. For example, it may look like: `rtmp://127.0.0.1:1935/live/secret_code`.
    - Copy this address when we give it to you.
