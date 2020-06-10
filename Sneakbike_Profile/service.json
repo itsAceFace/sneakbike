@@ -1,7 +1,7 @@
 {
     "settings": {
         "bwtest": "false",
-        "key": "weenis",
+        "key": "sample_key",
         "server": "rtmp://example-ip/live",
         "use_auth": "false"
     },
