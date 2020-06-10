@@ -1,0 +1,144 @@
+# Sneakbike
+
+- [Quickstart](#quickstart)
+  - [Step 1: Necessary Software](#step-1--necessary-software)
+  - [Step 2: Backing Everything Up For Safety](#step-2--backing-everything-up-for-safety)
+  - [Step 3: Download this Repository](#step-3--download-this-repository)
+  - [Step 4. Import things](#step-4-import-things)
+    - [Importing Scenes](#importing-scenes)
+    - [Importing a Profile](#importing-a-profile)
+  - [Step 5. The Final Touches (Race time!)](#step-5-the-final-touches--race-time--)
+- [Dev / Backend Users](#dev---backend-users)
+- [Common Issues and Solutions](#common-issues-and-solutions)
+  - [OBS](#obs)
+  - [Retroarch](#retroarch)
+
+## Quickstart
+
+This guide will get you started in setting up your OBS + Computer for the Sneakbike Mystery Races. This looks like a lot, but it's really just a bunch of very easy steps. Get goin'!
+
+---
+
+### Step 1: Necessary Software
+
+For a consistent experience, we use the following:
+
+1. A recent version of `Retroarch` (currently v1.8.8)
+
+   - [Windows Download](http://buildbot.libretro.com/stable/1.8.8/windows/x86_64/RetroArch-x64-setup.exe)
+   - **TODO: Mac**
+   - **TODO: Linux**
+
+2. The following `Retroarch cores`:
+
+   - **TODO: Link an install guide here**
+   - Nintendo - Game Boy / Color (Gambatte)
+   - Nintendo - Game Boy Advance (mGBA)
+   - Nintendo - NES / Famicom (Masen)
+   - Nintendo - SNES / SFC (Snes9x - Current)
+   - Sega MS/GG/MD/CD (Genesis Plus GX)
+
+3. Fairly recent version of `OBS` (currently 25.0.8)
+   - **TODO: Install links**
+
+---
+
+### Step 2: Backing Everything Up For Safety
+
+If you've been using OBS, it's better to be safe than sorry. We'll back up your major things:
+
+1. Go to `Profile > Export`. Save your profile in a safe place.
+
+   - You can re-import your profile if something goes wrong.
+   - Don't worry, this hasn't happened to me yet.
+
+2. Go to `Scene Collection > Export`. Save your scene collection in a safe place.
+   - You can re-import your scenes if something goes wrong.
+   - Don't worry, this hasn't happened to me yet either.
+
+---
+
+### Step 3: Download this Repository
+
+1. Go to "Clone or Download" on this webpage and download the zip file of this repository. Unzip it when it's done downloading.
+
+---
+
+### Step 4. Import things
+
+There are two things we need to import, Scenes and a Profile.
+
+#### Importing Scenes
+
+1. In OBS, go to `Scene Collection > Import`, click the `...` button and find the `snakebike_scenes.json` file in the unzipped folder.
+2. Click `Import`.
+3. If you go into `Scene Collection` again, you should see (probably) two scenes at the bottom: `Untitled` and `Sneakbike`. Untitled is your default. Try switching between the two and you'll get the gist of what's happening.
+
+We'll be using the `Sneakbike` scenes for these races.
+
+#### Importing a Profile
+
+**TODO** Just make a dang folder here and then tell them how to switch the server.
+
+---
+
+### Step 5. The Final Touches (Race time!)
+
+1. When we're beginning the race, we'll give out an address that you'll need to stream to. For example, it may look like: `rtmp://127.0.0.1:1935/live/secret_code`.
+   - Copy this address when we give it to you.
+2. In OBS, do the following:
+   - Go into `File > Settings > Stream`,
+   - Select `Service: Custom...`
+   - The `Server:` field is where you paste the address from step 1. - The stream key can be left blank.
+3. At this point, you should be able to start stream using "Start Streaming" in the OBS program.
+
+**Note**:
+
+- You will NOT be streaming to Twitch at this time but rather your stream will go through our RTMP server which will collect everyone's stream and redirect it so we can have multiple people on a single stream.
+- Your twitch "on-air" alerts or emails will not go out, as you're not actually streaming to twitch.
+
+**Awesome, now you're ready to race!**
+
+---
+
+---
+
+## Dev / Backend Users
+
+Included is a shell file (`server_setup.sh`) which can be used as the startup script on an Ubuntu 18.04 EC2 instance (or cloud equivalent). The tl;dr is that it installs nginx and an rtmp add-on for nginx.
+
+Note the nginx config at the bottom: here we have four different ports open that users can use. The addresses will look like this:
+
+```bash
+rtmp://public-ip-address-of-ec2:port/live/secret_key
+```
+
+Here, the ports go from 1935 (standard RTMP port) to 1938. The secret key doesn't matter and you can give it to your users in private for safety.
+
+To pull the streams from the RTMP server you can use VLC or the VLC plugin on OBS: point it to the `rtmp` address above and it should pick up your user correctly.
+
+---
+
+---
+
+## Common Issues and Solutions
+
+This will be updated as we find more issues and more solutions.
+
+### OBS
+
+| Issue       | Solution |
+| ----------- | -------- |
+| None so far |          |
+
+---
+
+### Retroarch
+
+| Issue                                | Solution                 |
+| ------------------------------------ | ------------------------ |
+| Controller doesn't work in Retroarch | **TODO: find solution.** |
+
+---
+
+---
