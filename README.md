@@ -23,12 +23,19 @@ This guide will get you started in setting up your OBS + Computer for the Sneakb
 
 If you've already been using OBS, it's better to be safe than sorry. We'll back up your major things:
 
+
+
 1. Go to `Profile > Export`. Save your profile in a safe place. It wants you to pick a folder, just pick whatever you want and it'll make its own folder inside of it.
+
+   ![Obs Profile Export](./static/images/obs_export_profile.PNG)
 
    - You can re-import your profile if something goes wrong.
    - Don't worry, this hasn't happened to me yet.
 
+
 2. Go to `Scene Collection > Export`. Save your scene collection in a safe place.
+
+   ![Obs Scene Collection Export](./static/images/obs_export_scene_collection.PNG)
    - You can re-import your scenes if something goes wrong.
    - Don't worry, this hasn't happened to me yet either.
 
@@ -44,23 +51,26 @@ For a consistent experience, we use the following:
    - **TODO: Mac**
    - **TODO: Linux**
 
-2. The following `Retroarch cores`:
+2. The following `Retroarch cores` by opening Retroarch and clicking `Load Core > Download Core` and picking the following:
 
-   - **TODO: Link an install guide here**
    - Nintendo - Game Boy / Color (Gambatte)
    - Nintendo - Game Boy Advance (mGBA)
    - Nintendo - NES / Famicom (Masen)
-   - Nintendo - SNES / SFC (Snes9x - Current)
+   - Nintendo - SNES / SFC (Snes9x)
    - Sega MS/GG/MD/CD (Genesis Plus GX)
 
 3. Fairly recent version of `OBS` (currently 25.0.8)
-   - **TODO: Install links**
+   - [Windows Download](https://cdn-fastly.obsproject.com/downloads/OBS-Studio-25.0.8-Full-Installer-x64.exe)
+   - **TODO: Mac**
+   - **TODO: Linux**
 
 ---
 
 ### Step 2: Download this Repository
 
 1. Go to "Clone or Download" on this webpage and download the zip file of this repository. Unzip it when it's done downloading.
+
+      ![Github Download](./static/images/twitch_editor_1.PNG)
 
 ---
 
@@ -71,11 +81,17 @@ There are two things we need to import, Scenes and a Profile.
 #### Importing a Profile
 
 1. In OBS, go to `Profile > Import`, click the `Sneakbike_Profile` folder from the unzipped repository.
+
+   ![OBS Profile Import](./static/images/obs_import_profile.PNG)
+
 2. If you click `Profile` again, you should see (probably) two profiles at the bottom: `Untitled` and `Sneakbike`. `Untitled` is your default. You can switch back to `Untitled` to go back to your normal streaming profile.
 
 #### Importing Scenes
 
 1. In OBS, go to `Scene Collection > Import`, click the `...` button and find the `snakebike_scenes.json` file in the unzipped folder.
+
+   ![OBS Scene Collection Import](./static/images/obs_import_scene_collection.PNG)
+
 2. Click `Import`.
 3. If you go into `Scene Collection` again, you should see (probably) two scenes at the bottom: `Untitled` and `Sneakbike`. `Untitled` is your default scenes. You can switch back to `Untitled` to get back to your default scenes.
    - Try switching between the two and you'll get the gist of what's happening.
@@ -92,17 +108,20 @@ There are two things we need to import, Scenes and a Profile.
 
 **At Race time:**
 
-1. When we're beginning the race, we'll give out an address that you'll need to stream to. For example, it may look like: `rtmp://127.0.0.1:1935/live/secret_code`.
-   - Copy this address when we give it to you.
+1. When we're beginning the race, we'll give out an address that you'll need to stream to. For example, it may look like: `rtmp://127.0.0.1:1935/live` and we will give you a password like `super_duper_secret`.  
 2. In OBS, do the following:
    - Go into `File > Settings > Stream`,
    - Select `Service: Custom...`
-   - The `Server:` field is where you paste the address from step 1. - The stream key can be left blank.
+   - The `Server:` field is where you paste the address from step 1. 
+   - The stream key is the password we give you.
+  
+   ![OBS RMTP Setup](./static/images/obs_rmtp_setup.PNG)   
+
 3. At this point, you should be able to start stream using "Start Streaming" in the OBS program.
 
 **Note**:
 
-- You will NOT be streaming to Twitch at this time but rather your stream will go through our RTMP server which will collect everyone's stream and redirect it so we can have multiple people on a single stream.
+- You will **NOT be streaming to Twitch when you hit "Start Streaming"** but rather your stream will go through our RTMP server which will collect everyone's stream and redirect it so we can have multiple people on a single stream.
 - Your twitch "on-air" alerts or emails will not go out, as you're not actually streaming to twitch.
 
 **Awesome, now you're ready to race!**
@@ -137,7 +156,7 @@ This will be updated as we find more issues and more solutions.
 
 | Issue       | Solution |
 | ----------- | -------- |
-| None so far |          |
+| SLOBS doesn't work! | Unfortunately, SLOBS does not support multiple profiles at this point, making standardization a bit wonky.  We require OBS for Sneakbike, though you can download OBS side-by-side with SLOBS and there should be no real conflict.         |
 
 ---
 
