@@ -1,17 +1,17 @@
 # Sneakbike
 
-- [Quickstart](#quickstart)
-  - [Step 0: Backing Everything Up For Safety](#step-0--backing-everything-up-for-safety)
-  - [Step 1: Necessary Software](#step-1--necessary-software)
-  - [Step 2: Download this Repository](#step-2--download-this-repository)
-  - [Step 3. Import things](#step-3-import-things)
-    - [Importing a Profile](#importing-a-profile)
-    - [Importing Scenes](#importing-scenes)
-  - [Step 4. The Final Touches](#step-4-the-final-touches)
-- [Dev / Backend Users](#dev---backend-users)
-- [Common Issues and Solutions](#common-issues-and-solutions)
-  - [OBS](#obs)
-  - [Retroarch](#retroarch)
+* [Quickstart](#quickstart)
+   + [Step 0: Backing Everything Up For Safety](#step-0--backing-everything-up-for-safety)
+   + [Step 1: Necessary Software](#step-1--necessary-software)
+   + [Step 2: Download this Repository](#step-2--download-this-repository)
+   + [Step 3. Import things](#step-3-import-things)
+   - [Importing a Profile](#importing-a-profile)
+   - [Importing Scenes](#importing-scenes)
+   + [Step 4. The Final Touches](#step-4-the-final-touches)
+* [Dev / Backend Users](#dev---backend-users)
+* [Common Issues and Solutions](#common-issues-and-solutions)
+   + [OBS](#obs)
+   + [Retroarch](#retroarch)
 
 ## Quickstart
 
