@@ -113,7 +113,7 @@ There are two things we need to import, Scenes and a Profile.
    - Go into `File > Settings > Stream`,
    - Select `Service: Custom...`
    - The `Server:` field is where you paste the address from step 1. 
-   - The stream key is the password we give you.
+   - The `Stream Key` is the password we give you.
   
    ![OBS RMTP Setup](./static/images/obs_rmtp_setup.PNG)   
 
