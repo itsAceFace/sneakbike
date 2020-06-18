@@ -70,7 +70,7 @@ For a consistent experience, we use the following:
 
 1. Go to "Clone or Download" on this webpage and download the zip file of this repository. Unzip it when it's done downloading.
 
-      ![Github Download](./static/images/twitch_editor_1.PNG)
+      ![Github Download](./static/images/github_clone.PNG)
 
 ---
 
