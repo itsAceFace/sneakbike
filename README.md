@@ -55,7 +55,7 @@ For a consistent experience, we use the following:
 
    - Nintendo - Game Boy / Color (Gambatte)
    - Nintendo - Game Boy Advance (mGBA)
-   - Nintendo - NES / Famicom (Masen)
+   - Nintendo - NES / Famicom (Mesen)
    - Nintendo - SNES / SFC (Snes9x)
    - Sega MS/GG/MD/CD (Genesis Plus GX)
 
