@@ -1,17 +1,17 @@
 # Sneakbike
 
-* [Quickstart](#quickstart)
-   + [Step 0: Backing Everything Up For Safety](#step-0--backing-everything-up-for-safety)
-   + [Step 1: Necessary Software](#step-1--necessary-software)
-   + [Step 2: Download this Repository](#step-2--download-this-repository)
-   + [Step 3. Import things](#step-3-import-things)
-   - [Importing a Profile](#importing-a-profile)
-   - [Importing Scenes](#importing-scenes)
-   + [Step 4. The Final Touches](#step-4-the-final-touches)
-* [Dev / Backend Users](#dev---backend-users)
-* [Common Issues and Solutions](#common-issues-and-solutions)
-   + [OBS](#obs)
-   + [Retroarch](#retroarch)
+- [Quickstart](#quickstart)
+  - [Step 0: Backing Everything Up For Safety](#step-0--backing-everything-up-for-safety)
+  - [Step 1: Necessary Software](#step-1--necessary-software)
+  - [Step 2: Download this Repository](#step-2--download-this-repository)
+  - [Step 3. Import things](#step-3-import-things)
+  * [Importing a Profile](#importing-a-profile)
+  * [Importing Scenes](#importing-scenes)
+  - [Step 4. The Final Touches](#step-4-the-final-touches)
+- [Dev / Backend Users](#dev---backend-users)
+- [Common Issues and Solutions](#common-issues-and-solutions)
+  - [OBS](#obs)
+  - [Retroarch](#retroarch)
 
 ## Quickstart
 
@@ -23,8 +23,6 @@ This guide will get you started in setting up your OBS + Computer for the Sneakb
 
 If you've already been using OBS, it's better to be safe than sorry. We'll back up your major things:
 
-
-
 1. Go to `Profile > Export`. Save your profile in a safe place. It wants you to pick a folder, just pick whatever you want and it'll make its own folder inside of it.
 
    ![Obs Profile Export](./static/images/obs_export_profile.PNG)
@@ -32,10 +30,10 @@ If you've already been using OBS, it's better to be safe than sorry. We'll back 
    - You can re-import your profile if something goes wrong.
    - Don't worry, this hasn't happened to me yet.
 
-
-2. Go to `Scene Collection > Export`. Save your scene collection in a safe place.
+2) Go to `Scene Collection > Export`. Save your scene collection in a safe place.
 
    ![Obs Scene Collection Export](./static/images/obs_export_scene_collection.PNG)
+
    - You can re-import your scenes if something goes wrong.
    - Don't worry, this hasn't happened to me yet either.
 
@@ -70,7 +68,7 @@ For a consistent experience, we use the following:
 
 1. Go to "Clone or Download" on this webpage and download the zip file of this repository. Unzip it when it's done downloading.
 
-      ![Github Download](./static/images/github_clone.PNG)
+   ![Github Download](./static/images/github_clone.PNG)
 
 ---
 
@@ -108,14 +106,15 @@ There are two things we need to import, Scenes and a Profile.
 
 **At Race time:**
 
-1. When we're beginning the race, we'll give out an address that you'll need to stream to. For example, it may look like: `rtmp://127.0.0.1:1935/live` and we will give you a password like `super_duper_secret`.  
+1. When we're beginning the race, we'll give out an address that you'll need to stream to. For example, it may look like: `rtmp://127.0.0.1:1935/live` and we will give you a password like `super_duper_secret`.
 2. In OBS, do the following:
+
    - Go into `File > Settings > Stream`,
    - Select `Service: Custom...`
-   - The `Server:` field is where you paste the address from step 1. 
+   - The `Server:` field is where you paste the address from step 1.
    - The `Stream Key` is the password we give you.
-  
-   ![OBS RTMP Setup](./static/images/obs_rtmp_setup.PNG)   
+
+   ![OBS RTMP Setup](./static/images/obs_rtmp_setup.PNG)
 
 3. At this point, you should be able to start stream using "Start Streaming" in the OBS program.
 
@@ -132,6 +131,8 @@ There are two things we need to import, Scenes and a Profile.
 
 ## Dev / Backend Users
 
+### Server Setup on AWS
+
 Included is a shell file (`server_setup.sh`) which can be used as the startup script on an Ubuntu 18.04 EC2 instance (or cloud equivalent). The tl;dr is that it installs nginx and an rtmp add-on for nginx.
 
 Note the nginx config at the bottom: here we have four different ports open that users can use. The addresses will look like this:
@@ -144,16 +145,22 @@ Here, the ports go from 1935 (standard RTMP port) to 1938. The secret key doesn'
 
 To pull the streams from the RTMP server you can use VLC or the VLC plugin on OBS: point it to the `rtmp` address above and it should pick up your user correctly.
 
+### Scripts
+
+We have collected a few helpful scripts at `/scripts`. **All Python files are Py3.6+**. Below are descriptions of each file:
+
+- `bounding_box_creator.py` creates a "bounding box" (a frame around a window) of any size, color, thickness, etc. See example at the bottom of the file to run it.
+  - Requires PIL but Anaconda install should suffice.
+
 ---
 
 ---
 
 ## Design Standards
 
-The fonts we use currently are 
-   - [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P)
+The fonts we use currently are
 
-
+- [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P)
 
 ---
 
@@ -165,9 +172,9 @@ This will be updated as we find more issues and more solutions.
 
 ### OBS
 
-| Issue       | Solution |
-| ----------- | -------- |
-| SLOBS doesn't work! | Unfortunately, SLOBS does not support multiple profiles at this point, making standardization a bit wonky.  We require OBS for Sneakbike, though you can download OBS side-by-side with SLOBS and there should be no real conflict.         |
+| Issue               | Solution                                                                                                                                                                                                                           |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SLOBS doesn't work! | Unfortunately, SLOBS does not support multiple profiles at this point, making standardization a bit wonky. We require OBS for Sneakbike, though you can download OBS side-by-side with SLOBS and there should be no real conflict. |
 
 ---
 
