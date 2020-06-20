@@ -115,7 +115,7 @@ There are two things we need to import, Scenes and a Profile.
    - The `Server:` field is where you paste the address from step 1. 
    - The `Stream Key` is the password we give you.
   
-   ![OBS RMTP Setup](./static/images/obs_rmtp_setup.PNG)   
+   ![OBS RTMP Setup](./static/images/obs_rtmp_setup.PNG)   
 
 3. At this point, you should be able to start stream using "Start Streaming" in the OBS program.
 
@@ -143,6 +143,17 @@ rtmp://public-ip-address-of-ec2:port/live/secret_key
 Here, the ports go from 1935 (standard RTMP port) to 1938. The secret key doesn't matter and you can give it to your users in private for safety.
 
 To pull the streams from the RTMP server you can use VLC or the VLC plugin on OBS: point it to the `rtmp` address above and it should pick up your user correctly.
+
+---
+
+---
+
+## Design Standards
+
+The fonts we use currently are 
+   - [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P)
+
+
 
 ---
 
