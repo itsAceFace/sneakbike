@@ -10,3 +10,4 @@ Welcome to Sneakbike! This repo exists to help you, the Runner/User/Dev/Tech wit
 - [Docs for Developers](./docs/develop.md)
 - [Docs for Designers](./docs/design.md)
 - [Troubleshooting](./docs/troubleshooting.md)
+- [Cost Report (for Transparency)](./docs/cost_overhead.md)

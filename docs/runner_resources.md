@@ -32,6 +32,20 @@
 
 ---
 
+## Emulator Setup
+
+For each emulator there are a few nice things to set up.
+
+### Snes9x
+
+- **Run when Inactive**: Go to `Emulation > Uncheck Pause When Inactive`.
+- **Enable Backround Inputs**: Go to `Input > Check Background Inputs`.
+- **Disable Background Keyboard Hotkeys**: Go to `Input > Uncheck Background Keyboard Hotkeys`.
+
+---
+
+---
+
 ## My Game is Too Loud!
 
 There's a few ways to decrease the volume of games, depending on the system.
