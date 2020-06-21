@@ -125,7 +125,7 @@ For each emulator there are a few nice things to set up.
 
 ### Bizhawk
 
-- **IMPORTANT: Disable Start Button for Fast-Forward**: `Config > Configure Hotkeys > Click the box next to "Fast Forward" and hit the Tab keyboard key`.
+- **IMPORTANT: Disable Start Button for Fast-Forward**: `Config > Hotkeys > Click the box next to "Fast Forward" and hit the Tab keyboard key`. Click "Save" at the bottom to save.
 
   - This should change the box to say "Tab", as in the image below.
   - This is important since otherwise the start button will ALSO fast-forward your game.
