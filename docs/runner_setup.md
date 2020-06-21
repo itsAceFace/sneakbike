@@ -5,11 +5,13 @@ This guide should take you through everything you need to do to be a Sneakbike R
 - [Runner Setup](#runner-setup)
   - [Step 0: Backing Everything Up For Safety](#step-0--backing-everything-up-for-safety)
   - [Step 1: Necessary Software](#step-1--necessary-software)
-  - [Step 2: Download this Repository](#step-2--download-this-repository)
-  - [Step 3. Import things into OBS](#step-3-import-things-into-obs)
+  - [Step 2: Install Bizhawk](#step-2--install-bizhawk)
+  - [Step 3: Download this Repository](#step-3--download-this-repository)
+  - [Step 4. Import things into OBS](#step-4-import-things-into-obs)
     - [Importing a Profile](#importing-a-profile)
     - [Importing Scenes](#importing-scenes)
-  - [Step 4. The Final Touches](#step-4-the-final-touches)
+  - [Emulator Setup](#emulator-setup)
+    - [Bizhawk](#bizhawk)
 
 ---
 
@@ -76,7 +78,7 @@ For a consistent experience, we use the following:
 2. Go into the unzipped Bizhawk Prereqs folder and double-click `bizhawk_prereqs` to run the exe. It should take you to a typical installer. Install the prereqs.
 3. Go into the unzipped Bizhawk folder and double-click `EmuHawk` to run the emulator. It should run without error.
 
-That's it for Bizhawk! When running games, you'll need to run `EmuHawk`, the Bizhawk emulator.
+That's it for Bizhawk! When running games, you'll need to run `EmuHawk`, the Bizhawk emulator. To set up this emulator to play, read the section below on [Setting Up Your Emulator](#bizhawk).
 
 ## Step 3: Download this Repository
 
@@ -117,15 +119,26 @@ There are two things we need to import, Scenes and a Profile.
 
 ---
 
-## Step 5. The Final Touches
+## Emulator Setup
 
-Before beginning the races, please try out some games from NES, SNES, Genesis to make sure your controller is correctly configured.
+For each emulator there are a few nice things to set up.
 
-- Most Genesis games do not require the full Genesis controller and we will try to avoid the ones which do.
-- We will give a list of games to try out in the `#Sneakbike` channel.
+### Bizhawk
+
+- **IMPORTANT: Disable Start Button for Fast-Forward**: `Config > Configure Hotkeys > Click the box next to "Fast Forward" and hit the Tab keyboard key`.
+
+  - This should change the box to say "Tab", as in the image below.
+  - This is important since otherwise the start button will ALSO fast-forward your game.
+
+  ![Bizhawk Hotkey Turbo Fix](../static/images/bizhawk_hotkeys_turbo.PNG)
+
+* **Adjust Volume**: `Config > Sound > Adjust on the left-hand-size`.
+* **Controller Setup**:
+  - Open a ROM for that system (any game should work) then go to `Config > Controllers`.
+  - You should be able to click next to the command and press the associated button on your controller.
 
 ---
 
 ---
 
-That's all! Check out the [runner_resources](./runner_resources.md) doc to see what we'll be telling you to do on race day!
+That's all ! Check out the [runner_resources](./runner_resources.md) doc to see what we'll be telling you to do on race day!
