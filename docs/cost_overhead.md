@@ -21,7 +21,7 @@ These are costs associated with AWS tools. They are itemized below.
 
 | date       | mins | viewers | Instance Type | cost (usd) |
 | ---------- | ---- | ------- | ------------- | ---------- |
-| 2020-06-20 | 90   | ~15     | t3a.micro     | \$0.33     |
+| 2020-06-20 | 90   | ~15     | t3a.micro     | \$0.31     |
 
 ---
 
