@@ -5,6 +5,9 @@ This document will provide transparency on general costs (besides personal compu
 - [Cost Overhead](#cost-overhead)
   - [AWS](#aws)
     - [EC2](#ec2)
+  - [GoDaddy](#godaddy)
+  - [Digital Ocean](#digital-ocean)
+- [Approximations](#approximations)
 
 ---
 
