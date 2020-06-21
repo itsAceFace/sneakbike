@@ -136,6 +136,8 @@ For each emulator there are a few nice things to set up.
 * **Controller Setup**:
   - Open a ROM for that system (any game should work) then go to `Config > Controllers`.
   - You should be able to click next to the command and press the associated button on your controller.
+* **Make the Window Bigger**: Increase the size of the window by going to `View > Window Size` and pick an option.
+  - I usually play on 3x.
 
 ---
 
