@@ -36,20 +36,29 @@
 
 For each emulator there are a few nice things to set up.
 
+### Bizhawk
+
+For Bizhawk, to set up the controller for each system, you'll need to open a ROM for that system. For example, open up Zelda: ALttP for the SNES and that will allow you to configure your controller for SNES.
+
+- **IMPORTANT: Disable Start Button for Fast-Forward**: `Config > Configure Hotkeys > Click the box next to "Fast Forward" and hit the Tab keyboard key`.
+
+  - This should change the box to say "Tab", as in the image below.
+  - This is important since otherwise the start button will ALSO fast-forward your game.
+
+  ![Bizhawk Hotkey Turbo Fix](../static/images/bizhawk_hotkeys_turbo.PNG)
+
+* **Adjust Volume**: `Config > Sound > Adjust on the left-hand-size`.
+* **Controller Setup**:
+  - Open a ROM for that system (any game should work) then go to `Config > Controllers`.
+  - You should be able to click next to the command and press the associated button on your controller.
+
 ### Snes9x
 
 - **Run when Inactive**: Go to `Emulation > Uncheck Pause When Inactive`.
 - **Enable Backround Inputs**: Go to `Input > Check Background Inputs`.
 - **Disable Background Keyboard Hotkeys**: Go to `Input > Uncheck Background Keyboard Hotkeys`.
+- **Adjust Volume**: Go to `Sound > Sound Settings` and adjust the volumes on the left-hand side.
 
 ---
 
 ---
-
-## My Game is Too Loud!
-
-There's a few ways to decrease the volume of games, depending on the system.
-
-- For **Snes9x**, go to `Sound > Sound Settings` and adjust the volumes on the left-hand side.
-
-**TODO: The rest.**

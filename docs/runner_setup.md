@@ -43,7 +43,7 @@ If you've already been using OBS, it's better to be safe than sorry. We'll back 
 
 For a consistent experience, we use the following:
 
-1. A recent version of `Retroarch` (currently v1.8.8)
+<!-- 1. A recent version of `Retroarch` (currently v1.8.8)
 
    - [Windows Download](http://buildbot.libretro.com/stable/1.8.8/windows/x86_64/RetroArch-x64-setup.exe)
    - **TODO: Mac**
@@ -55,9 +55,13 @@ For a consistent experience, we use the following:
    - Nintendo - Game Boy Advance (mGBA)
    - Nintendo - NES / Famicom (Mesen)
    - Nintendo - SNES / SFC (Snes9x)
-   - Sega MS/GG/MD/CD (Genesis Plus GX)
+   - Sega MS/GG/MD/CD (Genesis Plus GX) -->
 
-3. Fairly recent version of `OBS` (currently 25.0.8)
+1. Recent version of Bizhawk and Bizhawk Prereqs.
+
+   - Windows [Bizhawk](https://github.com/TASVideos/BizHawk/releases/download/2.4.2/BizHawk-2.4.2.zip) and [Bizhawk Prereqs](https://github.com/TASVideos/BizHawk-Prereqs/releases/download/2.4.8_1/bizhawk_prereqs_v2.4.8_1.zip)
+
+2. Fairly recent version of `OBS` (currently 25.0.8)
    - [Windows Download](https://cdn-fastly.obsproject.com/downloads/OBS-Studio-25.0.8-Full-Installer-x64.exe)
    - **TODO: Mac**
    - **TODO: Linux**
@@ -66,7 +70,15 @@ For a consistent experience, we use the following:
 
 ---
 
-## Step 2: Download this Repository
+## Step 2: Install Bizhawk
+
+1. Unzip Bizhawk and Bizhawk Prereqs folder that you downloaded above.
+2. Go into the unzipped Bizhawk Prereqs folder and double-click `bizhawk_prereqs` to run the exe. It should take you to a typical installer. Install the prereqs.
+3. Go into the unzipped Bizhawk folder and double-click `EmuHawk` to run the emulator. It should run without error.
+
+That's it for Bizhawk! When running games, you'll need to run `EmuHawk`, the Bizhawk emulator.
+
+## Step 3: Download this Repository
 
 1. Go to "Clone or Download" on this webpage and download the zip file of this repository.
 2. Unzip it when it's done downloading.
@@ -77,7 +89,7 @@ For a consistent experience, we use the following:
 
 ---
 
-## Step 3. Import things into OBS
+## Step 4. Import things into OBS
 
 There are two things we need to import, Scenes and a Profile.
 
@@ -105,11 +117,12 @@ There are two things we need to import, Scenes and a Profile.
 
 ---
 
-## Step 4. The Final Touches
+## Step 5. The Final Touches
 
-0. Before beginning the races, please try out some games from NES, SNES, Genesis to make sure your controller is correctly configured.
-   - Most Genesis games do not require the full Genesis controller and we will try to avoid the ones which do.
-   - We will give a list of games to try out in the `#Sneakbike` channel.
+Before beginning the races, please try out some games from NES, SNES, Genesis to make sure your controller is correctly configured.
+
+- Most Genesis games do not require the full Genesis controller and we will try to avoid the ones which do.
+- We will give a list of games to try out in the `#Sneakbike` channel.
 
 ---
 
