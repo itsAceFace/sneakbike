@@ -141,10 +141,11 @@ class BoundingBox:
 
 if __name__ == "__main__":
     # EXAMPLE
-    height = 220
-    width = 1000
-    outer_color_hex = "#062240"
+    height = 77
+    width = 306
+    outer_color_hex = "#000000"
     outer_thickness = 6
+    inner_bounding_color_hex = "#ff3031"
     inner_thickness = 4
 
     bb = BoundingBox(
@@ -155,6 +156,6 @@ if __name__ == "__main__":
         save_file=True,
         save_loc="/mnt/c/Users/james",
         make_inner_bounding_box=True,
-        inner_bounding_color_hex="#09386b",
+        inner_bounding_color_hex=inner_bounding_color_hex,
         inner_bounding_thickness=inner_thickness
     )
