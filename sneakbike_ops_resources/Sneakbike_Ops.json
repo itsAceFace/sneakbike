@@ -53,8 +53,8 @@
                         "locked": false,
                         "name": "Nametag_LR",
                         "pos": {
-                            "x": 3697.401123046875,
-                            "y": 3256.903076171875
+                            "x": 3697.4013671875,
+                            "y": 3256.902587890625
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -111,8 +111,8 @@
                         "locked": false,
                         "name": "Nametag_UL",
                         "pos": {
-                            "x": 77.495697021484375,
-                            "y": 54.4970703125
+                            "x": 77.49609375,
+                            "y": 54.496826171875
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -382,7 +382,7 @@
             "mixers": 255,
             "monitoring_type": 0,
             "muted": false,
-            "name": "Overlay -- SNES Generic Green / Blue",
+            "name": "Overlay -- Generic Green / Blue",
             "prev_ver": 419430408,
             "private_settings": {},
             "push-to-mute": false,
@@ -435,12 +435,12 @@
                 "libobs.hide_scene_item.Games": [],
                 "libobs.hide_scene_item.LiveSplit": [],
                 "libobs.hide_scene_item.Nametags": [],
-                "libobs.hide_scene_item.Overlay -- SNES Generic Green / Blue": [],
+                "libobs.hide_scene_item.Overlay -- Generic Green / Blue": [],
                 "libobs.show_scene_item.Background -- Blue Triangles Abstract": [],
                 "libobs.show_scene_item.Games": [],
                 "libobs.show_scene_item.LiveSplit": [],
                 "libobs.show_scene_item.Nametags": [],
-                "libobs.show_scene_item.Overlay -- SNES Generic Green / Blue": []
+                "libobs.show_scene_item.Overlay -- Generic Green / Blue": []
             },
             "id": "scene",
             "mixers": 0,
@@ -455,7 +455,7 @@
             "push-to-talk-delay": 0,
             "settings": {
                 "custom_size": false,
-                "id_counter": 21,
+                "id_counter": 24,
                 "items": [
                     {
                         "align": 5,
@@ -474,8 +474,8 @@
                         "locked": false,
                         "name": "Background -- Blue Triangles Abstract",
                         "pos": {
-                            "x": 2025.0,
-                            "y": 1202.000244140625
+                            "x": 2030.0,
+                            "y": 1204.000244140625
                         },
                         "private_settings": {},
                         "rot": 180.0,
@@ -679,8 +679,8 @@
                         "locked": false,
                         "name": "Nametag_UL",
                         "pos": {
-                            "x": 864.99993896484375,
-                            "y": 488.11990356445312
+                            "x": 865.0,
+                            "y": 488.119873046875
                         },
                         "private_settings": {},
                         "rot": 0.0,
@@ -766,7 +766,7 @@
                         "group_item_backup": false,
                         "id": 2,
                         "locked": false,
-                        "name": "Overlay -- SNES Generic Green / Blue",
+                        "name": "Overlay -- Generic Green / Blue",
                         "pos": {
                             "x": 0.0,
                             "y": 0.0
