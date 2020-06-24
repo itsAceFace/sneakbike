@@ -139,14 +139,10 @@ class BoundingBox:
                self.bound_thickness:(-1*self.bound_thickness)] = self.N
 
 
-if __name__ == "__main__":
-    # EXAMPLE
-    height = 77
-    width = 306
-    outer_color_hex = "#000000"
+def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000"):
     outer_thickness = 6
-    inner_bounding_color_hex = "#ff3031"
     inner_thickness = 4
+    outer_color_hex = outer_color_hex
 
     bb = BoundingBox(
         height=height,
@@ -159,3 +155,10 @@ if __name__ == "__main__":
         inner_bounding_color_hex=inner_bounding_color_hex,
         inner_bounding_thickness=inner_thickness
     )
+
+
+if __name__ == "__main__":
+    boxes = [[440, 540, "#d6f58e"], [480, 433, "#d6f58e"]]
+
+    for box in boxes:
+        make_boxes(box[0], box[1], box[2])

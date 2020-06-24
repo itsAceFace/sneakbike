@@ -5,6 +5,7 @@ import Devops from "../views/Devops.vue";
 import RunnerSetup from "../views/RunnerSetup.vue";
 import RunnerResources from "../views/RunnerResources.vue";
 import CostOverhead from "../views/CostOverhead.vue";
+import RankingQuiz from "../views/RankingQuiz.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/cost-overhead",
     name: "CostOverhead",
     component: CostOverhead
+  },
+  {
+    path: "/ranking-quiz",
+    name: "RankingQuiz",
+    component: RankingQuiz
   }
 ];
 

@@ -159,8 +159,9 @@
       <li>
         <p>
           In OBS, go to
-          <code>Profile > Import</code>, click the
-          <code>Sneakbike_Profile</code> folder from the unzipped repository.
+          <code>Profile > Import</code>, go to your unzipped folder from the previous step and go into the
+          <code>runner_resources</code> folder, then click the
+          <code>Sneakbike_Profile</code> folder.
         </p>
         <p>
           <img src="../static/images/obs_import_profile.png" alt="OBS Profile Import" />
@@ -183,8 +184,9 @@
         <p>
           In OBS, go to
           <code>Scene Collection > Import</code>, click the
-          <code>...</code> button and find the
-          <code>snakebike_scenes.json</code> file in the unzipped folder.
+          <code>...</code> button, go to your unzipped folder from the previous step and go into the
+          <code>runner_resources</code> folder and select the
+          <code>snakebike_scenes.json</code> file.
         </p>
         <p>
           <img
