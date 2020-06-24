@@ -262,6 +262,9 @@
           <li>I usually play on 3x.</li>
         </ul>
       </li>
+      <li>
+        <strong>Make sure your window is fit-to-window on OBS!</strong>: When putting in the Game or Window capture for EmuHawk, right-click the source, go to `Transform > Fit to Screen`.
+      </li>
     </ul>
     <br />
     <br />
