@@ -1,11 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
 import Home from "../views/Home.vue";
 import Devops from "../views/Devops.vue";
 import RunnerSetup from "../views/RunnerSetup.vue";
-import RunnerResources from "../views/RunnerResources.vue";
-import CostOverhead from "../views/CostOverhead.vue";
 import RankingQuiz from "../views/RankingQuiz.vue";
+import CostOverhead from "../views/CostOverhead.vue";
+import RunnerResources from "../views/RunnerResources.vue";
 
 Vue.use(VueRouter);
 

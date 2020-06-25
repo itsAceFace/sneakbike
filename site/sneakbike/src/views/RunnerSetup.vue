@@ -18,7 +18,7 @@
             <a href="#step-2--install-bizhawk">Step 2: Install Bizhawk</a>
           </li>
           <li>
-            <a href="#step-3--download-this-repository">Step 3: Download this Repository</a>
+            <a href="#step-3--download-the-repository">Step 3: Download the Sneakbike Repository</a>
           </li>
           <li>
             <a href="#step-4-import-things-into-obs">Step 4. Import things into OBS</a>
@@ -140,9 +140,13 @@
         href="#bizhawk"
       >Setting Up Your Emulator</a>.
     </p>
-    <h2 id="step-3-download-this-repository">Step 3: Download this Repository</h2>
+    <h2 id="step-3-download-the-repository">Step 3: Download the Sneakbike Repository</h2>
     <ol>
-      <li>Go to "Clone or Download" on this webpage and download the zip file of this repository.</li>
+      <li>
+        Go to
+        <a href="https://github.com/jsal13/sneakbike">this page</a> then click
+        <code>"Clone or Download"</code> to download the zip file of this repository.
+      </li>
       <li>
         <p>Unzip it when it's done downloading.</p>
         <p>
@@ -186,7 +190,7 @@
           <code>Scene Collection > Import</code>, click the
           <code>...</code> button, go to your unzipped folder from the previous step and go into the
           <code>runner_resources</code> folder and select the
-          <code>snakebike_scenes.json</code> file.
+          <code>Sneakbike_Runner_Scene_collection.json</code> file.
         </p>
         <p>
           <img
