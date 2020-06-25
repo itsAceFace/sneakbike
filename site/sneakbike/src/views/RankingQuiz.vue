@@ -49,7 +49,7 @@
       >What does jumping on this little red-and-yellow flashing dude give you?</v-card-text>
       <v-card-actions>
         <v-radio-group v-model="question2Answer" column>
-          <v-radio label="Magic Cape that turns Mario Invisible" value="0" />
+          <v-radio label="Magic Cape that turns Mario Invisible." value="0" />
           <v-radio label="Wait, what is this game?" value="-1.5" />
           <v-radio label="A fire-flower." value="-1" />
           <v-radio label="A feather." value="1" />
