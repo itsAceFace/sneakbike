@@ -1,30 +1,11 @@
 <template>
   <div class="devops">
     <h1 id="devops-documentation-for-sneakbike">Devops Documentation for Sneakbike</h1>
-    <ul>
-      <li>
-        <a href="#devops-documentation-for-sneakbike">Devops Documentation for Sneakbike</a>
-        <ul>
-          <li>
-            <a href="#general-architecture">General Architecture</a>
-          </li>
-          <li>
-            <a
-              href="#setting-up-obs-on-many-runners--computers"
-            >Setting up OBS on Many Runners' Computers</a>
-          </li>
-          <li>
-            <a href="#server-setup-on-aws">Server Setup on AWS</a>
-          </li>
-          <li>
-            <a href="#getting-data-from-the-rtmp-server">Getting Data from the RTMP Server</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
     <br />
     <br />
     <h2 id="general-architecture">General Architecture</h2>
+    <img src="../static/images/sneakbike_architecture.png" alt="Sneakbike Architecture" />
+
     <p>
       We broadcast from several OBS applications to an
       <a

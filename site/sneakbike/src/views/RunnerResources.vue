@@ -1,16 +1,6 @@
 <template>
   <div class="about">
     <h1 id="runner-resources">Runner Resources</h1>
-    <ul>
-      <li>
-        <a href="#runner-resources">Runner Resources</a>
-        <ul>
-          <li>
-            <a href="#beginning-the-race">Beginning the Race</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
     <br />
     <br />
     <h2 id="beginning-the-race">Beginning the Race</h2>

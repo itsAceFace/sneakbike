@@ -2,30 +2,7 @@
   <div class="about">
     <h1 id="cost-overhead">Cost Overhead</h1>
     <p>This document will provide transparency on general costs (besides personal computing power / electricity) for Sneakbike.</p>
-    <ul>
-      <li>
-        <a href="#cost-overhead">Cost Overhead</a>
-        <ul>
-          <li>
-            <a href="#aws">AWS</a>
-            <ul>
-              <li>
-                <a href="#ec2">EC2</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#godaddy">GoDaddy</a>
-          </li>
-          <li>
-            <a href="#digital-ocean">Digital Ocean</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#approximations">Approximations</a>
-      </li>
-    </ul>
+
     <br />
     <br />
     <h2 id="aws">AWS</h2>

@@ -2,46 +2,6 @@
   <div class="about">
     <h1 id="runner-setup">Runner Setup</h1>
     <p>This guide should take you through everything you need to do to be a Sneakbike Runner!</p>
-    <ul>
-      <li>
-        <a href="#runner-setup">Runner Setup</a>
-        <ul>
-          <li>
-            <a
-              href="#step-0--backing-everything-up-for-safety"
-            >Step 0: Backing Everything Up For Safety</a>
-          </li>
-          <li>
-            <a href="#step-1--necessary-software">Step 1: Necessary Software</a>
-          </li>
-          <li>
-            <a href="#step-2--install-bizhawk">Step 2: Install Bizhawk</a>
-          </li>
-          <li>
-            <a href="#step-3--download-the-repository">Step 3: Download the Sneakbike Repository</a>
-          </li>
-          <li>
-            <a href="#step-4-import-things-into-obs">Step 4. Import things into OBS</a>
-            <ul>
-              <li>
-                <a href="#importing-a-profile">Importing a Profile</a>
-              </li>
-              <li>
-                <a href="#importing-scenes">Importing Scenes</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#emulator-setup">Emulator Setup</a>
-            <ul>
-              <li>
-                <a href="#bizhawk">Bizhawk</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
     <br />
     <br />
     <h2 id="step-0-backing-everything-up-for-safety">Step 0: Backing Everything Up For Safety</h2>
@@ -91,11 +51,11 @@
           <li>
             Windows
             <a
-              href="https://github.com/TASVideos/BizHawk/releases/download/2.4.2/BizHawk-2.4.2.zip"
-            >Bizhawk</a> and
-            <a
               href="https://github.com/TASVideos/BizHawk-Prereqs/releases/download/2.4.8_1/bizhawk_prereqs_v2.4.8_1.zip"
-            >Bizhawk Prereqs</a>
+            >Bizhawk Prereqs</a> and
+            <a
+              href="https://github.com/TASVideos/BizHawk/releases/download/2.4.2/BizHawk-2.4.2.zip"
+            >Bizhawk</a>
           </li>
         </ul>
       </li>
@@ -227,13 +187,13 @@
     <br />
     <br />
     <h2 id="emulator-setup">Emulator Setup</h2>
-    <p>For each emulator there are a few nice things to set up.</p>
+    <p>Open up Bizhawk and we'll set up some nice stuff.</p>
     <h3 id="bizhawk">Bizhawk</h3>
     <ul>
       <li>
         <p>
           <strong>IMPORTANT: Disable Start Button for Fast-Forward</strong>:
-          <code>Config > Hotkeys > Click the box next to "Fast Forward" and hit the Tab keyboard key</code>. Click "Save" at the bottom to save.
+          <code>Config > Hotkeys > Click the white box next to "Fast Forward" and hit the Tab keyboard key</code>. Click "Save" at the bottom to save.
         </p>
         <ul>
           <li>This should change the box to say "Tab", as in the image below.</li>
@@ -245,7 +205,7 @@
       </li>
       <li>
         <p>
-          <strong>Adjust Volume</strong>:
+          <strong>Adjust Volume (Optional)</strong>:
           <code>Config > Sound > Adjust on the left-hand-size</code>.
         </p>
       </li>
@@ -260,7 +220,7 @@
         </ul>
       </li>
       <li>
-        <strong>Make the Window Bigger</strong>: Increase the size of the window by going to
+        <strong>Make the Window Bigger (Optional)</strong>: Increase the size of the window by going to
         <code>View > Window Size</code> and pick an option.
         <ul>
           <li>I usually play on 3x.</li>
@@ -274,7 +234,7 @@
     <br />
     <p>
       <!-- TODO: Why does this format to no space between > and d? -->
-      That's all ! Check out the
+      That's all! Check out the
       <router-link to="./runner-resources">Runner Resources</router-link>&nbsp;doc to see what we'll be telling you to do on race day!
     </p>
   </div>
