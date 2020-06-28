@@ -12,6 +12,7 @@
     <br />
     <br />
     <h1>THE QUIZ</h1>
+    <h1>(IN PROGRESS. NOT DONE!)</h1>
     <v-card class="mx-auto" max-width="450px">
       <v-img
         class="white--text align-end"

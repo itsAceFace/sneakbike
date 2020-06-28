@@ -26,6 +26,13 @@
           <td>t3a.micro</td>
           <td>$0.31</td>
         </tr>
+        <tr>
+          <td>2020-06-27</td>
+          <td>90</td>
+          <td>~15</td>
+          <td>t3a.micro</td>
+          <td>$0.41</td>
+        </tr>
       </tbody>
     </table>
     <br />

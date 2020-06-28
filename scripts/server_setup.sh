@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo apt-get update
 sudo apt-get install -y wget unzip software-properties-common dpkg-dev git make gcc automake build-essential zlib1g-dev libpcre3 libpcre3-dev libssl-dev libxslt1-dev libxml2-dev libgd-dev libgeoip-dev libgoogle-perftools-dev libperl-dev pkg-config autotools-dev gpac ffmpeg mediainfo mencoder lame libvorbisenc2 libvorbisfile3 libx264-dev libvo-aacenc-dev libmp3lame-dev libopus-dev unzip
 sudo add-apt-repository -y ppa:nginx/stable && sudo apt-get update
