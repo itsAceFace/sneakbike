@@ -30,15 +30,19 @@
         <v-img
           class="white--text align-end"
           width="600px"
-          :src="require(`@/assets/images/hosting_sneakbike_${index + 1}.png`)"
+          :src="(index + 1 )!== 14 ? require(`@/assets/images/hosting_sneakbike_${index + 1}.png`) : require(`@/assets/images/hosting_sneakbike_${index + 1}.gif`)"
         />
       </v-card>
       <br />
       <br />
     </div>
+    <v-alert type="error">
+      After spinning up an EC2 instance, remember to
+      <b>terminate</b> it when you're done! (We'll cover this below.)
+    </v-alert>
+    <br />
+    <br />
 
-    <br />
-    <br />
     <h2 id="getting-data-from-the-rtmp-server">Getting Data from the RTMP Server</h2>
     <p>
       Since this is nearly identical, see the "Getting Data From the RTMP Server" section in
@@ -60,7 +64,9 @@ const steps = [
   "Click <code>Launch Instance</code>.  We will need to SSH into the machine (to talk to our cloud computer).  It will bring up a key pair dialog which looks like the below figure.  If you've never done this, you can download the key pair; otherwise, you can re-use an old key pair that you've created before.",
   "After you click 'Launch Instance' on your key pair screen, click 'View Instances' to go back to your EC2 dashboard. <br/><br/><b style='color: red;'>NOTE: AT THIS POINT, THE INSTANCE IS LAUNCHED.  AS ABOVE, YOU WILL WANT TO TERMINATE THIS WHEN YOU ARE DONE.  SEE THE LAST STEP BELOW.</b>",
   "At the dashboard, you should see your instance.  The <code>Public IP</code> circled below is what you'll SSH into the EC2 instance with.",
-  "At this point, if you're on Windows, you'll need to get an SSH client: the standard client is PuTTY.  The instructions <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html' alt='aws putty instructions'>at the AWS docs site</a> are great for getting this up and running. You should do the sections up to and including <code>Connecting to your Linux instance</code>.<br/><br/>This is one of those irritating things you have to do to make Windows work with things."
+  "At this point, if you're on Windows, you'll need to get an SSH client: the standard client is PuTTY.  The instructions <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html' alt='aws putty instructions'>at the AWS docs site</a> are great for getting this up and running. You should do the sections up to and including <code>Connecting to your Linux instance</code>.<br/><br/>This is one of those irritating things you have to do to make Windows work with things.",
+  "Once you've done this, you can <i>test</i> this (see the <code>Getting Data from the RTMP Server</code> section below) to see if it worked.",
+  "<b style='color: red'>REMEMBER: after you are done with your image, terminate it."
 ];
 export default {
   name: "HostingSneakbike",
