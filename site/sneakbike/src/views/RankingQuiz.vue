@@ -18,7 +18,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_1.png"
+        src="@/assets/images/quiz_1.png"
       />
       <v-card-subtitle class="overline mb-4">Question 1</v-card-subtitle>
       <v-card-text
@@ -42,7 +42,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_2.png"
+        src="@/assets/images/quiz_2.png"
       />
       <v-card-subtitle class="overline mb-4">Question 2</v-card-subtitle>
       <v-card-text
@@ -66,7 +66,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_3.png"
+        src="@/assets/images/quiz_3.png"
       />
       <v-card-subtitle class="overline mb-4">Question 3</v-card-subtitle>
       <v-card-text
@@ -92,7 +92,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_4.png"
+        src="@/assets/images/quiz_4.png"
       />
       <v-card-subtitle class="overline mb-4">Question 4</v-card-subtitle>
       <v-card-text class="text--primary">What does this blue character "gotta" do?</v-card-text>
@@ -113,7 +113,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_5.png"
+        src="@/assets/images/quiz_5.png"
       />
       <v-card-subtitle class="overline mb-4">Question 5</v-card-subtitle>
       <v-card-text class="text--primary">What is this character trying to accomplish?</v-card-text>
@@ -143,7 +143,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_6.png"
+        src="@/assets/images/quiz_6.png"
       />
       <v-card-subtitle class="overline mb-4">Question 6</v-card-subtitle>
       <v-card-text class="text--primary">
@@ -167,7 +167,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_5.png"
+        src="@/assets/images/quiz_5.png"
       />
       <v-card-subtitle class="overline mb-4">Question 7</v-card-subtitle>
       <v-card-text class="text--primary"></v-card-text>
@@ -188,7 +188,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_5.png"
+        src="@/assets/images/quiz_5.png"
       />
       <v-card-subtitle class="overline mb-4">Question 8</v-card-subtitle>
       <v-card-text class="text--primary"></v-card-text>
@@ -209,7 +209,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_5.png"
+        src="@/assets/images/quiz_5.png"
       />
       <v-card-subtitle class="overline mb-4">Question 9</v-card-subtitle>
       <v-card-text class="text--primary"></v-card-text>
@@ -230,7 +230,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_5.png"
+        src="@/assets/images/quiz_5.png"
       />
       <v-card-subtitle class="overline mb-4">Question 10</v-card-subtitle>
       <v-card-text class="text--primary"></v-card-text>
@@ -251,7 +251,7 @@
         class="white--text align-end"
         height="450px"
         width="450px"
-        src="./../static/images/quiz_5.png"
+        src="@/assets/images/quiz_5.png"
       />
       <v-card-subtitle class="overline mb-4">Question 11</v-card-subtitle>
       <v-card-text class="text--primary"></v-card-text>
@@ -276,7 +276,26 @@ export default {
   name: "RankingQuiz",
   data() {
     return {
-      question1Answer: null
+      question1Answer: null,
+      question2Answer: null,
+      question3Answer: null,
+      question4Answer: null,
+      question5Answer: null,
+      question6Answer: null,
+      question7Answer: null,
+      question8Answer: null,
+      question9Answer: null,
+      question10Answer: null,
+      question11Answer: null,
+      question12Answer: null,
+      question13Answer: null,
+      question14Answer: null,
+      question15Answer: null,
+      question16Answer: null,
+      question17Answer: null,
+      question18Answer: null,
+      question19Answer: null,
+      question20Answer: null
     };
   }
 };

@@ -4,7 +4,7 @@
     <br />
     <br />
     <h2 id="general-architecture">General Architecture</h2>
-    <img src="../static/images/sneakbike_architecture.png" alt="Sneakbike Architecture" />
+    <img src="@/assets/images/sneakbike_architecture.png" alt="Sneakbike Architecture" />
 
     <p>
       We broadcast from several OBS applications to an

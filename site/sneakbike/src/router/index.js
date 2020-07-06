@@ -7,6 +7,7 @@ import RunnerSetup from "../views/RunnerSetup.vue";
 import RankingQuiz from "../views/RankingQuiz.vue";
 import CostOverhead from "../views/CostOverhead.vue";
 import RunnerResources from "../views/RunnerResources.vue";
+import HostingSneakbike from "../views/HostingSneakbike.vue";
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,11 @@ const routes = [
     path: "/ranking-quiz",
     name: "RankingQuiz",
     component: RankingQuiz
+  },
+  {
+    path: "/hosting-sneakbike",
+    name: "HostingSneakbike",
+    component: HostingSneakbike
   }
 ];
 

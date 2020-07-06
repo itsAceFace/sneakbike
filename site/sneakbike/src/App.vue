@@ -43,12 +43,21 @@
 
 <script>
 const sidebarItems = [
-  { icon: "mdi-view-dashboard", title: "Home", link: "/" },
-  { icon: "mdi-cog", title: "Runner Setup", link: "/runner-setup" },
-  { icon: "mdi-cog", title: "Runner Resources", link: "/runner-resources" },
-  { icon: "mdi-cog", title: "Ranking Quiz!", link: "/ranking-quiz" },
-  { icon: "mdi-cog", title: "Devops", link: "/devops" },
-  { icon: "mdi-cog", title: "Cost Overhead", link: "/cost-overhead" }
+  { icon: "mdi-anchor", title: "Home", link: "/" },
+  { icon: "mdi-walk", title: "Runner Setup", link: "/runner-setup" },
+  { icon: "mdi-pickaxe", title: "Runner Resources", link: "/runner-resources" },
+  { icon: "mdi-poll", title: "Ranking Quiz!", link: "/ranking-quiz" },
+  { icon: "mdi-fingerprint", title: "Devops", link: "/devops" },
+  {
+    icon: "mdi-radio-tower",
+    title: "Hosting Sneakbike",
+    link: "/hosting-sneakbike"
+  },
+  {
+    icon: "mdi-currency-usd",
+    title: "Cost Overhead",
+    link: "/cost-overhead"
+  }
 ];
 
 export default {

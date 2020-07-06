@@ -36,7 +36,7 @@
           </li>
         </ul>
         <p>
-          <img src="../static/images/obs_rtmp_setup.png" alt="OBS RTMP Setup" />
+          <img src="@/assets/images/obs_rtmp_setup.png" alt="OBS RTMP Setup" />
         </p>
       </li>
       <li>

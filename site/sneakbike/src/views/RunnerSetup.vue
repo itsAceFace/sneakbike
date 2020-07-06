@@ -16,7 +16,7 @@
           <code>Profile > Export</code>. Save your profile in a safe place. It wants you to pick a folder, just pick whatever you want and it'll make its own folder inside of it.
         </p>
         <p>
-          <img src="../static/images/obs_export_profile.png" alt="Obs Profile Export" />
+          <img src="@/assets/images/obs_export_profile.png" alt="Obs Profile Export" />
         </p>
         <ul>
           <li>You can re-import your profile if something goes wrong.</li>
@@ -30,7 +30,7 @@
         </p>
         <p>
           <img
-            src="../static/images/obs_export_scene_collection.png"
+            src="@/assets/images/obs_export_scene_collection.png"
             alt="Obs Scene Collection Export"
           />
         </p>
@@ -110,7 +110,7 @@
       <li>
         <p>Unzip it when it's done downloading.</p>
         <p>
-          <img src="../static/images/github_clone.png" alt="Github Download" />
+          <img src="@/assets/images/github_clone.png" alt="Github Download" />
         </p>
       </li>
     </ol>
@@ -128,7 +128,7 @@
           <code>Sneakbike_Profile</code> folder.
         </p>
         <p>
-          <img src="../static/images/obs_import_profile.png" alt="OBS Profile Import" />
+          <img src="@/assets/images/obs_import_profile.png" alt="OBS Profile Import" />
         </p>
       </li>
       <li>
@@ -154,7 +154,7 @@
         </p>
         <p>
           <img
-            src="../static/images/obs_import_scene_collection.png"
+            src="@/assets/images/obs_import_scene_collection.png"
             alt="OBS Scene Collection Import"
           />
         </p>
@@ -200,7 +200,7 @@
           <li>This is important since otherwise the start button will ALSO fast-forward your game.</li>
         </ul>
         <p>
-          <img src="../static/images/bizhawk_hotkeys_turbo.png" alt="Bizhawk Hotkey Turbo Fix" />
+          <img src="@/assets/images/bizhawk_hotkeys_turbo.png" alt="Bizhawk Hotkey Turbo Fix" />
         </p>
       </li>
       <li>

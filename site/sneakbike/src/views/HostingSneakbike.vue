@@ -5,21 +5,32 @@
 
     <p>
       Since much of this is covered in
-      <router-link to="./devops">devops</router-link>we will link to that when appropriate.
+      <router-link to="./devops">devops</router-link>&nbsp;we will link to that when appropriate.
     </p>
 
     <br />
     <br />
     <h2 id="aws">AWS</h2>
-    <!-- Todo: finish this -->
 
-    1. get AWS
-    2. go to EC2
-    3. pick out instance, our EC2 instance is currently an Ubuntu 18.04 t3a.micro
-    4. copy the user script (or just upload the file)
-    5. make a security group with rtmp
-    6. test this thing out
-    7. costs and cost explorer
+    <v-alert type="error">
+      After spinning up an EC2 instance, remember to
+      <b>terminate</b> it when you're done! (We'll cover this below.)
+    </v-alert>
+
+    <div v-for="(step, index) in steps" :key="`step-${index}`">
+      <v-card class="mx-auto" max-width="600px">
+        <v-card-title>Step {{index + 1}}.</v-card-title>
+        <v-card-subtitle>{{step}}</v-card-subtitle>
+        <v-img
+          class="white--text align-end"
+          width="600px"
+          :src="require(`@/assets/images/hosting_sneakbike_${index + 1}.png`)"
+        />
+      </v-card>
+      <br />
+      <br />
+    </div>
+
     <br />
     <br />
     <h2 id="getting-data-from-the-rtmp-server">Getting Data from the RTMP Server</h2>
@@ -31,7 +42,21 @@
 </template>
 
 <script>
+const steps = [
+  'Get an AWS Account. Once you are signed in, find "EC2" under the "Compute" heading.',
+  "In the upper-right hand corner, make sure your location is set to US East (N. Virginia).  This is the 'default' location for most AWS things, you'll want to stick here.",
+  "In the EC2 dashboard, click 'Instances' on the left side and then 'Launch Instance' in the middle of the screen.",
+  "Choose the Ubuntu Server 18.04 LTS (HVM) SSD Volume Type.",
+  "Choose to filter by 'General Purpose', then select the 't3a.micro' instance which should have 2 vCPUs and 1GiB memory.",
+  "Click 'Configure Instance Details' in the lower-right hand corner.",
+  "Don't change anything on the next steps until you reach the 'Configure Security Group' screen.",
+  "You will need to 'Create a NEW security Group' if this is your first time, or use an existing one if you've done it before.  For a new group, add a rule for 'SSH - TCP - 22 - Anywhere' and 'Custom TCP - TCP - 1935 - Anywhere'.",
+  "Click 'Launch Instance'.  We will need to SSH into the machine (to talk to our cloud computer).  It will bring up a key pair dialog which looks like the above figure.  If you've never done this, you can download the key pair; otherwise, you can re-use an old key pair that you've created before."
+];
 export default {
-  name: "Devops"
+  name: "HostingSneakbike",
+  data() {
+    return { steps };
+  }
 };
 </script>
