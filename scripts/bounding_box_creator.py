@@ -10,7 +10,7 @@ import numpy as np
 from PIL import Image
 
 
-def __hex_to_rgba(c):
+def hex_to_rgba(c):
     c = c.replace("#", "")
     if len(c) == 6:  # If alpha not specified...
         c += "ff"
@@ -42,7 +42,7 @@ class BoundingBox:  # pylint: disable=
         self.inner_width = 0
         self.color_hex = color_hex
         self.bound_thickness = bound_thickness
-        self.color = __hex_to_rgba(self.color_hex)
+        self.color = hex_to_rgba(self.color_hex)
         self.outer_corner_ornament = outer_corner_ornament
         self.inner_corner_ornament = inner_corner_ornament
         self.make_inner_bounding_box = make_inner_bounding_box
@@ -194,7 +194,9 @@ def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000
 
 
 if __name__ == "__main__":
-    BOXES = [[506, 632, "#d6f58e"]]
+    w = 566 - 210
+    h = 813 - 510 - 50
+    BOXES = [[w, h, "#2152c5", "#2a3fb6"]]
 
     for box in BOXES:
-        make_boxes(box[0], box[1], box[2])
+        make_boxes(box[0], box[1], box[2], box[3])
