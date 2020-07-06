@@ -38,7 +38,7 @@
     </div>
     <v-alert type="error">
       After spinning up an EC2 instance, remember to
-      <b>terminate</b> it when you're done! (We'll cover this below.)
+      <b>terminate</b> it when you're done!
     </v-alert>
     <br />
     <br />
