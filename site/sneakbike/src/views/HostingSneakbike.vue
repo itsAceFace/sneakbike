@@ -21,7 +21,7 @@
     </v-alert>
 
     <div v-for="(step, index) in steps" :key="`step-${index}`">
-      <v-card class="mx-auto" max-width="600px">
+      <v-card class="mx-auto blue-gray" max-width="600px">
         <v-card-title>Step {{index + 1}}.</v-card-title>
         <v-card-subtitle>
           <span v-html="step" />
@@ -64,7 +64,7 @@ const steps = [
   "Click <code>Launch Instance</code>.  We will need to SSH into the machine (to talk to our cloud computer).  It will bring up a key pair dialog which looks like the below figure.  If you've never done this, you can download the key pair; otherwise, you can re-use an old key pair that you've created before.",
   "After you click 'Launch Instance' on your key pair screen, click 'View Instances' to go back to your EC2 dashboard. <br/><br/><b style='color: red;'>NOTE: AT THIS POINT, THE INSTANCE IS LAUNCHED.  AS ABOVE, YOU WILL WANT TO TERMINATE THIS WHEN YOU ARE DONE.  SEE THE LAST STEP BELOW.</b>",
   "At the dashboard, you should see your instance.  The <code>Public IP</code> circled below is what you'll SSH into the EC2 instance with.",
-  "At this point, if you're on Windows, you'll need to get an SSH client: the standard client is PuTTY.  The instructions <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html' alt='aws putty instructions'>at the AWS docs site</a> are great for getting this up and running. You should do the sections up to and including <code>Connecting to your Linux instance</code>.<br/><br/>This is one of those irritating things you have to do to make Windows work with things.",
+  "At this point, if you're on Windows, you'll need to get an SSH client: the standard client is PuTTY.  The instructions <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html' alt='aws putty instructions'>at the AWS docs site</a> are great for getting this up and running. You should do the sections up to and including <code>Connecting to your Linux instance</code>.<br/><br/><b>Once you have an SSH connection, go to <code>/scripts/server_setup.sh</code> in this repo and paste it line-by-line into the SSH terminal.</b><br/><br/>(<b>Note</b>: I'm not sure why this doesn't work if you paste it all at once, and I'm not sure why I can't do this script at startup time; it is something I'm investigating so we can kill off this step.)",
   "Once you've done this, you can <i>test</i> this (see the <code>Getting Data from the RTMP Server</code> section below) to see if it worked.",
   "<b style='color: red'>REMEMBER: after you are done with your image, terminate it."
 ];
@@ -75,3 +75,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.blue-gray {
+  background-color: #ebf2f8;
+}
+</style>

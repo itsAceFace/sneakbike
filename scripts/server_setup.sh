@@ -17,36 +17,6 @@ rtmp {
                         record off;
                 }
         }
-        server {
-                listen 1936;
-                chunk_size 4096;
-                max_streams 512;
-
-                application live {
-                        live on;
-                        record off;
-                }
-        }
-        server {
-                listen 1937;
-                chunk_size 4096;
-                max_streams 512;
-
-                application live {
-                        live on;
-                        record off;
-                }
-        }
-        server {
-                listen 1938;
-                chunk_size 4096;
-                max_streams 512;
-
-                application live {
-                        live on;
-                        record off;
-                }
-        }
 }
 " | sudo tee -a /etc/nginx/nginx.conf
 
