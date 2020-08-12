@@ -2,8 +2,7 @@
   <div class="about">
     <h1 id="runner-setup">Runner Setup</h1>
     <p>This guide should take you through everything you need to do to be a Sneakbike Runner!</p>
-    <br />
-    <br />
+
     <h2 id="step-0-backing-everything-up-for-safety">Step 0: Backing Everything Up For Safety</h2>
     <p>
       <em>If you're dowloading OBS for the first time, you can skip this section.</em>
@@ -40,8 +39,6 @@
         </ul>
       </li>
     </ol>
-    <br />
-    <br />
     <h2 id="step-1-necessary-software">Step 1: Necessary Software</h2>
     <p>For a consistent experience, we use the following:</p>
     <ol>
@@ -79,8 +76,6 @@
         </ul>
       </li>
     </ol>
-    <br />
-    <br />
     <h2 id="step-2-install-bizhawk">Step 2: Install Bizhawk</h2>
     <ol>
       <li>Unzip Bizhawk and Bizhawk Prereqs folder that you downloaded above.</li>
@@ -114,8 +109,6 @@
         </p>
       </li>
     </ol>
-    <br />
-    <br />
     <h2 id="step-4-import-things-into-obs">Step 4. Import things into OBS</h2>
     <p>There are two things we need to import, Scenes and a Profile.</p>
     <h3 id="importing-a-profile">Importing a Profile</h3>
@@ -184,8 +177,6 @@
         <code>Sneakbike</code> scenes for these races.
       </strong>
     </p>
-    <br />
-    <br />
     <h2 id="emulator-setup">Emulator Setup</h2>
     <p>Open up Bizhawk and we'll set up some nice stuff.</p>
     <h3 id="bizhawk">Bizhawk</h3>
@@ -230,7 +221,7 @@
         <strong>Make sure your window is fit-to-window on OBS!</strong>: When putting in the Game or Window capture for EmuHawk, right-click the source, go to `Transform > Fit to Screen`.
       </li>
     </ul>
-    <br />
+    <hr />
     <br />
     <p>
       <!-- TODO: Why does this format to no space between > and d? -->
@@ -242,6 +233,6 @@
 
 <script>
 export default {
-  name: "RunnerSetup"
+  name: "RunnerSetup",
 };
 </script>

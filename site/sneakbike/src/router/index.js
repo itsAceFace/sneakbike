@@ -8,6 +8,7 @@ import RankingQuiz from "../views/RankingQuiz.vue";
 import CostOverhead from "../views/CostOverhead.vue";
 import RunnerResources from "../views/RunnerResources.vue";
 import HostingSneakbike from "../views/HostingSneakbike.vue";
+import DesignGuide from "../views/DesignGuide.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/devops",
     name: "Devops",
     component: Devops
+  },
+  {
+    path: "/design",
+    name: "Design",
+    component: DesignGuide
   },
   {
     path: "/runner-setup",

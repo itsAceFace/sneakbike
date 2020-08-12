@@ -3,12 +3,11 @@
     <v-app-bar app color="indigo" clipped-left light>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <span class="eight-bit-text toolbar-title">Sneakbike Mystery Race</span>
+        <span class="toolbar-title">Sneakbike</span>
       </v-toolbar-title>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app clipped>
-      <!-- TODO: Do a for loop here -->
       <v-list dense>
         <div v-for="(sidebarItem, index) in sidebarItems" :key="`sidebar-item-${index}`">
           <router-link :to="`${sidebarItem.link}`" tag="span">
@@ -25,9 +24,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <v-container class="fill-height" fluid>
-        <v-row align="center" justify="center">
-          <v-col class="text-left">
+      <v-container>
+        <v-row class="mb-6">
+          <v-col sm="8" offset-sm="2">
             <div id="app">
               <router-view />
             </div>
@@ -47,17 +46,18 @@ const sidebarItems = [
   { icon: "mdi-walk", title: "Runner Setup", link: "/runner-setup" },
   { icon: "mdi-pickaxe", title: "Runner Resources", link: "/runner-resources" },
   { icon: "mdi-poll", title: "Ranking Quiz!", link: "/ranking-quiz" },
-  { icon: "mdi-fingerprint", title: "Devops", link: "/devops" },
+  { icon: "mdi-cloud", title: "Devops", link: "/devops" },
+  { icon: "mdi-brush", title: "Design Guide", link: "/design" },
   {
     icon: "mdi-radio-tower",
     title: "Hosting Sneakbike",
-    link: "/hosting-sneakbike"
+    link: "/hosting-sneakbike",
   },
   {
     icon: "mdi-currency-usd",
     title: "Cost Overhead",
-    link: "/cost-overhead"
-  }
+    link: "/cost-overhead",
+  },
 ];
 
 export default {
@@ -65,18 +65,62 @@ export default {
   data() {
     return {
       drawer: true,
-      sidebarItems
+      sidebarItems,
     };
-  }
+  },
 };
 </script>
 
 <style lang="scss">
-.eight-bit-text {
-  font-family: "Press Start 2P", cursive;
+.v-application {
+  font-size: 16px !important;
+  font-family: "Press Start 2P", cursive !important;
+  line-height: 1.5 !important;
 }
 
 .toolbar-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: "Press Start 2P", cursive;
+}
+
+p,
+li,
+th,
+td,
+.v-card__title,
+.v-card__subtitle,
+.v-list-item__title,
+.v-radio > .v-label {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.v-card__text {
+  padding-bottom: 0px !important;
+}
+
+ol,
+ul {
+  padding-bottom: 1rem;
+}
+li {
+  padding-bottom: 0.35rem;
+}
+
+h1 {
+  font-size: 1.25rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+}
+
+h3 {
+  font-size: 0.75rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
 }
 </style>

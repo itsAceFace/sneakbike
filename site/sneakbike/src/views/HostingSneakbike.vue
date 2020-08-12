@@ -11,8 +11,6 @@
       <router-link to="./devops">devops</router-link>&nbsp;we will link to that when appropriate.
     </p>
 
-    <br />
-    <br />
     <h2 id="aws">AWS</h2>
 
     <v-alert type="error">
@@ -41,7 +39,6 @@
       <b>terminate</b> it when you're done!
     </v-alert>
     <br />
-    <br />
 
     <h2 id="getting-data-from-the-rtmp-server">Getting Data from the RTMP Server</h2>
     <p>
@@ -66,13 +63,13 @@ const steps = [
   "At the dashboard, you should see your instance.  The <code>Public IP</code> circled below is what you'll SSH into the EC2 instance with.",
   "At this point, if you're on Windows, you'll need to get an SSH client: the standard client is PuTTY.  The instructions <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html' alt='aws putty instructions'>at the AWS docs site</a> are great for getting this up and running (<b style='color: red;'>Note: they use the username 'ec2_user' in this tutorial, but the username for our EC2 image is `ubuntu`.</b>). You should do the sections up to and including <code>Connecting to your Linux instance</code>.<br/><br/><b>Once you have an SSH connection, go to <a href='https://github.com/jsal13/sneakbike/blob/master/scripts/server_setup.sh'>/scripts/server_setup.sh</a> in this repo and paste it line-by-line into the SSH terminal (<span style='color: red;'>Note: to paste into PuTTY, you copy the code and then paste it using a right-click into the putty window</span>).</b><br/><br/>(<b>Note</b>: I'm not sure why this doesn't work if you paste it all at once, and I'm not sure why I can't do this script at startup time; it is something I'm investigating so we can kill off this step.)",
   "Once you've done this, you can <i>test</i> this (see the <code>Getting Data from the RTMP Server</code> section below) to see if it worked.",
-  "<b style='color: red'>REMEMBER: after you are done with your image, terminate it."
+  "<b style='color: red'>REMEMBER: after you are done with your image, terminate it.",
 ];
 export default {
   name: "HostingSneakbike",
   data() {
     return { steps };
-  }
+  },
 };
 </script>
 

@@ -12,6 +12,7 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "comma-dangle": 0,
     quotes: 0,
-    "max-len": 0
+    "max-len": 0,
+    "linebreak-style": 0
   }
 };

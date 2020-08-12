@@ -1,8 +1,6 @@
 <template>
   <div class="about">
     <h1 id="runner-resources">Runner Resources</h1>
-    <br />
-    <br />
     <h2 id="beginning-the-race">Beginning the Race</h2>
     <ol>
       <li>
@@ -58,6 +56,6 @@
 
 <script>
 export default {
-  name: "RunnerResources"
+  name: "RunnerResources",
 };
 </script>

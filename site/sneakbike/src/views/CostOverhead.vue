@@ -2,9 +2,7 @@
   <div class="about">
     <h1 id="cost-overhead">Cost Overhead</h1>
     <p>This document will provide transparency on general costs (besides personal computing power / electricity) for Sneakbike.</p>
-
-    <br />
-    <br />
+    <hr />
     <h2 id="aws">AWS</h2>
     <p>These are costs associated with AWS tools. They are itemized below.</p>
     <h3 id="ec2">EC2</h3>
@@ -36,7 +34,8 @@
       </tbody>
     </table>
     <br />
-    <br />
+    <hr />
+
     <h2 id="godaddy">GoDaddy</h2>
     <p>These are costs associated with GoDaddy (domains). They are itemized below.</p>
     <table>
@@ -58,7 +57,7 @@
       </tbody>
     </table>
     <br />
-    <br />
+    <hr />
     <h2 id="digital-ocean">Digital Ocean</h2>
     <p>These are costs associated with Digital Ocean (web hosting for dynamic sites). They are itemized below.</p>
     <table>
@@ -78,7 +77,7 @@
       </tbody>
     </table>
     <br />
-    <br />
+    <hr />
     <h1 id="approximations">Approximations</h1>
     <p>Here we do an approximate calculation for running Sneakbike for a year. We include the yearly price for the domain in this.</p>
     <p>We assume a weekly race about the same time, cost increasing slightly to an average of $0.50.</p>
@@ -96,7 +95,7 @@
 
 <script>
 export default {
-  name: "CostOverhead"
+  name: "CostOverhead",
 };
 </script>
 
