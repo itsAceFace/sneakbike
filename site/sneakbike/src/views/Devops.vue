@@ -33,25 +33,48 @@
     <p>The most frustrating part without a doubt is getting everyone a similar setup on OBS. We require downloading the latest OBS and have them import both a Profile (to allow us to set resolution) as well as Scene Collections (to allow us to control what things go where, and to not have them confuse it with their own scene collections).</p>
     <p>Due to the nature of OBS's quick-switch for Profiles and Scenes, this works well.</p>
 
-    <h2 id="server-setup-on-aws">Server Setup on AWS</h2>
+    <h2 id="server-setup-on-aws">Server Setup on AWS with Terraform</h2>
+
     <p>
-      Included in the
-      <code>/scripts</code> folder is the shell file
-      <code>server_setup.sh</code> which can be used as the startup script on an Ubuntu 18.04 instance.
+      We'll use
+      <a href="https://www.terraform.io/intro/index.html">Terraform</a> to build and destroy our RTMP server in AWS. In short, Terraform allows us to easily build simple (and not so simple) AWS structures like our EC2 instance from the commandline.
     </p>
-    <p>The tl;dr is that it installs nginx and an RTMP add-on for nginx. It is extremely lightweight and fairly configurable depending on what you need.</p>
-    <p>Note the nginx config at the bottom: here we have four different ports open that users can use. The addresses will look like this:</p>
-    <pre><code class="lang-bash">rtmp:<span class="hljs-regexp">//</span>public-ip-address-of-ec2:port<span class="hljs-regexp">/live/</span>secret_key
-</code></pre>
-    <p>Here, the ports go from 1935 (standard RTMP port) to 1938. The secret key doesn't matter and you can give it to your users in private for safety.</p>
+    <p>
+      Since their tutorial is great,
+      <a
+        href="https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/aws-get-started"
+      >go through the first few of them (it shouldn't take more than 10 minutes)</a>.
+    </p>
+
+    <p>
+      Once you're done, our tf file is in the
+      <b>/scripts/terraform/</b> folder. As per the above, you will need to have set up:
+    </p>
+    <ul>
+      <li>AWS CLI v2</li>
+      <li>
+        Done
+        <b>aws configure</b>
+      </li>
+      <li>Terraform CLI</li>
+      <li>Terraform SSH Key</li>
+      <li>
+        Run
+        <b>terraform init</b> in the folder.
+      </li>
+    </ul>
 
     <h2 id="getting-data-from-the-rtmp-server">Getting Data from the RTMP Server</h2>
+
+    <p>
+      <b>Note that RTMP always uses port 1935.</b>
+    </p>
     <p>
       To pull the streams from the RTMP server you can use VLC or the VLC plugin on OBS: point it to the
       <code>rtmp</code> address above and it should pick up your user correctly. For VLC, the "Network" option is the one you should use.
     </p>
     <p>Again, they will look something like this:</p>
-    <pre><code class="lang-bash">rtmp:<span class="hljs-regexp">//</span>public-ip-address-of-ec2:port<span class="hljs-regexp">/live/</span>secret_key
+    <pre><code class="lang-bash">rtmp:<span class="hljs-regexp">//</span>public-ip-address-of-ec2:1935<span class="hljs-regexp">/live/</span>secret_key
 </code></pre>
   </div>
 </template>

@@ -87,23 +87,28 @@ class BoundingBox:  # pylint: disable=
             ]
         ).reshape(self.bound_thickness, (self.width - (2 * self.bound_thickness)), 4)
         M_center = np.zeros(
-            (self.height - (2 * self.bound_thickness), self.width - (2 * self.bound_thickness), 4)
+            (self.height - (2 * self.bound_thickness),
+             self.width - (2 * self.bound_thickness), 4)
         )
 
         if not self.outer_corner_ornament:
             # Iif we're not making ornaments on the outer box, fill it in...
             M_corner = np.array(
-                [self.color for _ in range(self.bound_thickness * self.bound_thickness)]
+                [self.color for _ in range(
+                    self.bound_thickness * self.bound_thickness)]
             ).reshape(self.bound_thickness, self.bound_thickness, 4)
 
         else:
             # Otherwise, put a transparency for a placeholder.
             M_corner = np.array(
-                [[0, 0, 0, 0] for _ in range(self.bound_thickness * self.bound_thickness)]
+                [[0, 0, 0, 0]
+                    for _ in range(self.bound_thickness * self.bound_thickness)]
             ).reshape(self.bound_thickness, self.bound_thickness, 4)
 
-        M_left_center_right = np.concatenate([M_left_right, M_center, M_left_right], axis=1)
-        M_top_bottom = np.concatenate([M_corner, M_top_bottom, M_corner], axis=1)
+        M_left_center_right = np.concatenate(
+            [M_left_right, M_center, M_left_right], axis=1)
+        M_top_bottom = np.concatenate(
+            [M_corner, M_top_bottom, M_corner], axis=1)
         return np.concatenate([M_top_bottom, M_left_center_right, M_top_bottom], axis=0)
 
     def draw_bounding_box_ornaments(self):
@@ -114,42 +119,42 @@ class BoundingBox:  # pylint: disable=
 
         if self.outer_corner_ornament:
             self.M[
-                ornament_size : (2 * ornament_size), ornament_size : (2 * ornament_size)
+                ornament_size: (2 * ornament_size), ornament_size: (2 * ornament_size)
             ] = ornament  # UL
 
             self.M[
-                ornament_size : (2 * ornament_size), (-2 * ornament_size) : (-1 * ornament_size)
+                ornament_size: (2 * ornament_size), (-2 * ornament_size): (-1 * ornament_size)
             ] = ornament  # UR
 
             self.M[
-                (-2 * ornament_size) : (-1 * ornament_size),  # LL
-                ornament_size : (2 * ornament_size),
+                (-2 * ornament_size): (-1 * ornament_size),  # LL
+                ornament_size: (2 * ornament_size),
             ] = ornament
 
             self.M[
-                (-2 * ornament_size) : (-1 * ornament_size),  # LR
-                (-2 * ornament_size) : (-1 * ornament_size),
+                (-2 * ornament_size): (-1 * ornament_size),  # LR
+                (-2 * ornament_size): (-1 * ornament_size),
             ] = ornament
 
         if self.inner_corner_ornament:
             self.M[
-                (2 * ornament_size) : (3 * ornament_size),  # UL
-                (2 * ornament_size) : (3 * ornament_size),
+                (2 * ornament_size): (3 * ornament_size),  # UL
+                (2 * ornament_size): (3 * ornament_size),
             ] = ornament
 
             self.M[
-                (2 * ornament_size) : (3 * ornament_size),  # UR
-                (-3 * ornament_size) : (-2 * ornament_size),
+                (2 * ornament_size): (3 * ornament_size),  # UR
+                (-3 * ornament_size): (-2 * ornament_size),
             ] = ornament
 
             self.M[
-                (-3 * ornament_size) : (-2 * ornament_size),  # LL
-                (2 * ornament_size) : (3 * ornament_size),
+                (-3 * ornament_size): (-2 * ornament_size),  # LL
+                (2 * ornament_size): (3 * ornament_size),
             ] = ornament
 
             self.M[
-                (-3 * ornament_size) : (-2 * ornament_size),  # LR
-                (-3 * ornament_size) : (-2 * ornament_size),
+                (-3 * ornament_size): (-2 * ornament_size),  # LR
+                (-3 * ornament_size): (-2 * ornament_size),
             ] = ornament
 
         return self.M
@@ -168,8 +173,8 @@ class BoundingBox:  # pylint: disable=
         ).M
 
         self.M[
-            self.bound_thickness : (-1 * self.bound_thickness),
-            self.bound_thickness : (-1 * self.bound_thickness),
+            self.bound_thickness: (-1 * self.bound_thickness),
+            self.bound_thickness: (-1 * self.bound_thickness),
         ] = self.N
 
 
@@ -184,7 +189,7 @@ def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000
         color_hex=outer_color_hex,
         bound_thickness=outer_thickness,
         save_file=True,
-        save_loc="/mnt/c/Users/james",
+        save_loc="c:\\Users\\jimmy",
         make_inner_bounding_box=True,
         inner_bounding_color_hex=inner_bounding_color_hex,
         inner_bounding_thickness=inner_thickness,
@@ -194,9 +199,9 @@ def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000
 
 
 if __name__ == "__main__":
-    w = 566 - 210
-    h = 813 - 510 - 50
-    BOXES = [[w, h, "#2152c5", "#2a3fb6"]]
+    w = 200
+    h = 38
+    BOXES = [[w, h, "#00ffae", "#000000"]]
 
     for box in BOXES:
         make_boxes(box[0], box[1], box[2], box[3])
