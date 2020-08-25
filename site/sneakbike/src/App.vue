@@ -1,10 +1,19 @@
 <template>
   <v-app id="inspire" light>
-    <v-app-bar app color="indigo" clipped-left light>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar app color="indigo" clipped-left dense light>
+      <v-app-bar-nav-icon large color="white" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
         <span class="toolbar-title">Sneakbike</span>
       </v-toolbar-title>
+      <v-spacer></v-spacer>
+
+      <v-btn icon href="https://twitch.tv/sneakbike" target="_blank">
+        <v-icon large color="white">mdi-twitch</v-icon>
+      </v-btn>
+
+      <v-btn icon href="https://www.github.com/jsal13/sneakbike/" target="_blank">
+        <v-icon large color="white">mdi-github</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app clipped>
@@ -45,9 +54,9 @@ const sidebarItems = [
   { icon: "mdi-anchor", title: "Home", link: "/" },
   { icon: "mdi-walk", title: "Runner Setup", link: "/runner-setup" },
   { icon: "mdi-pickaxe", title: "Runner Resources", link: "/runner-resources" },
-  { icon: "mdi-poll", title: "Ranking Quiz!", link: "/ranking-quiz" },
+  // { icon: "mdi-poll", title: "Ranking Quiz!", link: "/ranking-quiz" },
   { icon: "mdi-cloud", title: "Devops", link: "/devops" },
-  { icon: "mdi-brush", title: "Design Guide", link: "/design" },
+  // { icon: "mdi-brush", title: "Design Guide", link: "/design" },
   {
     icon: "mdi-radio-tower",
     title: "Hosting Sneakbike",
@@ -81,6 +90,7 @@ export default {
 .toolbar-title {
   font-size: 1.5rem;
   font-family: "Press Start 2P", cursive;
+  color: white;
 }
 
 p,
