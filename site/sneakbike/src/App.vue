@@ -2,7 +2,9 @@
   <v-app>
     <div id="nav">
       <v-app-bar app flat color="#92de69">
-        <v-toolbar-title>Sneakbike</v-toolbar-title>
+        <router-link to="/">
+          <v-toolbar-title>Sneakbike</v-toolbar-title>
+        </router-link>
         <ToolbarDropdowns />
         <v-spacer />
         <ToolbarIcons />
@@ -42,6 +44,12 @@ $base-heading-bottom-padding: 0.75rem;
   font-family: "Press Start 2P", cursive;
   font-size: 1.5rem !important;
   padding-right: 1.5rem;
+  color: black;
+  text-decoration: none;
+}
+
+.v-toolbar__content > a {
+  text-decoration: none;
 }
 
 h1,

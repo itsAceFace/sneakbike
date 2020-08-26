@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
+import SneakbikeInfo from "@/views/SneakbikeInfo.vue";
 
 import RunnerSetup from "@/views/RunnerSetup.vue";
 import HostSetup from "@/views/HostSetup.vue";
@@ -17,6 +18,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/sneakbike-info",
+    name: "SneakbikeInfo",
+    component: SneakbikeInfo,
   },
   {
     path: "/runner-setup",
