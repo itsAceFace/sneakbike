@@ -1,9 +1,9 @@
 <template>
-  <div class="runner-setup"></div>
+  <div class="dev-setup"></div>
 </template>
 
 <script>
 export default {
-  name: "RunnerSetup",
+  name: "DevSetup",
 };
 </script>

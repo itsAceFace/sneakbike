@@ -1,14 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Home from "@/views/Home.vue";
 
-import Home from "../views/Home.vue";
-import Devops from "../views/Devops.vue";
-import RunnerSetup from "../views/RunnerSetup.vue";
-import RankingQuiz from "../views/RankingQuiz.vue";
-import CostOverhead from "../views/CostOverhead.vue";
-import RunnerResources from "../views/RunnerResources.vue";
-import HostingSneakbike from "../views/HostingSneakbike.vue";
-import DesignGuide from "../views/DesignGuide.vue";
+import RunnerSetup from "@/views/RunnerSetup.vue";
+import HostSetup from "@/views/HostSetup.vue";
+import DevSetup from "@/views/DevSetup.vue";
+
+import RunnerTroubleshooting from "@/views/RunnerTroubleshooting.vue";
+import HostTroubleshooting from "@/views/HostTroubleshooting.vue";
+import DevTroubleshooting from "@/views/DevTroubleshooting.vue";
 
 Vue.use(VueRouter);
 
@@ -16,49 +16,44 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
-  },
-  {
-    path: "/devops",
-    name: "Devops",
-    component: Devops
-  },
-  {
-    path: "/design",
-    name: "Design",
-    component: DesignGuide
+    component: Home,
   },
   {
     path: "/runner-setup",
     name: "RunnerSetup",
-    component: RunnerSetup
+    component: RunnerSetup,
   },
   {
-    path: "/runner-resources",
-    name: "RunnerResources",
-    component: RunnerResources
+    path: "/runner-troubleshooting",
+    name: "RunnerTroubleshooting",
+    component: RunnerTroubleshooting,
   },
   {
-    path: "/cost-overhead",
-    name: "CostOverhead",
-    component: CostOverhead
+    path: "/host-setup",
+    name: "HostSetup",
+    component: HostSetup,
   },
   {
-    path: "/ranking-quiz",
-    name: "RankingQuiz",
-    component: RankingQuiz
+    path: "/host-troubleshooting",
+    name: "HostTroubleshooting",
+    component: HostTroubleshooting,
   },
   {
-    path: "/hosting-sneakbike",
-    name: "HostingSneakbike",
-    component: HostingSneakbike
-  }
+    path: "/dev-setup",
+    name: "DevSetup",
+    component: DevSetup,
+  },
+  {
+    path: "/dev-troubleshooting",
+    name: "DevTroubleshooting",
+    component: DevTroubleshooting,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
