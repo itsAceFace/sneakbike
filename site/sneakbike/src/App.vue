@@ -73,4 +73,10 @@ h2 {
 h3 {
   font-size: 1.25rem;
 }
+
+.warning-card,
+.info-card {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 </style>

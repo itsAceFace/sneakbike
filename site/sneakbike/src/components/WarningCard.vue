@@ -3,7 +3,7 @@
     <v-card class="mx-auto" color="#d6382977" outlined>
       <v-card-text>
         <div class="overline mb-4">
-          <v-icon>mdi-alert</v-icon>Warning
+          <v-icon>mdi-alert</v-icon>&nbsp;Warning
         </div>
         <p class="text--primary">
           <slot></slot>
