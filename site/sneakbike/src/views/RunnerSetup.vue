@@ -1,238 +1,150 @@
 <template>
-  <div class="about">
-    <h1 id="runner-setup">Runner Setup</h1>
-    <p>This guide should take you through everything you need to do to be a Sneakbike Runner!</p>
+  <div class="runner-setup">
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="2" />
+        <v-col cols="8">
+          <h1>Runner Setup</h1>
+          <WarningCard>We assume you're running Windows 10. If not, check in with us and we'll get you compatible software.</WarningCard>
+        </v-col>
+        <v-col></v-col>
+      </v-row>
+    </v-container>
 
-    <h2 id="step-0-backing-everything-up-for-safety">Step 0: Backing Everything Up For Safety</h2>
-    <p>
-      <em>If you're dowloading OBS for the first time, you can skip this section.</em>
-    </p>
-    <p>If you've already been using OBS, it's better to be safe than sorry. We'll back up your major things:</p>
-    <ol>
-      <li>
-        <p>
-          Go to
-          <code>Profile > Export</code>. Save your profile in a safe place. It wants you to pick a folder, just pick whatever you want and it'll make its own folder inside of it.
-        </p>
-        <p>
-          <img src="@/assets/images/obs_export_profile.png" alt="Obs Profile Export" />
-        </p>
-        <ul>
-          <li>You can re-import your profile if something goes wrong.</li>
-          <li>Don't worry, this hasn't happened to me yet.</li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Go to
-          <code>Scene Collection > Export</code>. Save your scene collection in a safe place.
-        </p>
-        <p>
-          <img
-            src="@/assets/images/obs_export_scene_collection.png"
-            alt="Obs Scene Collection Export"
-          />
-        </p>
-        <ul>
-          <li>You can re-import your scenes if something goes wrong.</li>
-          <li>Don't worry, this hasn't happened to me yet either.</li>
-        </ul>
-      </li>
-    </ol>
-    <h2 id="step-1-necessary-software">Step 1: Necessary Software</h2>
-    <p>For a consistent experience, we use the following:</p>
-    <ol>
-      <li>
-        <p>Recent version of Bizhawk and Bizhawk Prereqs.</p>
-        <ul>
-          <li>
-            Windows
-            <a
-              href="https://github.com/TASVideos/BizHawk-Prereqs/releases/download/2.4.8_1/bizhawk_prereqs_v2.4.8_1.zip"
-            >Bizhawk Prereqs</a> and
-            <a
-              href="https://github.com/TASVideos/BizHawk/releases/download/2.4.2/BizHawk-2.4.2.zip"
-            >Bizhawk</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Fairly recent version of
-          <code>OBS</code> (currently 25.0.8)
-        </p>
-        <ul>
-          <li>
-            <a
-              href="https://cdn-fastly.obsproject.com/downloads/OBS-Studio-25.0.8-Full-Installer-x64.exe"
-            >Windows Download</a>
-          </li>
-          <li>
-            <strong>TODO: Mac</strong>
-          </li>
-          <li>
-            <strong>TODO: Linux</strong>
-          </li>
-        </ul>
-      </li>
-    </ol>
-    <h2 id="step-2-install-bizhawk">Step 2: Install Bizhawk</h2>
-    <ol>
-      <li>Unzip Bizhawk and Bizhawk Prereqs folder that you downloaded above.</li>
-      <li>
-        Go into the unzipped Bizhawk Prereqs folder and double-click
-        <code>bizhawk_prereqs</code> to run the exe. It should take you to a typical installer. Install the prereqs.
-      </li>
-      <li>
-        Go into the unzipped Bizhawk folder and double-click
-        <code>EmuHawk</code> to run the emulator. It should run without error.
-      </li>
-    </ol>
-    <p>
-      That's it for Bizhawk! When running games, you'll need to run
-      <code>EmuHawk</code>, the Bizhawk emulator. To set up this emulator to play, read the section below on
-      <a
-        href="#bizhawk"
-      >Setting Up Your Emulator</a>.
-    </p>
-    <h2 id="step-3-download-the-repository">Step 3: Download the Sneakbike Repository</h2>
-    <ol>
-      <li>
-        Go to
-        <a href="https://github.com/jsal13/sneakbike">this page</a> then click
-        <code>"Clone or Download"</code> to download the zip file of this repository.
-      </li>
-      <li>
-        <p>Unzip it when it's done downloading.</p>
-        <p>
-          <img src="@/assets/images/github_clone.png" alt="Github Download" />
-        </p>
-      </li>
-    </ol>
-    <h2 id="step-4-import-things-into-obs">Step 4. Import things into OBS</h2>
-    <p>There are two things we need to import, Scenes and a Profile.</p>
-    <h3 id="importing-a-profile">Importing a Profile</h3>
-    <ol>
-      <li>
-        <p>
-          In OBS, go to
-          <code>Profile > Import</code>, go to your unzipped folder from the previous step and go into the
-          <code>runner_resources</code> folder, then click the
-          <code>Sneakbike_Profile</code> folder.
-        </p>
-        <p>
-          <img src="@/assets/images/obs_import_profile.png" alt="OBS Profile Import" />
-        </p>
-      </li>
-      <li>
-        <p>
-          If you click
-          <code>Profile</code> again, you should see (probably) two profiles at the bottom:
-          <code>Untitled</code> and
-          <code>Sneakbike</code>.
-          <code>Untitled</code> is your default. You can switch back to
-          <code>Untitled</code> to go back to your normal streaming profile.
-        </p>
-      </li>
-    </ol>
-    <h3 id="importing-scenes">Importing Scenes</h3>
-    <ol>
-      <li>
-        <p>
-          In OBS, go to
-          <code>Scene Collection > Import</code>, click the
-          <code>...</code> button, go to your unzipped folder from the previous step and go into the
-          <code>runner_resources</code> folder and select the
-          <code>Sneakbike_Runner_Scene_collection.json</code> file.
-        </p>
-        <p>
-          <img
-            src="@/assets/images/obs_import_scene_collection.png"
-            alt="OBS Scene Collection Import"
-          />
-        </p>
-      </li>
-      <li>
-        <p>
-          Click
-          <code>Import</code>.
-        </p>
-      </li>
-      <li>
-        If you go into
-        <code>Scene Collection</code> again, you should see (probably) two scenes at the bottom:
-        <code>Untitled</code> and
-        <code>Sneakbike</code>.
-        <code>Untitled</code> is your default scenes. You can switch back to
-        <code>Untitled</code> to get back to your default scenes.
-        <ul>
-          <li>Try switching between the two and you'll get the gist of what's happening.</li>
-        </ul>
-      </li>
-    </ol>
-    <p>
-      <strong>
-        We'll be using the
-        <code>Sneakbike</code> profile with the
-        <code>Sneakbike</code> scenes for these races.
-      </strong>
-    </p>
-    <h2 id="emulator-setup">Emulator Setup</h2>
-    <p>Open up Bizhawk and we'll set up some nice stuff.</p>
-    <h3 id="bizhawk">Bizhawk</h3>
-    <ul>
-      <li>
-        <p>
-          <strong>IMPORTANT: Disable Start Button for Fast-Forward</strong>:
-          <code>Config > Hotkeys > Click the white box next to "Fast Forward" and hit the Tab keyboard key</code>. Click "Save" at the bottom to save.
-        </p>
-        <ul>
-          <li>This should change the box to say "Tab", as in the image below.</li>
-          <li>This is important since otherwise the start button will ALSO fast-forward your game.</li>
-        </ul>
-        <p>
-          <img src="@/assets/images/bizhawk_hotkeys_turbo.png" alt="Bizhawk Hotkey Turbo Fix" />
-        </p>
-      </li>
-      <li>
-        <p>
-          <strong>Adjust Volume (Optional)</strong>:
-          <code>Config > Sound > Adjust on the left-hand-size</code>.
-        </p>
-      </li>
-      <li>
-        <strong>Controller Setup</strong>:
-        <ul>
-          <li>
-            Open a ROM for that system (any game should work) then go to
-            <code>Config > Controllers</code>.
-          </li>
-          <li>You should be able to click next to the command and press the associated button on your controller.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>Make the Window Bigger (Optional)</strong>: Increase the size of the window by going to
-        <code>View > Window Size</code> and pick an option.
-        <ul>
-          <li>I usually play on 3x.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>Make sure your window is fit-to-window on OBS!</strong>: When putting in the Game or Window capture for EmuHawk, right-click the source, go to `Transform > Fit to Screen`.
-      </li>
-    </ul>
-    <hr />
-    <br />
-    <p>
-      <!-- TODO: Why does this format to no space between > and d? -->
-      That's all! Check out the
-      <router-link to="./runner-resources">Runner Resources</router-link>&nbsp;doc to see what we'll be telling you to do on race day!
-    </p>
+    <v-parallax src="@/assets/bkgd_castlevania_intro.png" height="300" />
+
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="2" />
+        <v-col cols="8">
+          <h2>1. Download.</h2>
+
+          <p>In order to be a runner for Sneakbike, you'll need to download a few things.</p>
+
+          <ul>
+            <li>
+              <a href="https://obsproject.com/">OBS</a>,
+            </li>
+            <li>
+              <a href="https://obsproject.com/">Bizhawk Emulator Prereqs</a>
+              <ul>
+                <li>Download the bizhawk_prereqs zip file under "Assets", unzip, then install.</li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://github.com/TASVideos/BizHawk/releases">Bizhawk</a>
+              <ul>
+                <li>Download the BizHawk zip file under "Assets" and unzip,</li>
+                <li>You'll find the EmuHawk emulator in the unzipped folder; this is the emulator we use.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h2>2. Backup.</h2>
+
+          <WarningCard>If you don't use OBS regularly for your streams, feel free to skip this part.</WarningCard>
+
+          <p>If you stream with OBS, we're going to be safe and back up your OBS scenes and profile.</p>
+
+          <img src="@/assets/backup_obs.gif" />
+
+          <p>
+            Open OBS, go to
+            <b>Profile > Export > (Save Somewhere)</b>, then go to
+            <b>Profile > Scene Collection > (Save Somewhere)</b>.
+          </p>
+
+          <h2>3. Download the Sneakbike Repository.</h2>
+          <p>
+            <b>TODO</b>
+          </p>
+
+          <h2>4. Importing the Sneakbike Profile into OBS.</h2>
+
+          <p>With OBS open:</p>
+          <img src="@/assets/obs_import_profile.png" alt="OBS Profile Import" />
+          <ol>
+            <li>
+              Go into
+              <code>Profile > Import</code>,
+            </li>
+            <li>Navigate to the unzipped Sneakbike folder,</li>
+            <li>
+              Navigate into the
+              <code>runner_resources</code> folder,
+            </li>
+            <li>
+              Click the
+              <code>Sneakbike_Profile</code> folder and hit "open".
+            </li>
+            <li>
+              In OBS, go into
+              <code>Profile</code> again; you should see two profiles at the bottom:
+              <code>Untitled</code> and
+              <code>Sneakbike</code>.
+            </li>
+            <li>
+              Clicking on
+              <code>Sneakbike</code> will bring you to the Sneakbike profile we require.
+              <ul>
+                <li>
+                  You can switch back to
+                  <code>Untitled</code> to go back to your normal streaming profile.
+                </li>
+              </ul>
+            </li>
+          </ol>
+
+          <h2>5. Set up EmuHawk.</h2>
+          <InfoCard>
+            For our recommended setups for EmuHawk, check out
+            <router-link to="/emulator-setup">our emulator setup page</router-link>.
+          </InfoCard>
+
+          <p>Remember to customize the setup for your emulator, including:</p>
+          <ul>
+            <li>
+              Controllers
+              <ul>
+                <li>
+                  To set up controls for a console, open any game from that console and go into
+                  <code>Config > Controllers...</code>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Sound (
+              <code>Config > Sound...</code>)
+            </li>
+            <li>
+              Display (
+              <code>Config > Display...</code>)
+            </li>
+            <li>
+              Window Size (
+              <code>View > Window Size</code>)
+            </li>
+          </ul>
+        </v-col>
+        <v-col cols="2" />
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 <script>
+import WarningCard from "@/components/WarningCard.vue";
+import InfoCard from "@/components/InfoCard.vue";
 export default {
   name: "RunnerSetup",
+  components: { WarningCard, InfoCard },
 };
 </script>
+
+<style lang="scss">
+img {
+  max-width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+</style>
