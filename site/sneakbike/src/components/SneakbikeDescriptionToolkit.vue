@@ -7,27 +7,25 @@
       host races with a number of runners.
     </p>
 
-    <InfoCard>
-      For the technical folks, this boils down to a Terraform script which
-      sets up an Nginx-RTMP server on a small AWS EC2 instance. The runners
-      stream from OBS to the public IP and the race host will use OBS's
+    <info-card>
+      For the technical folks, this boils down to a Terraform script which sets
+      up an Nginx-RTMP server on a small AWS EC2 instance. The runners stream
+      from OBS to the public IP and the race host will use OBS's
       <i>VLC Video Source</i> to display them on the stream.
-    </InfoCard>
+    </info-card>
 
     <p>
       To use or play around with the code, check out
       <a
         href="https://github.com/jsal13/sneakbike/tree/master/scripts/terraform"
-      >our github</a>.
+        >our github</a
+      >.
     </p>
   </div>
 </template>
 
 <script>
-import InfoCard from "@/components/InfoCard.vue";
-
 export default {
   name: "SneakbikeDescriptionToolkit",
-  components: { InfoCard },
 };
 </script>

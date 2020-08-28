@@ -79,4 +79,14 @@ h3 {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+ul {
+  margin-bottom: 1rem;
+}
+
+pre[class*="language-"] {
+  font-size: 1rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
 </style>

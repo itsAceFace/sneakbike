@@ -2,7 +2,7 @@
   <div class="toolbar-dropdown">
     <v-menu open-on-hover offset-y>
       <template v-slot:activator="{ on }">
-        <v-btn text large v-on="on">{{name}}</v-btn>
+        <v-btn text large v-on="on">{{ name }}</v-btn>
       </template>
 
       <v-card class="mx-auto" max-width="300">
@@ -29,7 +29,7 @@ export default {
   name: "ToolbarDropdown",
   props: {
     name: String,
-    pageList: Object,
+    pageList: Array,
   },
 };
 </script>
