@@ -5,10 +5,10 @@
         <v-col cols="2" />
         <v-col cols="8">
           <h1>Runner Setup</h1>
-          <warning-card
-            >We assume you're running Windows 10. If not, check in with us and
-            we'll get you compatible software.</warning-card
-          >
+          <warning-card>
+            We assume you're running Windows 10. If not, check in with us and
+            we'll get you compatible software.
+          </warning-card>
         </v-col>
         <v-col></v-col>
       </v-row>
@@ -28,7 +28,9 @@
           </p>
 
           <ul>
-            <li><a href="https://obsproject.com/">OBS</a>,</li>
+            <li>
+              <a href="https://obsproject.com/">OBS</a>,
+            </li>
             <li>
               <a href="https://obsproject.com/">Bizhawk Emulator Prereqs</a>
               <ul>
@@ -39,9 +41,7 @@
               </ul>
             </li>
             <li>
-              <a href="https://github.com/TASVideos/BizHawk/releases"
-                >Bizhawk</a
-              >
+              <a href="https://github.com/TASVideos/BizHawk/releases">Bizhawk</a>
               <ul>
                 <li>Download the BizHawk zip file under "Assets" and unzip,</li>
                 <li>
@@ -54,10 +54,10 @@
 
           <h2>2. Backup.</h2>
 
-          <warning-card
-            >If you don't use OBS regularly for your streams, feel free to skip
-            this part.</warning-card
-          >
+          <warning-card>
+            If you don't use OBS regularly for your streams, feel free to skip
+            this part.
+          </warning-card>
 
           <p>
             If you stream with OBS, we're going to be safe and back up your OBS
@@ -77,15 +77,14 @@
             <a
               href="https://drive.google.com/drive/folders/1y3iWY7Q2Hr_TE1JLlrjk70V6o3XPnwDA?usp=sharing"
               target="_blank"
-              >Download the Sneakbike Profile for OBS here.</a
-            >
+            >Download the Sneakbike Profile for OBS here.</a>
             Once you've downloaded it, unzip it.
           </p>
 
           <h2>4. Importing the Sneakbike Profile into OBS.</h2>
 
           <p>With OBS open:</p>
-          <img src="@/assets/obs_import_profile.png" alt="OBS Profile Import" />
+          <img src="@/assets/sneakbike_import_profile.gif" alt="OBS Profile Import" />
           <ol>
             <li>
               Go into
@@ -102,7 +101,8 @@
               <ul>
                 <li>
                   You should see two profiles at the bottom:
-                  <code>Untitled</code> and <code>Sneakbike</code>
+                  <code>Untitled</code> and
+                  <code>Sneakbike</code>
                 </li>
               </ul>
             </li>
@@ -123,9 +123,7 @@
           <h2>5. Set up EmuHawk.</h2>
           <info-card>
             For our recommended setups for EmuHawk, check out
-            <router-link to="/emulator-setup"
-              >our emulator setup page</router-link
-            >.
+            <router-link to="/emulator-setup">our emulator setup page</router-link>.
           </info-card>
 
           <p>Remember to customize the setup for your emulator, including:</p>

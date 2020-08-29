@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import SneakbikeInfo from "@/views/SneakbikeInfo.vue";
+import Quiz from "@/views/Quiz.vue";
+import EmulatorSetup from "@/views/EmulatorSetup.vue";
 
 import RunnerSetup from "@/views/RunnerSetup.vue";
 import HostSetup from "@/views/HostSetup.vue";
@@ -53,6 +55,16 @@ const routes = [
     path: "/dev-troubleshooting",
     name: "DevTroubleshooting",
     component: DevTroubleshooting,
+  },
+  {
+    path: "/emulator-setup",
+    name: "EmulatorSetup",
+    component: EmulatorSetup,
+  },
+  {
+    path: "/quiz",
+    name: "Quiz",
+    component: Quiz,
   },
 ];
 
