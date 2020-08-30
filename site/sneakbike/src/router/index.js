@@ -4,6 +4,8 @@ import Home from "@/views/Home.vue";
 import SneakbikeInfo from "@/views/SneakbikeInfo.vue";
 import Quiz from "@/views/Quiz.vue";
 import EmulatorSetup from "@/views/EmulatorSetup.vue";
+import ResolutionStandards from "@/views/ResolutionStandards.vue";
+import Team from "@/views/Team.vue";
 
 import RunnerSetup from "@/views/RunnerSetup.vue";
 import HostSetup from "@/views/HostSetup.vue";
@@ -60,6 +62,16 @@ const routes = [
     path: "/emulator-setup",
     name: "EmulatorSetup",
     component: EmulatorSetup,
+  },
+  {
+    path: "/resolution-standards",
+    name: "ResolutionStandards",
+    component: ResolutionStandards,
+  },
+  {
+    path: "/team",
+    name: "Team",
+    component: Team,
   },
   {
     path: "/quiz",
