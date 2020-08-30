@@ -25,7 +25,7 @@
           </v-img>
         </a>
       </template>
-      <span v-html="jobs.split(', ').join('<br/>')"></span>
+      <span v-html="hoverInfo.split(', ').join('<br/>')"></span>
     </v-tooltip>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
   name: "TeamPortrait",
   props: {
     name: String,
-    jobs: String,
+    hoverInfo: String,
     imgSrc: String,
     twitchUsername: String,
   },
