@@ -189,7 +189,7 @@ def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000
         color_hex=outer_color_hex,
         bound_thickness=outer_thickness,
         save_file=True,
-        save_loc="c:\\Users\\jimmy",
+        save_loc=os.path.expanduser("~"),
         make_inner_bounding_box=True,
         inner_bounding_color_hex=inner_bounding_color_hex,
         inner_bounding_thickness=inner_thickness,
@@ -199,8 +199,17 @@ def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000
 
 
 if __name__ == "__main__":
-    w = 540
-    h = 480
+    # Make a GUI For this.
+    console = "SNES"
+
+    if console == "SNES":
+        w = 540
+        h = 480
+    else:
+        # SET W, H HERE
+        w = 1000
+        h = 1000
+
     BOXES = [[w, h, "#bbdefb", "#000000"]]
 
     for box in BOXES:
