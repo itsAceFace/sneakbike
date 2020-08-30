@@ -180,8 +180,8 @@ class BoundingBox:  # pylint: disable=
 
 def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000"):
     """Creates boxes."""
-    outer_thickness = 6
-    inner_thickness = 4
+    outer_thickness = 16
+    inner_thickness = 8
 
     bounding_box = BoundingBox(
         height=height,
@@ -199,9 +199,9 @@ def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000
 
 
 if __name__ == "__main__":
-    w = 200
-    h = 38
-    BOXES = [[w, h, "#00ffae", "#000000"]]
+    w = 540
+    h = 480
+    BOXES = [[w, h, "#bbdefb", "#000000"]]
 
     for box in BOXES:
         make_boxes(box[0], box[1], box[2], box[3])

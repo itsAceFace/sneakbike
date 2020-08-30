@@ -62,10 +62,6 @@ resource "aws_instance" "sneakbike_instance" {
     host        = self.public_ip
   }
 
-  provisioner "local-exec" {
-    command = "echo ${aws_instance.sneakbike_instance.public_ip}"
-  }
-
 
   provisioner "remote-exec" {
     inline = [
@@ -90,6 +86,10 @@ resource "aws_instance" "sneakbike_instance" {
       "sudo systemctl restart nginx"
     ]
 
+  }
+
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.sneakbike_instance.public_ip}"
   }
 }
 
