@@ -1,6 +1,6 @@
 <template>
   <div class="team-portrait">
-    <v-tooltip bottom>
+    <v-tooltip bottom color="#00000000">
       <template v-slot:activator="{ on, attrs }">
         <a :href="`https://twitch.tv/${twitchUsername}`" target="_blank">
           <v-img
@@ -25,7 +25,10 @@
           </v-img>
         </a>
       </template>
-      <span v-html="hoverInfo.split(', ').join('<br/>')"></span>
+      <v-card>
+        <v-card-subtitle class="pb-0" v-html="hoverInfo" />
+        <v-card-text class="text--primary">{{ descriptionText }}</v-card-text>
+      </v-card>
     </v-tooltip>
   </div>
 </template>
@@ -38,6 +41,7 @@ export default {
     hoverInfo: String,
     imgSrc: String,
     twitchUsername: String,
+    descriptionText: String,
   },
   data() {
     return {

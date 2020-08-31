@@ -12,17 +12,18 @@
       These Mystery Races are events where
       <b>four players</b> at
       approximately the same skill level race to
-      <b>complete an objective in each of three "mystery games"</b>; these games
+      <b>complete an objective in each of three "mystery games"</b> &mdash; these games
       aren't known to the racers beforehand and are given to them right before
       the race starts!
     </p>
 
     <p>
       For more information about being a runner, see
-      <b>THIS LINK</b>. For more
-      information about getting involved in behind-the-scenes work including
-      commentating, doing audio or visual work, working on the backend, etc.,
-      see
+      <router-link :to="'/runner-setup'">the runner setup</router-link>.
+    </p>
+
+    <p>
+      For more information about getting involved in behind-the-scenes work including commentating, doing audio or visual work, working on the backend, etc., see
       <b>THIS LINK</b>.
     </p>
 

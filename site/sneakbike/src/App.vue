@@ -31,12 +31,13 @@ export default {
 </script>
 
 <style lang="scss">
-$base-font-size: 20px;
+$base-font-size: 18px;
 $base-heading-top-padding: 2rem;
 $base-heading-bottom-padding: 0.75rem;
 
 #app {
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto", sans-serif;
+  font-family: "Noto Serif", serif;
   font-size: $base-font-size;
 }
 
@@ -48,6 +49,11 @@ $base-heading-bottom-padding: 0.75rem;
   text-decoration: none;
 }
 
+.v-toolbar__content,
+.v-list-item__title {
+  font-family: "Roboto", sans-serif !important;
+}
+
 .v-toolbar__content > a {
   text-decoration: none;
 }
@@ -56,7 +62,13 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", cursive !important;
+}
+
+.v-btn__content h1,
+h2,
+h3,
+h4 {
   padding-top: $base-heading-top-padding;
 }
 
