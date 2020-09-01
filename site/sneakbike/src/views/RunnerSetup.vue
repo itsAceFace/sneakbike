@@ -32,7 +32,9 @@
               <a href="https://obsproject.com/">OBS</a>,
             </li>
             <li>
-              <a href="https://obsproject.com/">Bizhawk Emulator Prereqs</a>
+              <a
+                href="https://github.com/TASVideos/BizHawk-Prereqs/releases"
+              >Bizhawk Emulator Prereqs</a>
               <ul>
                 <li>
                   Download the bizhawk_prereqs zip file under "Assets", unzip,
