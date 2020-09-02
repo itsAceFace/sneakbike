@@ -20,7 +20,24 @@
       <v-row justify="center">
         <v-col cols="2" />
         <v-col cols="8">
-          <h2>1. Download.</h2>
+          <h2>0. Backup (OPTIONAL)</h2>
+
+          <warning-card>If you don't use OBS regularly for your streams, feel free go to Step 1 below.</warning-card>
+
+          <p>
+            If you stream with OBS, we're going to be safe and back up your OBS
+            scenes and profile.
+          </p>
+
+          <img src="@/assets/backup_obs.gif" />
+
+          <p>
+            Open OBS, go to
+            <code>Profile > Export > (Save Somewhere)</code>, then go to
+            <code>Profile > Scene Collection > (Save Somewhere)</code>.
+          </p>
+
+          <h2>1. Download Everything</h2>
 
           <p>
             In order to be a runner for Sneakbike, you'll need to download a few
@@ -52,38 +69,18 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <a
+                href="https://drive.google.com/drive/folders/1y3iWY7Q2Hr_TE1JLlrjk70V6o3XPnwDA?usp=sharing"
+                target="_blank"
+              >Download the Sneakbike Profile for OBS here.</a>
+              <ul>
+                <li>Once you've downloaded it, unzip it.</li>
+              </ul>
+            </li>
           </ul>
 
-          <h2>2. Backup.</h2>
-
-          <warning-card>
-            If you don't use OBS regularly for your streams, feel free to skip
-            this part.
-          </warning-card>
-
-          <p>
-            If you stream with OBS, we're going to be safe and back up your OBS
-            scenes and profile.
-          </p>
-
-          <img src="@/assets/backup_obs.gif" />
-
-          <p>
-            Open OBS, go to
-            <code>Profile > Export > (Save Somewhere)</code>, then go to
-            <code>Profile > Scene Collection > (Save Somewhere)</code>.
-          </p>
-
-          <h2>3. Download the Sneakbike Profile for OBS.</h2>
-          <p>
-            <a
-              href="https://drive.google.com/drive/folders/1y3iWY7Q2Hr_TE1JLlrjk70V6o3XPnwDA?usp=sharing"
-              target="_blank"
-            >Download the Sneakbike Profile for OBS here.</a>
-            Once you've downloaded it, unzip it.
-          </p>
-
-          <h2>4. Importing the Sneakbike Profile into OBS.</h2>
+          <h2>3. Importing the Sneakbike Profile into OBS.</h2>
 
           <p>With OBS open:</p>
           <img src="@/assets/sneakbike_import_profile.gif" alt="OBS Profile Import" />
@@ -102,8 +99,7 @@
               <code>Profile</code> again
               <ul>
                 <li>
-                  You should see two profiles at the bottom:
-                  <code>Untitled</code> and
+                  You should see (at least) two profiles at the bottom, including
                   <code>Sneakbike</code>
                 </li>
               </ul>
@@ -114,15 +110,15 @@
               require.
               <ul>
                 <li>
-                  You can switch back to
-                  <code>Untitled</code> to go back to your normal streaming
+                  You can switch back to the original Profile (usually called
+                  <code>Untitled</code>) to go back to your normal streaming
                   profile.
                 </li>
               </ul>
             </li>
           </ol>
 
-          <h2>5. Set up EmuHawk.</h2>
+          <h2>4. Set up EmuHawk.</h2>
           <info-card>
             For our recommended setups for EmuHawk, check out
             <router-link to="/emulator-setup">our emulator setup page</router-link>.
