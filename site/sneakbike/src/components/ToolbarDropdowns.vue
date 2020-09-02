@@ -18,18 +18,18 @@ const infoPages = [
 
 const runnerPages = [
   { name: "Setup For Runners", route: "/runner-setup" },
-  { name: "Runner Troubleshooting", route: "/runner-troubleshooting" },
+  // { name: "Runner Troubleshooting", route: "/runner-troubleshooting" },
   { name: "Emulator Setup", route: "/emulator-setup" },
 ];
 
 const hostPages = [
   { name: "Setup For Hosts", route: "/host-setup" },
-  { name: "Host Troubleshooting", route: "/host-troubleshooting" },
+  // { name: "Host Troubleshooting", route: "/host-troubleshooting" },
 ];
 
 const devPages = [
   { name: "Setup For Devs", route: "/dev-setup" },
-  { name: "Dev Troubleshooting", route: "/dev-troubleshooting" },
+  // { name: "Dev Troubleshooting", route: "/dev-troubleshooting" },
 ];
 
 const resourcesPages = [
