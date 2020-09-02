@@ -5,10 +5,6 @@
         <v-col cols="2" />
         <v-col cols="8">
           <h1>Runner Setup</h1>
-          <warning-card>
-            We assume you're running Windows 10. If not, check in with us and
-            we'll get you compatible software.
-          </warning-card>
         </v-col>
         <v-col></v-col>
       </v-row>
@@ -20,6 +16,19 @@
       <v-row justify="center">
         <v-col cols="2" />
         <v-col cols="8">
+          <warning-card>
+            We assume you're running Windows 10. If not, check in with us and
+            we'll get you compatible software.
+          </warning-card>
+
+          <info-card>
+            If you'd rather see the video tutorial, that's available
+            <a
+              href="https://www.youtube.com/watch?v=qtB0n4RuBGo"
+              target="_blank"
+            >here</a>.
+          </info-card>
+
           <h2>0. Backup (OPTIONAL)</h2>
 
           <warning-card>If you don't use OBS regularly for your streams, feel free go to Step 1 below.</warning-card>
