@@ -6,6 +6,7 @@ import Quiz from "@/views/Quiz.vue";
 import EmulatorSetup from "@/views/EmulatorSetup.vue";
 import ResolutionStandards from "@/views/ResolutionStandards.vue";
 import Team from "@/views/Team.vue";
+import ScoreBoard from "@/views/ScoreBoard.vue";
 
 import RunnerSetup from "@/views/RunnerSetup.vue";
 import HostSetup from "@/views/HostSetup.vue";
@@ -72,6 +73,11 @@ const routes = [
     path: "/team",
     name: "Team",
     component: Team,
+  },
+  {
+    path: "/scoreboard",
+    name: "ScoreBoard",
+    component: ScoreBoard,
   },
   {
     path: "/quiz",
