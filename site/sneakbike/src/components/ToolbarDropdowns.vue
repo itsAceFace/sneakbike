@@ -14,7 +14,7 @@ import ToolbarDropdown from "@/components/ToolbarDropdown.vue";
 const infoPages = [
   { name: "Sneakbike Info", route: "/sneakbike-info" },
   { name: "Team", route: "/team" },
-  { name: "Scoreboard", route: "/scoreboard" },
+  // { name: "Scoreboard", route: "/scoreboard" },
 ];
 
 const runnerPages = [
