@@ -50,7 +50,7 @@
       </v-row>
       <v-row justify="center">
         <v-col>
-          <Prism v-if="html != ''">language="html">{{ html }}</Prism>
+          <Prism v-if="html != ''" language="html">{{ html }}</Prism>
         </v-col>
       </v-row>
     </v-container>
