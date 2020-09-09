@@ -6,6 +6,7 @@ import router from "./router";
 import "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-powershell.min";
+import "prismjs/components/prism-markup.min";
 import "prismjs/plugins/autolinker/prism-autolinker.min";
 import "prismjs/plugins/autolinker/prism-autolinker.css";
 import Prism from "vue-prism-component";

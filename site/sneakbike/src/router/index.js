@@ -7,6 +7,7 @@ import EmulatorSetup from "@/views/EmulatorSetup.vue";
 import ResolutionStandards from "@/views/ResolutionStandards.vue";
 import Team from "@/views/Team.vue";
 import ScoreBoard from "@/views/ScoreBoard.vue";
+import GameReadmeGen from "@/views/GameReadmeGen.vue";
 
 import RunnerSetup from "@/views/RunnerSetup.vue";
 import HostSetup from "@/views/HostSetup.vue";
@@ -84,6 +85,7 @@ const routes = [
     name: "Quiz",
     component: Quiz,
   },
+  { path: "/readme", name: "GameReadmeGen", component: GameReadmeGen },
 ];
 
 const router = new VueRouter({
