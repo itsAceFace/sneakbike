@@ -4,7 +4,7 @@ function gameReadmeRender(gameArray) {
   for (const gameNum in gameArray) {
     const val = gameArray[gameNum];
     const gameAndObjSection = `
-      <div>
+      <div class="game">
       <h1>Game ${parseInt(gameNum) + 1}</h1>
       <div class="box">
           <h2 class="objective">Objective</h2>
@@ -12,8 +12,11 @@ function gameReadmeRender(gameArray) {
              ${val["objective"]}
           </p>
       </div>
+      <br/>
 
       `;
+
+    const endGameAndObjSection = `</div>`;
     const controlsSection = `
       <table>
       <tr><td><b>A</b></td><td>${
@@ -64,7 +67,9 @@ function gameReadmeRender(gameArray) {
       `;
     }
 
-    gameSections.push(gameAndObjSection + controlsSection + hintSection);
+    gameSections.push(
+      gameAndObjSection + controlsSection + hintSection + endGameAndObjSection
+    );
   }
 
   return header + gameSections.join(" ") + endHtml;
@@ -139,6 +144,8 @@ const header = `
           }
       </style>
   </head>
+  <body>
+    <div class="container">
 `;
 
 export default gameReadmeRender;

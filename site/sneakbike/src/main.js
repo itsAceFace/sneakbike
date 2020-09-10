@@ -3,6 +3,9 @@ import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
 import router from "./router";
 
+import VueLodash from "vue-lodash";
+import lodash from "lodash";
+
 import "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-powershell.min";
@@ -19,6 +22,7 @@ Vue.config.productionTip = false;
 Vue.component("prism", Prism);
 Vue.component("info-card", InfoCard);
 Vue.component("warning-card", WarningCard);
+Vue.use(VueLodash, { lodash: lodash });
 
 new Vue({
   vuetify,

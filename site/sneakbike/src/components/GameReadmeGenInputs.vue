@@ -2,6 +2,16 @@
   <div class="game-readme-gen-inputs">
     <v-container>
       <v-row justify="center">
+        <v-col cols="2" />
+        <v-col cols="8">
+          <v-row justify="center" align="center">
+            <v-btn @click="downloadHTML">Download HTML</v-btn>
+          </v-row>
+        </v-col>
+        <v-col cols="2" />
+      </v-row>
+      <br />
+      <v-row justify="center">
         <v-col cols>
           <v-row align="center" justify="center">
             <div
@@ -12,10 +22,9 @@
               <v-card class="mx-auto" max-width="312" shaped color="#fefefe">
                 <v-list-item>
                   <v-list-item-content>
-                    <div
-                      class="overline mb-4"
-                      style="max-width: 300px;"
-                    >Game {{ gameidx + 1 }}: {{ $data[gameval]["title"] }}</div>
+                    <div class="overline mb-4" style="max-width: 300px;">
+                      Game {{ gameidx + 1 }}: {{ $data[gameval]["title"] }}
+                    </div>
                   </v-list-item-content>
                 </v-list-item>
 
@@ -31,6 +40,7 @@
                     :height="
                       ['title', 'objective', 'hints'].includes(key) ? 64 : 48
                     "
+                    no-resize
                     dense
                     @input="(v) => $set($data[gameval], key, v)"
                   />
@@ -40,92 +50,52 @@
           </v-row>
         </v-col>
       </v-row>
-
-      <v-row justify="center">
-        <v-col cols="4" />
-        <v-col cols="4">
-          <v-btn @click="generate">Generate HTML</v-btn>
-        </v-col>
-        <v-col cols="4" />
-      </v-row>
-      <v-row justify="center">
-        <v-col>
-          <Prism v-if="html != ''" language="html">{{ html }}</Prism>
-        </v-col>
-      </v-row>
     </v-container>
   </div>
 </template>
 
 <script>
-import Prism from "vue-prism-component";
-
+import { saveAs } from "file-saver";
 import gameReadmeRender from "@/utils/gameReadmeRender.js";
+
+const gameItems = {
+  title: "",
+  objective: "",
+  hints: "",
+  a: "",
+  b: "",
+  x: "",
+  y: "",
+  l: "",
+  r: "",
+  start: "",
+  select: "",
+  up: "",
+  down: "",
+  left: "",
+  right: "",
+};
 
 export default {
   name: "GameReadmeGenInputs",
   data() {
     return {
-      game1: {
-        title: "",
-        objective: "",
-        hints: "",
-        a: "",
-        b: "",
-        x: "",
-        y: "",
-        l: "",
-        r: "",
-        start: "",
-        select: "",
-        up: "",
-        down: "",
-        left: "",
-        right: "",
-      },
-      game2: {
-        title: "",
-        objective: "",
-        hints: "",
-        a: "",
-        b: "",
-        x: "",
-        y: "",
-        l: "",
-        r: "",
-        start: "",
-        select: "",
-        up: "",
-        down: "",
-        left: "",
-        right: "",
-      },
-      game3: {
-        title: "",
-        objective: "",
-        hints: "",
-        a: "",
-        b: "",
-        x: "",
-        y: "",
-        l: "",
-        r: "",
-        start: "",
-        select: "",
-        up: "",
-        down: "",
-        left: "",
-        right: "",
-      },
+      game1: this._.clone(gameItems),
+      game2: this._.clone(gameItems),
+      game3: this._.clone(gameItems),
       html: "",
     };
   },
   methods: {
-    generate() {
+    downloadHTML() {
       let gameArray = [this.game1, this.game2, this.game3];
       this.html = gameReadmeRender(gameArray);
+
+      let file = new File([this.html], "README_Sneakbike.html", {
+        type: "text/plain;charset=utf-8",
+      });
+      saveAs(file);
     },
   },
-  components: { Prism },
 };
 </script>
