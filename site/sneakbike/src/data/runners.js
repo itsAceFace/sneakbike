@@ -50,7 +50,7 @@ const runners = [
   },
   {
     name: "Jen_theHuman",
-    imgSrc: "placeholder.png",
+    imgSrc: "jen_thehuman.png",
     twitchUsername: "Jen_theHuman",
     level: "beginner",
     descriptionText: null,

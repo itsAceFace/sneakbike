@@ -4,7 +4,7 @@ const team = [
     name: "melat0nin",
     twitchUsername: "melat0nin",
     jobs: "cofounder, ops, site maintainer, commentary",
-    descriptionText: '"I think any% is making me into a monster."',
+    descriptionText: '"Must be nice."',
   },
   {
     imgSrc: "cosmicordia.png",
@@ -21,11 +21,11 @@ const team = [
     descriptionText: null,
   },
   {
-    imgSrc: "placeholder.png",
+    imgSrc: "jen_thehuman.png",
     name: "Jen_theHuman",
     twitchUsername: "Jen_theHuman",
-    jobs: "social media",
-    descriptionText: null,
+    jobs: "social media, commentary",
+    descriptionText: "Keeping things wholesome.",
   },
 ];
 
