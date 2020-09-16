@@ -36,7 +36,7 @@ const runners = [
   },
   {
     name: "FlyingOctopus22",
-    imgSrc: "placeholder.png",
+    imgSrc: "flyingoctopus22.png",
     twitchUsername: "FlyingOctopus22",
     level: "advanced",
     descriptionText: null,
@@ -71,7 +71,7 @@ const runners = [
   },
   {
     name: "Rascalnicough",
-    imgSrc: "placeholder.png",
+    imgSrc: "rascalnicough.png",
     twitchUsername: "Rascalnicough",
     level: "advanced",
     descriptionText: null,
