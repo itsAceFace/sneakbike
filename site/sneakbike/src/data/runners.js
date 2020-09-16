@@ -1,14 +1,14 @@
 const runners = [
   {
     name: "ItsAceFace",
-    imgSrc: "placeholder.png",
+    imgSrc: "itsaceface.png",
     twitchUsername: "itsaceface",
     level: "beginner",
     descriptionText: null,
   },
   {
     name: "Borshy",
-    imgSrc: "placeholder.png",
+    imgSrc: "abortion_shark.jpeg",
     twitchUsername: "abortion_shark",
     level: "intermediate",
     descriptionText: null,
@@ -29,7 +29,7 @@ const runners = [
   },
   {
     name: "Echo",
-    imgSrc: "placeholder.png",
+    imgSrc: "nijecho.jpg",
     twitchUsername: "nijecho",
     level: "beginner",
     descriptionText: null,
@@ -43,7 +43,7 @@ const runners = [
   },
   {
     name: "GhostMFLion",
-    imgSrc: "placeholder.png",
+    imgSrc: "ghostmflion.png",
     twitchUsername: "GhostMFLion",
     level: "advanced",
     descriptionText: null,
@@ -85,14 +85,14 @@ const runners = [
   },
   {
     name: "Super_Facts",
-    imgSrc: "placeholder.png",
+    imgSrc: "super_facts.png",
     twitchUsername: "Super_Facts",
     level: "advanced",
     descriptionText: null,
   },
   {
     name: "xchillhatterx",
-    imgSrc: "placeholder.png",
+    imgSrc: "xchillhatterx.jpg",
     twitchUsername: "xchillhatterx",
     level: "beginner",
     descriptionText: null,

@@ -14,6 +14,13 @@ const team = [
     descriptionText: '"It\'s in the cultural zeitgeist."',
   },
   {
+    imgSrc: "jen_thehuman.png",
+    name: "Jen_theHuman",
+    twitchUsername: "Jen_theHuman",
+    jobs: "social media, commentary",
+    descriptionText: "Keeping things wholesome.",
+  },
+  {
     imgSrc: "KiA00me.jpg",
     name: "KiA00me",
     twitchUsername: "KiA00me",
@@ -21,11 +28,11 @@ const team = [
     descriptionText: null,
   },
   {
-    imgSrc: "jen_thehuman.png",
-    name: "Jen_theHuman",
-    twitchUsername: "Jen_theHuman",
-    jobs: "social media, commentary",
-    descriptionText: "Keeping things wholesome.",
+    name: "Borshy",
+    imgSrc: "abortion_shark.jpeg",
+    twitchUsername: "abortion_shark",
+    jobs: "production, audio consulting",
+    descriptionText: null,
   },
 ];
 
