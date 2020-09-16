@@ -22,7 +22,7 @@ const runners = [
   },
   {
     name: "Dr. JDub",
-    imgSrc: "placeholder.png",
+    imgSrc: "drjdub.png",
     twitchUsername: "drjdub_",
     level: "beginner",
     descriptionText: null,
@@ -78,7 +78,7 @@ const runners = [
   },
   {
     name: "R11m1",
-    imgSrc: "placeholder.png",
+    imgSrc: "r11m1.png",
     twitchUsername: "R11m1",
     level: "beginner",
     descriptionText: null,
