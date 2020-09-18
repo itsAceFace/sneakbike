@@ -4,10 +4,9 @@
 
 import typing  # pylint: disable=unused-import
 import os
-from datetime import datetime
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 def hex_to_rgba(c):
@@ -15,219 +14,234 @@ def hex_to_rgba(c):
     if len(c) == 6:  # If alpha not specified...
         c += "ff"
 
-    rgba = np.array([int(f"{c[idx]}{c[idx + 1]}", 16) for idx in [0, 2, 4, 6]])
-    return rgba
-
-
-class BoundingBox:  # pylint: disable=
-    """ Class for creating bounding boxes for Twitch things. """
-
-    def __init__(
-        self,  # pylint: disable=
-        height: int = 480,
-        width: int = 640,
-        color_hex: str = "#09386b",
-        bound_thickness: int = 8,
-        save_file=True,
-        save_loc: str = ".",
-        name_prefix: str = "",
-        outer_corner_ornament=True,
-        inner_corner_ornament=True,
-        make_inner_bounding_box=False,
-        inner_bounding_color_hex: str = "#09386b",
-        inner_bounding_thickness: int = 4,
-        fill: bool = False,  # fill with black?
-    ):
-        self.height = height
-        self.width = width
-        self.inner_height = 0
-        self.inner_width = 0
-        self.color_hex = color_hex
-        self.bound_thickness = bound_thickness
-        self.color = hex_to_rgba(self.color_hex)
-        self.outer_corner_ornament = outer_corner_ornament
-        self.inner_corner_ornament = inner_corner_ornament
-        self.make_inner_bounding_box = make_inner_bounding_box
-        self.inner_bounding_color_hex = inner_bounding_color_hex
-        self.inner_bounding_thickness = inner_bounding_thickness
-        self.save_loc = save_loc
-        self.save_file = save_file
-        self.name_prefix = name_prefix + "_" if name_prefix else ""
-        self.N = None  # inits the inner bounding box.
-        self.fill = fill  # fill with black.
-
-        self.main()
-
-    def main(self):
-        """ Main function for the bounding box creator. """
-        self.M = self.draw_bounding_box()
-        self.M = self.draw_bounding_box_ornaments()
-        if self.make_inner_bounding_box:
-            self.draw_inner_bounding_box()
-        if self.fill:
-            self.fill_with_black()
-
-        # Formatting the array and translating to Image.
-        self.M = self.M.astype(np.uint8)
-        self.im = Image.fromarray(self.M, mode="RGBA")
-
-        fname_prefix = f"{self.name_prefix}{'_' if self.name_prefix else ''}"
-        fname_suffix = f"{self.width}_{self.height}_{self.bound_thickness}_{self.inner_bounding_color_hex}"
-        self.im.save(
-            os.path.join(
-                os.path.abspath(self.save_loc), f"{fname_prefix}{fname_suffix}.png",
-            )
-        )
-
-    def draw_bounding_box(self):
-        M_left_right = np.array(
-            [
-                self.color
-                for _ in range(
-                    self.bound_thickness * (self.height - (2 * self.bound_thickness))
-                )
-            ]
-        ).reshape((self.height - (2 * self.bound_thickness)), self.bound_thickness, 4)
-        M_top_bottom = np.array(
-            [
-                self.color
-                for _ in range(
-                    self.bound_thickness * (self.width - (2 * self.bound_thickness))
-                )
-            ]
-        ).reshape(self.bound_thickness, (self.width - (2 * self.bound_thickness)), 4)
-        M_center = np.zeros(
-            (
-                self.height - (2 * self.bound_thickness),
-                self.width - (2 * self.bound_thickness),
-                4,
-            )
-        )
-
-        if not self.outer_corner_ornament:
-            # Iif we're not making ornaments on the outer box, fill it in...
-            M_corner = np.array(
-                [self.color for _ in range(self.bound_thickness * self.bound_thickness)]
-            ).reshape(self.bound_thickness, self.bound_thickness, 4)
-
-        else:
-            # Otherwise, put a transparency for a placeholder.
-            M_corner = np.array(
-                [
-                    [0, 0, 0, 0]
-                    for _ in range(self.bound_thickness * self.bound_thickness)
-                ]
-            ).reshape(self.bound_thickness, self.bound_thickness, 4)
-
-        M_left_center_right = np.concatenate(
-            [M_left_right, M_center, M_left_right], axis=1
-        )
-        M_top_bottom = np.concatenate([M_corner, M_top_bottom, M_corner], axis=1)
-        return np.concatenate([M_top_bottom, M_left_center_right, M_top_bottom], axis=0)
-
-    def draw_bounding_box_ornaments(self):
-        ornament_size = int(self.bound_thickness / 2)
-        ornament = np.array([self.color for _ in range(ornament_size ** 2)]).reshape(
-            ornament_size, ornament_size, 4
-        )
-
-        if self.outer_corner_ornament:
-            self.M[
-                ornament_size : (2 * ornament_size), ornament_size : (2 * ornament_size)
-            ] = ornament  # UL
-
-            self.M[
-                ornament_size : (2 * ornament_size),
-                (-2 * ornament_size) : (-1 * ornament_size),
-            ] = ornament  # UR
-
-            self.M[
-                (-2 * ornament_size) : (-1 * ornament_size),  # LL
-                ornament_size : (2 * ornament_size),
-            ] = ornament
-
-            self.M[
-                (-2 * ornament_size) : (-1 * ornament_size),  # LR
-                (-2 * ornament_size) : (-1 * ornament_size),
-            ] = ornament
-
-        if self.inner_corner_ornament:
-            self.M[
-                (2 * ornament_size) : (3 * ornament_size),  # UL
-                (2 * ornament_size) : (3 * ornament_size),
-            ] = ornament
-
-            self.M[
-                (2 * ornament_size) : (3 * ornament_size),  # UR
-                (-3 * ornament_size) : (-2 * ornament_size),
-            ] = ornament
-
-            self.M[
-                (-3 * ornament_size) : (-2 * ornament_size),  # LL
-                (2 * ornament_size) : (3 * ornament_size),
-            ] = ornament
-
-            self.M[
-                (-3 * ornament_size) : (-2 * ornament_size),  # LR
-                (-3 * ornament_size) : (-2 * ornament_size),
-            ] = ornament
-
-        return self.M
-
-    def draw_inner_bounding_box(self):
-        self.inner_height = self.height - (2 * self.bound_thickness)
-        self.inner_width = self.width - (2 * self.bound_thickness)
-
-        self.N = BoundingBox(
-            height=self.inner_height,
-            width=self.inner_width,
-            color_hex=self.inner_bounding_color_hex,
-            bound_thickness=self.inner_bounding_thickness,
-            save_file=False,
-            outer_corner_ornament=False,
-            fill=self.fill,
-        ).M
-
-        self.M[
-            self.bound_thickness : (-1 * self.bound_thickness),
-            self.bound_thickness : (-1 * self.bound_thickness),
-        ] = self.N
-
-    def fill_with_black(self):
-        middle = self.M[
-            self.bound_thickness : (-1 * self.bound_thickness),
-            self.bound_thickness : (-1 * self.bound_thickness),
-        ]
-        # TODO: this is SO SLOW.  make it so it inits with black.
-        for i in range(middle.shape[0]):
-            for j in range(middle.shape[1]):
-                if (middle[i, j] == [0, 0, 0, 0]).all():
-                    middle[i, j] = [0, 0, 0, 255]
-
-        self.M[
-            self.bound_thickness : (-1 * self.bound_thickness),
-            self.bound_thickness : (-1 * self.bound_thickness),
-        ] = middle
-
-
-def make_boxes(width, height, inner_bounding_color_hex, outer_color_hex="#000000"):
-    """Creates boxes."""
-    outer_thickness = 16
-    inner_thickness = 8
-
-    bounding_box = BoundingBox(
-        height=height,
-        width=width,
-        color_hex=outer_color_hex,
-        bound_thickness=outer_thickness,
-        save_file=True,
-        save_loc=os.path.expanduser("~"),
-        make_inner_bounding_box=True,
-        inner_bounding_color_hex=inner_bounding_color_hex,
-        inner_bounding_thickness=inner_thickness,
+    return np.array([int(f"{c[idx]}{c[idx + 1]}", 16) for idx in [0, 2, 4, 6]]).astype(
+        np.uint8
     )
 
-    return bounding_box
+
+class BoundingBox:
+    """ ok """
+
+    def __init__(
+        self,
+        interior_width: int,
+        interior_height: int,
+        outer_color: str = "#0044ffff",
+        inner_color: str = "#22aa00ff",
+        fill_color: str = "#ffffff00",
+        border_color: str = "#000000ff",
+    ):
+
+        file_name = f"{interior_width}w_{interior_height}h_{outer_color[1:]}out_{inner_color[1:]}in"
+        self.save_path = os.path.expanduser(f"~/Desktop/{file_name}.png")
+
+        self.interior_width = interior_width
+        self.interior_height = interior_height
+        self.outer_color = hex_to_rgba(outer_color)
+        self.inner_color = hex_to_rgba(inner_color)
+        self.fill_color = hex_to_rgba(fill_color)  # default transparent.
+        self.border_color = hex_to_rgba(border_color)  # default #000000ff
+
+        self.outer_color_raw = outer_color
+        self.inner_color_raw = inner_color
+        self.fill_color_raw = fill_color  # default transparent.
+        self.border_color_raw = border_color  # default #000000ff
+
+        self.border_width = 2
+        self.outer_width = 2
+        self.inner_width = 4
+        self.total_border_width = (
+            (2 * self.border_width) + (2 * self.outer_width) + self.inner_width
+        )
+
+        if (
+            (self.inner_width % 2 != 0)
+            or (self.outer_width % 2 != 0)
+            or (self.border_width % 2 != 0)
+        ):
+            raise Exception("Please make widths an even number.")
+
+        im = self._join_pieces()
+        im.save(self.save_path)
+
+    def _make_strip(self, width: int, direction: bool = "vertical"):
+        """ Makes a strip of bounding box of length `length`.
+        To make it horizontal instead of vertical, use `direction='horizontal'`."""
+        # Slice of blackx2, outer_color, inner_colorx2, blackx2.
+        single_slice = np.array(
+            [self.border_color] * self.border_width
+            + [self.outer_color] * self.outer_width
+            + [self.inner_color] * self.inner_width
+            + [self.outer_color] * self.outer_width
+            + [self.border_color] * self.border_width
+        ).astype(np.uint8)
+
+        strip = np.array([single_slice for _ in range(width)])
+        if direction == "horizontal":
+            strip = strip.swapaxes(0, 1)
+
+        return Image.fromarray(strip)
+
+    def _make_center_fill(self):
+        """ Creates the center fill for the bounding box. """
+        im = np.array(
+            [self.fill_color for _ in range(self.interior_width * self.interior_height)]
+        ).astype(np.uint8)
+
+        return Image.fromarray(im.reshape(self.interior_height, self.interior_width, 4))
+
+    def _make_corner(self):
+        """ Creates a corner for the bounding box. """
+        canvas = Image.new("RGBA", (self.total_border_width, self.total_border_width))
+        draw = ImageDraw.Draw(canvas)
+
+        half_len = int(self.total_border_width / 2) - 1  # it must be even from above.
+
+        # Background: sets to transparent white for replacement later.
+        draw.rectangle(
+            [(0, 0), (self.total_border_width, self.total_border_width)],
+            fill=self.inner_color_raw,
+        )
+
+        # Outer boundary
+        draw.line(
+            [(0, 0), (0, half_len)], width=self.border_width, fill=self.border_color_raw
+        )
+        draw.line(
+            [
+                (half_len, self.total_border_width - self.border_width),
+                (self.total_border_width, self.total_border_width - self.border_width),
+            ],
+            width=self.border_width,
+            fill=self.border_color_raw,
+        )
+        draw.line(
+            [(0, half_len), (half_len, self.total_border_width - self.border_width)],
+            width=self.border_width,
+            fill=self.border_color_raw,
+        )
+
+        # Outer color
+        draw.line(
+            [
+                (self.border_width + (self.outer_width / 2) - 1, 0),
+                (self.border_width + (self.outer_width / 2) - 1, half_len),
+            ],
+            width=self.outer_width,
+            fill=self.outer_color_raw,
+        )
+        draw.line(
+            [
+                (
+                    half_len + (self.border_width / 2),
+                    self.total_border_width
+                    - self.border_width
+                    - (self.outer_width / 2)
+                    - 1,
+                ),
+                (
+                    self.total_border_width,
+                    self.total_border_width
+                    - self.border_width
+                    - (self.outer_width / 2)
+                    - 1,
+                ),
+            ],
+            width=self.outer_width,
+            fill=self.outer_color_raw,
+        )
+        #!! TODO: This breaks EVERYTHING if we change the size of the items above.
+        #!! TODO: Need to fix this boi.
+        draw.line(
+            [
+                (
+                    self.border_width + (self.outer_width / 2) - 1,
+                    half_len - (self.border_width / 2),
+                ),
+                (
+                    half_len + (self.border_width / 2),
+                    self.total_border_width - self.border_width - self.outer_width,
+                ),
+            ],
+            width=self.outer_width,
+            fill=self.outer_color_raw,
+        )
+
+        # Outer color on top-right part.
+        draw.polygon(
+            [
+                (self.total_border_width - self.border_width - self.outer_width, 0),
+                (self.total_border_width, 0),
+                (self.total_border_width, self.border_width + self.outer_width),
+            ],
+            fill=self.outer_color_raw,
+        )
+
+        # Border color on top-right part.
+        draw.polygon(
+            [
+                (self.total_border_width - self.border_width, 0),
+                (self.total_border_width, 0),
+                (self.total_border_width, self.border_width),
+            ],
+            fill=self.border_color_raw,
+        )
+
+        draw.polygon(
+            [
+                (0, half_len + self.border_width),
+                (0, self.total_border_width),
+                (half_len, self.total_border_width),
+            ],
+            fill="#00000000",
+        )
+
+        return canvas
+
+    def _join_pieces(self):
+        """ Joins edges, corners, and center fill. """
+
+        canvas = Image.new(
+            "RGBA",
+            (
+                (self.interior_width + 2 * self.total_border_width),
+                (self.interior_height + 2 * self.total_border_width),
+            ),
+        )
+
+        horiz_strip = self._make_strip(
+            width=self.interior_width, direction="horizontal"
+        )
+        vert_strip = self._make_strip(width=self.interior_height, direction="vertical")
+        corner = self._make_corner()
+        center_fill = self._make_center_fill()
+
+        # Top + Bottom
+        for _y in [0, self.total_border_width + self.interior_height]:
+            canvas.paste(horiz_strip, (self.total_border_width, _y))
+
+        # Corners
+        canvas.paste(corner.rotate(270), (0, 0))  # UL
+        canvas.paste(
+            corner.rotate(180), (self.total_border_width + self.interior_width, 0)
+        )  # UR
+        canvas.paste(corner, (0, self.total_border_width + self.interior_height))  # LL
+        canvas.paste(
+            corner.rotate(90),
+            (
+                self.total_border_width + self.interior_width,
+                self.total_border_width + self.interior_height,
+            ),
+        )  # LR
+
+        # Left + Right
+        for _x in [0, self.total_border_width + self.interior_width]:
+            canvas.paste(vert_strip, (_x, self.total_border_width))
+
+        # Center fill
+        canvas.paste(center_fill, (self.total_border_width, self.total_border_width))
+
+        return canvas
 
 
 def make_snes_scene_boxes(inner_bounding_color_hex, outer_color_hex="#000000"):
@@ -238,32 +252,18 @@ def make_snes_scene_boxes(inner_bounding_color_hex, outer_color_hex="#000000"):
 
     # emu bounding box
     BoundingBox(
-        height=480,
-        width=540,
-        color_hex=outer_color_hex,
-        bound_thickness=16,
-        save_file=True,
-        save_loc=os.path.expanduser("~"),
-        make_inner_bounding_box=True,
-        inner_bounding_color_hex=inner_bounding_color_hex,
-        inner_bounding_thickness=8,
-        name_prefix="emu_box",
-        fill=True,
+        interior_width=540,
+        interior_height=480,
+        outer_color=outer_color_hex,
+        inner_color=inner_bounding_color_hex,
     )
 
     # nameplate bounding
     BoundingBox(
-        height=90,
-        width=375,
-        color_hex=outer_color_hex,
-        bound_thickness=8,
-        save_file=True,
-        save_loc=os.path.expanduser("~"),
-        make_inner_bounding_box=True,
-        inner_bounding_color_hex=inner_bounding_color_hex,
-        inner_bounding_thickness=4,
-        name_prefix="nameplate",
-        fill=True,
+        interior_width=375,
+        interior_height=90,
+        outer_color=outer_color_hex,
+        inner_color=inner_bounding_color_hex,
     )
 
 
@@ -272,5 +272,6 @@ if __name__ == "__main__":
     console = "SNES"
 
     if console == "SNES":
-        make_snes_scene_boxes(inner_bounding_color_hex="#bbdefb")
-
+        make_snes_scene_boxes(
+            inner_bounding_color_hex="#2a3d66", outer_color_hex="#d789d7"
+        )
