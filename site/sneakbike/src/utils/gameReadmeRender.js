@@ -3,6 +3,15 @@ function gameReadmeRender(gameArray) {
   let gameSections = [];
   for (const gameNum in gameArray) {
     const val = gameArray[gameNum];
+
+    let hintSection = ``;
+    if (val["hints"] && val["hints"].trim().length > 0) {
+      hintSection = `<h2 class="hint">Hints and Tips</h2>
+
+        <p class="hint">${val["hints"]}</p>
+      `;
+    }
+
     const gameAndObjSection = `
       <div class="game">
       <h1>Game ${parseInt(gameNum) + 1}</h1>
@@ -11,9 +20,9 @@ function gameReadmeRender(gameArray) {
           <p class="objective">
              ${val["objective"]}
           </p>
+          ${hintSection}
       </div>
       <br/>
-
       `;
 
     const endGameAndObjSection = `</div>`;
@@ -59,16 +68,8 @@ function gameReadmeRender(gameArray) {
 
       `;
 
-    let hintSection = ``;
-    if (val["hint"] && val["hint"].trim().length > 0) {
-      hintSection = `<h2 class="hint">Hints and Tips</h2>
-
-        <p>${val["hints"]}</p>
-      `;
-    }
-
     gameSections.push(
-      gameAndObjSection + controlsSection + hintSection + endGameAndObjSection
+      gameAndObjSection + controlsSection + endGameAndObjSection
     );
   }
 
