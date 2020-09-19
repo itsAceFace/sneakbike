@@ -30,10 +30,16 @@ class BoundingBox:
         inner_color: str = "#22aa00ff",
         fill_color: str = "#ffffff00",
         border_color: str = "#000000ff",
+        save_folder: str = os.path.expanduser("~"),
+        file_prefix: str = "",
     ):
 
-        file_name = f"{interior_width}w_{interior_height}h_{outer_color[1:]}out_{inner_color[1:]}in"
-        self.save_path = os.path.expanduser(f"~/Desktop/{file_name}.png")
+        file_name = (
+            f"{file_prefix}{'_' if file_prefix else ''}"
+            + f"{interior_width}w_{interior_height}h"
+            + f"_{outer_color[1:]}_outer_{inner_color[1:]}_inner.png"
+        )
+        self.save_path = os.path.join(save_folder, file_name)
 
         self.interior_width = interior_width
         self.interior_height = interior_height

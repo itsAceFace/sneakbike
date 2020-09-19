@@ -6,3 +6,4 @@
 *.tfstate.backup
 ffmpeg.exe
 *.log
+__pycache__
