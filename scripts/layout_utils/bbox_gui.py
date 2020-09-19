@@ -74,9 +74,27 @@ class BBox:
         os.mkdir(save_folder_with_img_folder)
 
         BoundingBox(
-            file_prefix="SNES",
-            interior_width=540,
+            file_prefix="NES",
+            interior_width=512,
             interior_height=480,
+            outer_color=self.outer_color,
+            inner_color=self.inner_color,
+            save_folder=save_folder_with_img_folder,
+        )
+
+        BoundingBox(
+            file_prefix="SNES",
+            interior_width=544,
+            interior_height=476,
+            outer_color=self.outer_color,
+            inner_color=self.inner_color,
+            save_folder=save_folder_with_img_folder,
+        )
+
+        BoundingBox(
+            file_prefix="GENESIS",
+            interior_width=640,
+            interior_height=448,
             outer_color=self.outer_color,
             inner_color=self.inner_color,
             save_folder=save_folder_with_img_folder,
