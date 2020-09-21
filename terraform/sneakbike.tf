@@ -91,5 +91,8 @@ resource "aws_instance" "sneakbike_instance" {
   provisioner "local-exec" {
     command = "echo ${aws_instance.sneakbike_instance.public_ip}"
   }
+  provisioner "local-exec" {
+    command = "echo rtmp://${aws_instance.sneakbike_instance.public_ip}:1935/live"
+  }
 }
 
