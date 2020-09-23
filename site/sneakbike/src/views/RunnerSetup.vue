@@ -71,6 +71,7 @@
             <li>
               <a href="https://github.com/TASVideos/BizHawk/releases">Bizhawk</a>
               <ul>
+                <warning-card>There is currently an issue where Windows 10 thinks that BizHawk is a virus. **This is a false positive.** Try downloading **Version 2.4.2** if your Windows refuses to let you open the latest.</warning-card>
                 <li>Download the BizHawk zip file under "Assets" and unzip,</li>
                 <li>
                   You'll find the EmuHawk emulator in the unzipped folder; this
@@ -89,7 +90,7 @@
             </li>
           </ul>
 
-          <h2>3. Importing the Sneakbike Profile into OBS.</h2>
+          <h2>2. Importing the Sneakbike Profile into OBS.</h2>
 
           <p>With OBS open:</p>
           <img src="@/assets/sneakbike_import_profile.gif" alt="OBS Profile Import" />
@@ -127,7 +128,7 @@
             </li>
           </ol>
 
-          <h2>4. Set up EmuHawk.</h2>
+          <h2>3. Set up EmuHawk.</h2>
           <info-card>
             For our recommended setups for EmuHawk, check out
             <router-link to="/emulator-setup">our emulator setup page</router-link>.
