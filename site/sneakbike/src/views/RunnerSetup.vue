@@ -71,7 +71,11 @@
             <li>
               <a href="https://github.com/TASVideos/BizHawk/releases">Bizhawk</a>
               <ul>
-                <warning-card>There is currently an issue where Windows 10 thinks that BizHawk is a virus. **This is a false positive.** Try downloading **Version 2.4.2** if your Windows refuses to let you open the latest.</warning-card>
+                <warning-card>
+                  There is currently an issue where Windows 10 thinks that BizHawk is a virus.
+                  <b>This is a false positive.</b> Try downloading
+                  <b>Version 2.4.2</b> if your Windows refuses to let you open the latest.
+                </warning-card>
                 <li>Download the BizHawk zip file under "Assets" and unzip,</li>
                 <li>
                   You'll find the EmuHawk emulator in the unzipped folder; this
