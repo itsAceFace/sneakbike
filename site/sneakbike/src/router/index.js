@@ -4,10 +4,12 @@ import Home from "@/views/Home.vue";
 import SneakbikeInfo from "@/views/SneakbikeInfo.vue";
 import Quiz from "@/views/Quiz.vue";
 import EmulatorSetup from "@/views/EmulatorSetup.vue";
+
 import ResolutionStandards from "@/views/ResolutionStandards.vue";
 import Team from "@/views/Team.vue";
 import ScoreBoard from "@/views/ScoreBoard.vue";
 import GameReadmeGen from "@/views/GameReadmeGen.vue";
+import RacedayChecklist from "@/views/RacedayChecklist.vue";
 
 import RunnerSetup from "@/views/RunnerSetup.vue";
 import HostSetup from "@/views/HostSetup.vue";
@@ -86,6 +88,7 @@ const routes = [
     component: Quiz,
   },
   { path: "/readme", name: "GameReadmeGen", component: GameReadmeGen },
+  { path: "/checklist", name: "RacedayChecklist", component: RacedayChecklist },
 ];
 
 const router = new VueRouter({

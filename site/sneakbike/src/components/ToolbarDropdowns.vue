@@ -36,6 +36,7 @@ const devPages = [
 const resourcesPages = [
   { name: "Resolution Standards", route: "/resolution-standards" },
   { name: "README Generator", route: "/readme" },
+  { name: "Race Day Checklist", route: "/checklist" },
 ];
 
 export default {
