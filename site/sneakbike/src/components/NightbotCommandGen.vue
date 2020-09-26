@@ -2,10 +2,18 @@
   <div class="nightbot-command-gen">
     <v-card class="mx-auto" max-width="600" outlined>
       <v-card-text>
-        <p>!game Retro</p>
-        <p>!title Sneakbike Mystery Race with Friends! :']</p>
-        <p>!runners {{runners}}</p>
-        <p>!commentators {{commentators}}</p>
+        <p>
+          <b>!game Retro</b>
+        </p>
+        <p>
+          <b>!title Sneakbike Mystery Race with Friends! :']</b>
+        </p>
+        <p>
+          <b>!runners {{runners}}</b>
+        </p>
+        <p>
+          <b>!commentators {{commentators}}</b>
+        </p>
       </v-card-text>
     </v-card>
     <br />
@@ -135,27 +143,35 @@ export default {
         this.runner4Twitch,
       ];
 
-      let txt = "";
+      let txt = [];
       for (var idx = 0; idx < 4; idx++) {
-        if (names[idx] !== "" || twitch[idx] !== "") {
-          txt += " || " + names[idx] + " :: https://twitch.tv/" + twitch[idx];
+        if (names[idx] !== "") {
+          if (twitch[idx] !== "") {
+            txt.push(names[idx] + " :: https://twitch.tv/" + twitch[idx]);
+          } else {
+            txt.push(names[idx]);
+          }
         }
       }
 
-      return txt;
+      return txt.join(" || ");
     },
     commentators() {
       const names = [this.commentator1Name, this.commentator2Name];
       const twitch = [this.commentator1Twitch, this.commentator2Twitch];
 
-      let txt = "";
+      let txt = [];
       for (var idx = 0; idx < 2; idx++) {
-        if (names[idx] !== "" || twitch[idx] !== "") {
-          txt += " || " + names[idx] + " :: https://twitch.tv/" + twitch[idx];
+        if (names[idx] !== "") {
+          if (twitch[idx] !== "") {
+            txt.push(names[idx] + " :: https://twitch.tv/" + twitch[idx]);
+          } else {
+            txt.push(names[idx]);
+          }
         }
       }
 
-      return txt;
+      return txt.join(" || ");
     },
   },
 };
