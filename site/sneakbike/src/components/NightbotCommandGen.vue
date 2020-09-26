@@ -9,10 +9,10 @@
           <b>!title Sneakbike Mystery Race with Friends! :']</b>
         </p>
         <p>
-          <b>!runners {{runners}}</b>
+          <b>!commands edit !runners {{runners}}</b>
         </p>
         <p>
-          <b>!commentators {{commentators}}</b>
+          <b>!commands edit !commentators {{commentators}}</b>
         </p>
       </v-card-text>
     </v-card>
