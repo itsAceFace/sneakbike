@@ -37,6 +37,7 @@ const resourcesPages = [
   { name: "Resolution Standards", route: "/resolution-standards" },
   { name: "README Generator", route: "/readme" },
   { name: "Race Day Checklist", route: "/checklist" },
+  { name: "Nightbot Command Updates", route: "/nightbot" },
 ];
 
 export default {

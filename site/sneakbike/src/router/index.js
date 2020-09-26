@@ -10,6 +10,7 @@ import Team from "@/views/Team.vue";
 import ScoreBoard from "@/views/ScoreBoard.vue";
 import GameReadmeGen from "@/views/GameReadmeGen.vue";
 import RacedayChecklist from "@/views/RacedayChecklist.vue";
+import NightbotCommands from "@/views/NightbotCommands.vue";
 
 import RunnerSetup from "@/views/RunnerSetup.vue";
 import HostSetup from "@/views/HostSetup.vue";
@@ -89,6 +90,7 @@ const routes = [
   },
   { path: "/readme", name: "GameReadmeGen", component: GameReadmeGen },
   { path: "/checklist", name: "RacedayChecklist", component: RacedayChecklist },
+  { path: "/nightbot", name: "NightbotCommands", component: NightbotCommands },
 ];
 
 const router = new VueRouter({
