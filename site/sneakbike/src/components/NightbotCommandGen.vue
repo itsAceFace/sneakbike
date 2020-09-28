@@ -12,7 +12,7 @@
           <b>!commands edit !runners {{runners}}</b>
         </p>
         <p>
-          <b>!commands edit !commentators {{commentators}}</b>
+          <b>!commands edit !commentators The lovely voices you're hearing: {{commentators}}</b>
         </p>
       </v-card-text>
     </v-card>
