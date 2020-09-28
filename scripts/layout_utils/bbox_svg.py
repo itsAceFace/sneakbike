@@ -1,6 +1,10 @@
 import os
 import math
 
+from wand.api import library
+import wand.color
+import wand.image
+
 
 def create_inner_bbox(
     box_height=200,
@@ -25,7 +29,7 @@ def create_inner_bbox(
         w,
         x,
         y,
-        f"""<rect id="{xml_id}" style="fill:none; stroke:{bbox_color}; stroke-width:{bbox_stroke_width}px;" width="{w}px" height="{h}px" x="{x}px" y="{y}px" rx="{bbox_r}px" ry="{bbox_r}px"/>""",
+        f"""<rect id="{xml_id}" style="fill:none; stroke:{bbox_color}; stroke-width:{bbox_stroke_width}px;" fill-opacity="0" width="{w}px" height="{h}px" x="{x}px" y="{y}px" rx="{bbox_r}px" ry="{bbox_r}px"/>""",
     )
 
     return tmpl
@@ -37,14 +41,25 @@ def create_bbox(
     outer_border_color="#232666",
     inner_border_color="#5959c9",
     save_path=os.path.expanduser("~"),
+    save_prefix="",
 ):
     # We have to init an empty box with stroke width 2 to start at 1, 1.
     boundaries = [
-        {"stroke_width": 2},
+        {"stroke_width": 1},
         {"stroke_width": 2, "color": "#000000", "r": 5, "id": "outer_border"},
-        {"stroke_width": 2, "color": "#444fff", "r": 3, "id": "outer_outer_border"},
-        {"stroke_width": 4, "color": "#fff444", "r": 0, "id": "inner"},
-        {"stroke_width": 2, "color": "#444fff", "r": 0, "id": "inner_outer_border"},
+        {
+            "stroke_width": 2,
+            "color": outer_border_color,
+            "r": 3,
+            "id": "outer_outer_border",
+        },
+        {"stroke_width": 4, "color": inner_border_color, "r": 0, "id": "inner"},
+        {
+            "stroke_width": 2,
+            "color": outer_border_color,
+            "r": 0,
+            "id": "inner_outer_border",
+        },
         {"stroke_width": 2, "color": "#000000", "r": 0, "id": "inner_border"},
     ]
 
@@ -56,7 +71,7 @@ def create_bbox(
     svg_height = height + bounding_boxes_total_size
     svg_width = width + bounding_boxes_total_size
 
-    _xml = """<svg xmlns="http://www.w3.org/2000/svg"
+    _xml = f"""<svg xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink= "http://www.w3.org/1999/xlink" width="{svg_width}px" height="{svg_height}px">"""
 
     h, w, x, y = svg_height, svg_width, 0, 0
@@ -81,16 +96,62 @@ def create_bbox(
     inner_bd = rect_list.pop(int(math.ceil(len(rect_list) / 2)))
     _xml += (inner_bd + "\n" + "\n".join(rect_list)) + "</svg>"
 
-    file_name = f"{height}h_{width}w_{outer_border_color[1:]}out_{inner_border_color}in"
-    with open(os.path.join(save_path, file_name), "w+") as f:
+    file_name = (
+        f"{height}h_{width}w_{outer_border_color[1:]}out_{inner_border_color[1:]}in.svg"
+    )
+
+    if save_prefix:
+        file_name = save_prefix + "_" + file_name
+
+    file_loc = os.path.join(save_path, file_name)
+    new_file_loc = os.path.splitext(file_loc)[0] + ".png"
+    with open(file_loc, "w+") as f:
         f.write(_xml)
+
+    # Render pngs.
+    with open(file_loc, "r") as svg_file:
+        with wand.image.Image() as image:
+            with wand.color.Color("transparent") as background_color:
+                library.MagickSetBackgroundColor(image.wand, background_color.resource)
+            svg_blob = svg_file.read().encode("utf-8")
+            image.read(blob=svg_blob)
+            png_image = image.make_blob("png32")
+
+        with open(new_file_loc, "wb") as out:
+            out.write(png_image)
+
+
+def generate_sneakbike_sizes(outer_border_color, inner_border_color):
+
+    save_path = os.path.join(
+        os.path.expanduser("~"),
+        f"sneakbike_bboxes_{outer_border_color[1:]}out_{inner_border_color[1:]}in",
+    )
+
+    os.makedirs(save_path, exist_ok=True)
+    # name, width, height
+    box_list = [
+        ["NES", 480, 512,],
+        ["SNES", 476, 544,],
+        ["GENESIS", 448, 640,],
+        ["NAMEPLATE", 90, 375,],
+    ]
+
+    for item in box_list:
+        create_bbox(
+            height=item[1],
+            width=item[2],
+            outer_border_color=outer_border_color,
+            inner_border_color=inner_border_color,
+            save_path=save_path,
+            save_prefix=item[0],
+        )
 
 
 if __name__ == "__main__":
-    create_bbox(
-        height=100,
-        width=333,
-        outer_border_color="#232666",
-        inner_border_color="#5959c9",
+    outer_border_color = "#232666"
+    inner_border_color = "#5959c9"
+    generate_sneakbike_sizes(
+        outer_border_color=outer_border_color, inner_border_color=inner_border_color
     )
 
