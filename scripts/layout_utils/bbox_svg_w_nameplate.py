@@ -38,11 +38,12 @@ def create_inner_bbox(
 def create_bbox(
     height=200,
     width=200,
-    outer_border_color="#232666",
-    inner_border_color="#5959c9",
+    outer_border_color="#726a95",
+    inner_border_color="#709fb0",
     border_color="#000000",
     save_path=os.path.expanduser("~"),
     save_prefix="",
+    nameplate=False,
 ):
     # We have to init an empty box with stroke width 2 to start at 1, 1.
     boundaries = [
@@ -68,12 +69,16 @@ def create_bbox(
         sum([b["stroke_width"] for b in boundaries]) - 2
     )  # minus the init
 
+    additional_sizing = 0
+    if nameplate:
+        additional_sizing = 50
+
     bounding_boxes_total_size = 2 * stroke_width_sum
     svg_height = height + bounding_boxes_total_size
     svg_width = width + bounding_boxes_total_size
 
     _xml = f"""<svg xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink= "http://www.w3.org/1999/xlink" width="{svg_width}px" height="{svg_height}px">"""
+        xmlns:xlink= "http://www.w3.org/1999/xlink" width="{svg_width}px" height="{svg_height + additional_sizing}px">"""
 
     h, w, x, y = svg_height, svg_width, 0, 0
     rect_list = []
@@ -91,11 +96,17 @@ def create_bbox(
         )
         rect_list.append(txt)
 
+    # HARDCODED FOR NOW
+    nameplate_str = ""
+    if nameplate:
+        nameplate_str = f"""<rect id="namebox" style="fill:{inner_border_color}; stroke:#000000; stroke-width:2px;" fill-opacity="1" width="{svg_width - 33}px" height="50px" x="16.5px" y="504px" rx="2px" ry="2px"/>"""
+
     # Inner has to be first to get overlapped.
     # This may not work for any more than N=5 borders.
     # TODO: Maybe make this cleaner.
     inner_bd = rect_list.pop(int(math.ceil(len(rect_list) / 2)))
-    _xml += (inner_bd + "\n" + "\n".join(rect_list)) + "</svg>"
+
+    _xml += (inner_bd + "\n" + nameplate_str + "\n" + "\n".join(rect_list)) + "</svg>"
 
     file_name = (
         f"{height}h_{width}w_{outer_border_color[1:]}out_{inner_border_color[1:]}in.svg"
@@ -134,10 +145,10 @@ def generate_sneakbike_sizes(
     os.makedirs(save_path, exist_ok=True)
     # name, width, height
     box_list = [
-        ["NES", 480, 512,],
-        ["SNES", 476, 544,],
-        ["GENESIS", 448, 640,],
-        ["NAMEPLATE", 90, 375,],
+        ["NES", 480, 512, False],
+        ["SNES", 476, 544, True],
+        ["GENESIS", 448, 640, False],
+        ["NAMEPLATE", 533, 375, False],
     ]
 
     for item in box_list:
@@ -149,12 +160,13 @@ def generate_sneakbike_sizes(
             border_color=border_color,
             save_path=save_path,
             save_prefix=item[0],
+            nameplate=True,
         )
 
 
 if __name__ == "__main__":
-    outer_border_color = "#16213e"
-    inner_border_color = "#0f3460"
+    outer_border_color = "#726a95"
+    inner_border_color = "#709fb0"
     border_color = "#000000"
     generate_sneakbike_sizes(
         outer_border_color=outer_border_color,
