@@ -2,31 +2,66 @@
   <v-app>
     <div id="nav">
       <v-app-bar app flat color="#92de69">
-        <router-link to="/">
-          <v-toolbar-title>Sneakbike</v-toolbar-title>
-        </router-link>
-        <ToolbarDropdowns />
+        <v-app-bar-nav-icon @click="drawer = !drawer" />
+        <v-toolbar-title>
+          <router-link to="/">Sneakbike</router-link>
+        </v-toolbar-title>
+        <!-- <ToolbarDropdowns /> -->
         <v-spacer />
         <ToolbarIcons />
       </v-app-bar>
     </div>
 
+    <div id="sidebar">
+      <v-navigation-drawer v-model="drawer" app>
+        <v-list>
+          <SidebarList :name="'Home'" :pageList="homePages" />
+          <SidebarList :name="'Info'" :pageList="infoPages" />
+          <SidebarList :name="'Setup'" :pageList="setupPages" />
+          <v-divider />
+          <SidebarList :name="'Resources'" :pageList="resourcesPages" />
+        </v-list>
+      </v-navigation-drawer>
+    </div>
+
     <v-main>
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>-->
-      <!-- </div> -->
       <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import ToolbarDropdowns from "@/components/ToolbarDropdowns.vue";
+const homePages = [{ name: "Home", route: "/" }];
+const infoPages = [
+  { name: "Schedule", route: "/schedule" },
+  { name: "Team", route: "/team" },
+  // { name: "Scoreboard", route: "/scoreboard" },
+];
+
+const setupPages = [{ name: "Sneakbike Setup", route: "/setup" }];
+
+const resourcesPages = [
+  { name: "Resolution Standards", route: "/resolution-standards" },
+  { name: "README Generator", route: "/readme" },
+  { name: "Race Day Checklist", route: "/checklist" },
+  { name: "Nightbot Command Updates", route: "/nightbot" },
+];
+
 import ToolbarIcons from "@/components/ToolbarIcons.vue";
+import SidebarList from "@/components/SidebarList.vue";
 
 export default {
   name: "App",
-  components: { ToolbarDropdowns, ToolbarIcons },
+  components: { ToolbarIcons, SidebarList },
+  data() {
+    return {
+      drawer: false,
+      homePages,
+      infoPages,
+      setupPages,
+      resourcesPages,
+    };
+  },
 };
 </script>
 
@@ -36,40 +71,32 @@ $base-heading-top-padding: 2rem;
 $base-heading-bottom-padding: 0.75rem;
 
 #app {
-  // font-family: "Roboto", sans-serif;
-  font-family: "Noto Serif", serif;
+  font-family: "Lora", serif;
   font-size: $base-font-size;
 }
 
-.v-toolbar__title {
+// Sneakbike Title
+.v-toolbar__title > a {
   font-family: "Press Start 2P", cursive;
   font-size: 1.5rem !important;
-  padding-right: 1.5rem;
-  color: black;
-  text-decoration: none;
+  color: black !important;
+  text-decoration: none !important;
 }
 
-.v-toolbar__content,
-.v-list-item__title {
-  font-family: "Roboto", sans-serif !important;
-}
-
-.v-toolbar__content > a {
-  text-decoration: none;
+.v-list-item__content {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: "Press Start 2P", cursive !important;
+  font-family: "Lato", sans-serif;
 }
 
-.v-btn__content h1,
-h2,
-h3,
-h4 {
-  padding-top: $base-heading-top-padding;
+h1 {
+  font-variant: small-caps;
 }
 
 h1 {
@@ -79,6 +106,7 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
+  padding-top: $base-heading-top-padding;
   padding-bottom: $base-heading-bottom-padding;
 }
 
@@ -92,6 +120,10 @@ h3 {
   padding-bottom: 1rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 ul {
   margin-bottom: 1rem;
 }
@@ -100,5 +132,11 @@ pre[class*="language-"] {
   font-size: 1rem !important;
   margin-top: 1.5rem !important;
   margin-bottom: 1.5rem !important;
+}
+
+img {
+  max-width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 </style>
