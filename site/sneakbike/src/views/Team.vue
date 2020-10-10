@@ -1,17 +1,13 @@
 <template>
   <div class="team">
     <v-container>
-      <v-row justify="center">
-        <v-col cols="2" />
-        <v-col cols="8">
-          <h1>Team Sneakbike!</h1>
-        </v-col>
-        <v-col cols="2" />
+      <v-row justify="center" align="center">
+        <h1 class="team">Team Sneakbike!</h1>
       </v-row>
     </v-container>
 
     <v-row>
-      <v-col cols="12" sm="6" offset-sm="3">
+      <v-col cols="12" sm="8" offset-sm="2">
         <v-card>
           <v-container fluid>
             <v-row :align="'center'" :justify="'center'">
@@ -36,16 +32,12 @@
 
     <v-container>
       <v-row justify="center">
-        <v-col cols="2" />
-        <v-col cols="8">
-          <h1>Sneakbike Runners!</h1>
-        </v-col>
-        <v-col cols="2" />
+        <h1 class="team">Sneakbike Runners!</h1>
       </v-row>
     </v-container>
 
     <v-row>
-      <v-col cols="12" sm="6" offset-sm="3">
+      <v-col cols="12" sm="8" offset-sm="2">
         <v-card>
           <v-container fluid>
             <v-row :align="'center'" :justify="'center'">
@@ -86,3 +78,9 @@ export default {
   components: { TeamPortrait },
 };
 </script>
+
+<style lang="scss" scoped>
+h1.team {
+  font-family: "Press Start 2P", cursive !important;
+}
+</style>
