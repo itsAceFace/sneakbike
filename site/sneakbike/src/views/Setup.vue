@@ -51,7 +51,7 @@ import SetupRunnerText from "@/components/SetupRunnerText.vue";
 import SetupHostText from "@/components/SetupHostText.vue";
 
 export default {
-  name: "SneakbikeSetup",
+  name: "Setup",
   computed: {
     tab: {
       set(tab) {

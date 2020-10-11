@@ -38,8 +38,8 @@ def create_inner_bbox(
 def create_bbox(
     height=200,
     width=200,
-    outer_border_color="#232666",
-    inner_border_color="#5959c9",
+    outer_border_color="#1f6a31",
+    inner_border_color="#299b5d",
     border_color="#000000",
     save_path=os.path.expanduser("~"),
     save_prefix="",
@@ -54,7 +54,7 @@ def create_bbox(
             "r": 3,
             "id": "outer_outer_border",
         },
-        {"stroke_width": 8, "color": inner_border_color, "r": 0, "id": "inner"},
+        {"stroke_width": 4, "color": inner_border_color, "r": 0, "id": "inner"},
         {
             "stroke_width": 4,
             "color": outer_border_color,
@@ -153,8 +153,8 @@ def generate_sneakbike_sizes(
 
 
 if __name__ == "__main__":
-    outer_border_color = "#16213e"
-    inner_border_color = "#0f3460"
+    outer_border_color = "#1f6a31"
+    inner_border_color = "#299b5d"
     border_color = "#000000"
     generate_sneakbike_sizes(
         outer_border_color=outer_border_color,

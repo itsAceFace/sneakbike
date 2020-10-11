@@ -2,11 +2,11 @@
   <div class="raceday-checklist">
     <v-container>
       <v-row justify="center">
-        <v-col cols="2" />
-        <v-col cols="8">
+        <v-col cols="1" />
+        <v-col cols="10">
           <RaceChecklist />
         </v-col>
-        <v-col cols="2" />
+        <v-col cols="1" />
       </v-row>
     </v-container>
   </div>

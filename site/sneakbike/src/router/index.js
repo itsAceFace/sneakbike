@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
-import SneakbikeSchedule from "@/views/SneakbikeSchedule.vue";
+import Schedule from "@/views/Schedule.vue";
 import Quiz from "@/views/Quiz.vue";
 
 import ResolutionStandards from "@/views/ResolutionStandards.vue";
@@ -11,7 +11,7 @@ import GameReadmeGen from "@/views/GameReadmeGen.vue";
 import RacedayChecklist from "@/views/RacedayChecklist.vue";
 import NightbotCommands from "@/views/NightbotCommands.vue";
 
-import SneakbikeSetup from "@/views/SneakbikeSetup.vue";
+import Setup from "@/views/Setup.vue";
 
 Vue.use(VueRouter);
 
@@ -23,13 +23,13 @@ const routes = [
   },
   {
     path: "/schedule",
-    name: "SneakbikeSchedule",
-    component: SneakbikeSchedule,
+    name: "Schedule",
+    component: Schedule,
   },
   {
     path: "/setup",
-    name: "SneakbikeSetup",
-    component: SneakbikeSetup,
+    name: "Setup",
+    component: Setup,
   },
 
   {

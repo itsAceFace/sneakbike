@@ -19,7 +19,27 @@
           <SidebarList :name="'Info'" :pageList="infoPages" />
           <SidebarList :name="'Setup'" :pageList="setupPages" />
           <v-divider />
-          <SidebarList :name="'Resources'" :pageList="resourcesPages" />
+
+          <!-- Sneakbike-Ops Resources -->
+          <div class="sidebar-list">
+            <v-list-group no-action>
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>Ops Resources</v-list-item-title>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item
+                v-for="(item, index) in resourcesPages"
+                :key="`${item['name']}-${index}`"
+                :to="item.route"
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.name" />
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </div>
         </v-list>
       </v-navigation-drawer>
     </div>
@@ -138,5 +158,12 @@ img {
   max-width: 100%;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.v-application--is-ltr
+  .v-list-group--no-action
+  > .v-list-group__items
+  > .v-list-item {
+  padding-left: 24px;
 }
 </style>
