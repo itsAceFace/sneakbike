@@ -15,9 +15,9 @@
           href="https://drive.google.com/file/d/138tSmlSwFQ4JRqjFUvfjgUY5kTkrWKM1/view?usp=sharing"
           target="_blank"
         >
-          <code>Sneakbike_Ops.zip</code> profile (if you don't have permissions,
-          ask in the Sneakbike discord channel) </a
-        >.
+          <code>Sneakbike_Ops.zip</code> profile</a
+        >
+        (if you don't have permissions, ask in the Sneakbike discord channel).
         <ul>
           <li>
             Feel free to also download the Scene Collection

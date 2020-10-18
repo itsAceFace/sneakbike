@@ -36,7 +36,9 @@ const duties = {
       "Mute each runner's audio.  (You may selectively unmute later.)",
       "Share the live screen with C1 and C2.",
     ],
-    // "During Race": [],
+    "During Race": [
+      "Shut off a runner's feed when the runner is finished with the race.",
+    ],
     "After Race": ["!! REMEMBER TO SHUT DOWN SERVER WITH 'terraform destroy'!"],
   },
   c1: {
@@ -74,7 +76,7 @@ const duties = {
   },
   m1: {
     // "Before Race Day": [],
-    // "Race Day": [],
+    "Race Day": ["Update Nightbot Commands."],
     "During Race": ["Moderate Chat."],
     // "After Race": [],
   },
@@ -89,7 +91,6 @@ const duties = {
 //     "Have runners fill out running forms.",
 //   ],
 //   "Race Day": [
-//     "Set the game and title?  Is this the Host?  Will this re-set if they stream after it is set in chat?",
 //   ],
 //   // "During Race": [],
 //   "After Race": ["Remove 'current-racer' tag from racers."],

@@ -11,6 +11,18 @@
               What
               <i>is</i> Sneakbike?
             </h1>
+            <p>Sneakbike is a community of people working towards three primary goals:</p>
+
+            <ul>
+            <li><b>Community</b>: Making friends, being nice to each other, and friendly competition.</li>
+            <li><b>Learning New Skills</b>: A commitment to helping each other grow and learn new things.</li>
+            <li><b>Usability and Quality of Open-Source Offerings</b>: Striving to make the tools we use as easy as possible for others to pick up and use for their own races.</li>
+            </ul>
+
+            <h1>
+              What does Sneakbike do?
+            </h1>
+
             <p>
               The Sneakbike Community currently hosts two different events:
               <i>Sneakbike Mystery Races</i> and
@@ -59,7 +71,7 @@
             <p>
               To use or play around with the code, check out
               <a
-                href="https://github.com/jsal13/sneakbike/tree/master/scripts/terraform"
+                href="https://github.com/jsal13/sneakbike/"
               >our github</a>.
             </p>
           </div>
