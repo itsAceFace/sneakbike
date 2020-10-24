@@ -1,5 +1,7 @@
-function gameReadmeRender(gameArray) {
+function gameReadmeRender(gameArray, console) {
   //game1, game2, game3
+  var consoleLower = console.toLowerCase();
+
   let gameSections = [];
   for (const gameNum in gameArray) {
     const val = gameArray[gameNum];
@@ -26,8 +28,7 @@ function gameReadmeRender(gameArray) {
       `;
 
     const endGameAndObjSection = `</div>`;
-    const controlsSection = `
-      <table>
+    const controlsSectionSNES = `
       <tr><td><b>A</b></td><td>${
         val["a"] == "" ? "&mdash;" : val["a"]
       }</td></tr>
@@ -46,6 +47,45 @@ function gameReadmeRender(gameArray) {
       <tr><td><b>R</b></td><td>${
         val["r"] == "" ? "&mdash;" : val["r"]
       }</td></tr>
+      `;
+
+    const controlsSectionNES = `
+      <tr><td><b>A</b></td><td>${
+        val["a"] == "" ? "&mdash;" : val["a"]
+      }</td></tr>
+      <tr><td><b>B</b></td><td>${
+        val["b"] == "" ? "&mdash;" : val["b"]
+      }</td></tr>
+     `;
+
+    const controlsSectionGenesis = `
+      <tr><td><b>A</b></td><td>${
+        val["a"] == "" ? "&mdash;" : val["a"]
+      }</td></tr>
+      <tr><td><b>B</b></td><td>${
+        val["b"] == "" ? "&mdash;" : val["b"]
+      }</td></tr>
+      <tr><td><b>C</b></td><td>${
+        val["c"] == "" ? "&mdash;" : val["c"]
+      }</td></tr>
+      <tr><td><b>X</b></td><td>${
+        val["x"] == "" ? "&mdash;" : val["x"]
+      }</td></tr>
+      <tr><td><b>Y</b></td><td>${
+        val["y"] == "" ? "&mdash;" : val["y"]
+      }</td></tr>
+      <tr><td><b>Z</b></td><td>${
+        val["z"] == "" ? "&mdash;" : val["z"]
+      }</td></tr>
+      <tr><td><b>L</b></td><td>${
+        val["l"] == "" ? "&mdash;" : val["l"]
+      }</td></tr>
+      <tr><td><b>R</b></td><td>${
+        val["r"] == "" ? "&mdash;" : val["r"]
+      }</td></tr>
+      `;
+
+    const controlSectionUniversal = `
       <tr><td><b>Start</b></td><td>${
         val["start"] == "" ? "&mdash;" : val["start"]
       }</td></tr>
@@ -64,9 +104,18 @@ function gameReadmeRender(gameArray) {
       <tr><td><b>Right</b></td><td>${
         val["right"] == "" ? "&mdash;" : val["right"]
       }</td></tr>
-      </table>
-
       `;
+
+    var controlSectionConsoleDict = {
+      snes: controlsSectionSNES,
+      nes: controlsSectionNES,
+      genesis: controlsSectionGenesis,
+    };
+
+    var controlsSection = `<table>
+    ${controlSectionConsoleDict[consoleLower]}
+    ${controlSectionUniversal}
+    </table>`;
 
     gameSections.push(
       gameAndObjSection + controlsSection + endGameAndObjSection
