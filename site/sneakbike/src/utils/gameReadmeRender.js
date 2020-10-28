@@ -28,6 +28,7 @@ function gameReadmeRender(gameArray, console) {
       `;
 
     const endGameAndObjSection = `</div>`;
+    const controlsCaveat = `<p><b>Note that this table may not contain all controls.</b></p>`;
     const controlsSectionSNES = `
       <tr><td><b>A</b></td><td>${
         val["a"] == "" ? "&mdash;" : val["a"]
@@ -112,7 +113,8 @@ function gameReadmeRender(gameArray, console) {
       genesis: controlsSectionGenesis,
     };
 
-    var controlsSection = `<table>
+    var controlsSection = `${controlsCaveat}
+    <table>
     ${controlSectionConsoleDict[consoleLower]}
     ${controlSectionUniversal}
     </table>`;

@@ -6,7 +6,6 @@ import Quiz from "@/views/Quiz.vue";
 
 import ResolutionStandards from "@/views/ResolutionStandards.vue";
 import Team from "@/views/Team.vue";
-import ScoreBoard from "@/views/ScoreBoard.vue";
 import GameReadmeGen from "@/views/GameReadmeGen.vue";
 import RacedayChecklist from "@/views/RacedayChecklist.vue";
 import NightbotCommands from "@/views/NightbotCommands.vue";
@@ -41,11 +40,6 @@ const routes = [
     path: "/team",
     name: "Team",
     component: Team,
-  },
-  {
-    path: "/scoreboard",
-    name: "ScoreBoard",
-    component: ScoreBoard,
   },
   {
     path: "/quiz",
