@@ -40,10 +40,10 @@
 
     <ul>
       <li>
-        <a href="https://obsproject.com/">OBS</a>,
+        <a href="https://obsproject.com/" target="_blank">OBS</a>,
       </li>
       <li>
-        <a href="https://github.com/TASVideos/BizHawk-Prereqs/releases">Bizhawk Emulator Prereqs</a>
+        <a href="https://github.com/TASVideos/BizHawk-Prereqs/releases" target="_blank">Bizhawk Emulator Prereqs</a>
         <ul>
           <li>
             Download the bizhawk_prereqs zip file under "Assets", unzip,
@@ -52,7 +52,7 @@
         </ul>
       </li>
       <li>
-        <a href="https://github.com/TASVideos/BizHawk/releases">Bizhawk</a>
+        <a href="https://github.com/TASVideos/BizHawk/releases" target="_blank">Bizhawk</a>
         <ul>
           <warning-card>
             There is currently an issue where Windows 10 thinks that BizHawk is a virus.
@@ -120,6 +120,7 @@
       If you'd rather see the video of the config, check our
       <a
         href="https://youtu.be/J_WM3zYQVH0"
+        target="_blank"
       >video tutorial</a>.
     </info-card>
 
