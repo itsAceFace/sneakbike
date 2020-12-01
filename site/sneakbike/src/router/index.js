@@ -12,6 +12,8 @@ import NightbotCommands from "@/views/NightbotCommands.vue";
 
 import Setup from "@/views/Setup.vue";
 
+import Test from "@/views/Test.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -49,6 +51,7 @@ const routes = [
   { path: "/readme", name: "GameReadmeGen", component: GameReadmeGen },
   { path: "/checklist", name: "RacedayChecklist", component: RacedayChecklist },
   { path: "/nightbot", name: "NightbotCommands", component: NightbotCommands },
+  { path: "/test", name: "Test", component: Test },
 ];
 
 const router = new VueRouter({
