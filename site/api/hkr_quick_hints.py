@@ -1,35 +1,50 @@
 import re
 
-DREAMERS = ["Herrah", "Dreamer", "Monomon", "Lurien"]
+DREAMERS = ["Herrah", "Monomon", "Lurien", "Dreamer"]
+KEY_ITEMS = [
+    "Isma's Tear",
+    "Descending Dark",
+    "Monarch Wings",
+    "Crystal Heart",
+    "Shade Soul",
+    "Howling Wraiths",
+    "Mantis Claw",
+    "Shade Cloak",
+    "Abyss Shriek",
+    "Vengeful Spirit",
+]
+KEYS = ["Simple Key"]
 
 
-class HKRQuickHints:
-    def __init__(self, spoiler_text):
-        self.spoiler_text = spoiler_text
-        self.item_dict = None
-        self.loc_dreamers = None
-        self.loc_major_items = None
+class DreamerSpoiler:
+    def __init__(self, spoiler_txt):
+        self.spoiler_txt = spoiler_txt
 
         self.parse_spoiler_data()
-
-        self.dreamer_locs = self.find_collection(DREAMERS)
+        self.dreamer_locs = self.find_items(DREAMERS)
+        self.key_item_locs = self.find_items(KEY_ITEMS)
 
     def parse_spoiler_data(self):
-        ptrn_prog_items = "PROGRESSION ITEMS(.*?)ALL ITEMS"
-        item_data = re.findall(ptrn_prog_items, self.spoiler_text, re.DOTALL)[0]
-        item_data = re.sub(r"\(\d+\) ", "", item_data)
-        item_data = [d for d in item_data.split("\\r\\n") if d]
-        item_data = [d.split("<---at--->") for d in item_data]
+        pat_all_items = "ALL ITEMS.*"
 
-        self.item_dict = dict(item_data)
+        data_0 = re.sub(r"\r", "", self.spoiler_txt)
+        data_1 = re.findall(pat_all_items, data_0, re.DOTALL)[0]
+        data_1 = re.sub(r"\(\d+\) ", "", data_1).split("\n\n")[1:-3]
+        data_2 = [i.split(":\n") for i in data_1]
+        data_3 = {i[0]: i[1].split("\n") for i in data_2}
 
-    def find_collection(self, items):
-        """ Makes a dict of the location of `items`. """
-        item_dict = {}
-        for item in items:
-            item_loc = self.item_dict.get(item)
-            item_loc_na = item_loc if item_loc else "???"
-            item_dict[item] = item_loc_na
+        self.data_dict = {}
+        for k, v in data_3.items():
+            for vv in v:
+                if self.data_dict.get(vv.split("<---at--->")[0]):
+                    pass  # TODO: what to do with dupes?
+                else:
+                    self.data_dict[vv.split("<---at--->")[0]] = k
 
-        return item_dict
+    def find_items(self, item_list):
+        list_of_locs = [
+            {"item": item, "location": self.data_dict.get(item, "???")}
+            for item in item_list
+        ]
 
+        return list_of_locs

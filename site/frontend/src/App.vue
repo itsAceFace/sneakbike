@@ -40,6 +40,28 @@
               </v-list-item>
             </v-list-group>
           </div>
+
+        <!-- HKR Resources -->
+          <div class="sidebar-list">
+            <v-list-group no-action>
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>Hollow Knight Rando</v-list-item-title>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item
+                v-for="(item, index) in hollowKnightRandoPages"
+                :key="`${item['name']}-${index}`"
+                :to="item.route"
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.name" />
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </div>
+
         </v-list>
       </v-navigation-drawer>
     </div>
@@ -67,6 +89,10 @@ const resourcesPages = [
   { name: "Nightbot Command Updates", route: "/nightbot" },
 ];
 
+const hollowKnightRandoPages = [
+{name: "QuickMode Spoiler Tool", route: "/hkr/dream-catcher"
+}]
+
 import ToolbarIcons from "@/components/ToolbarIcons.vue";
 import SidebarList from "@/components/SidebarList.vue";
 
@@ -80,6 +106,7 @@ export default {
       infoPages,
       setupPages,
       resourcesPages,
+      hollowKnightRandoPages
     };
   },
 };

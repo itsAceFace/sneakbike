@@ -1,10 +1,12 @@
 from typing import Optional, List
+import json
 
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel  # pylint: disable=no-name-in-module
 
-from hkr_quick_hints import HKRQuickHints
+from hkr_quick_hints import DreamerSpoiler
 
 app = FastAPI()
 
@@ -17,22 +19,16 @@ app.add_middleware(
 )
 
 
+class HKRSpoilerUpload(BaseModel):
+    files: str
+
+
 @app.post("/hkr/uploadspoiler/")
-async def hkr_upload_spoiler(files: List[UploadFile] = File(...)):
-    spoiler_log = str(await files[0].read())
-    dreamer_locs = HKRQuickHints(spoiler_log).dreamer_locs
+async def hkr_upload_spoiler(data: HKRSpoilerUpload):
+    ds = DreamerSpoiler(data.files)
 
-    return {"data": dreamer_locs}
+    dreamer_locs = ds.dreamer_locs
+    key_item_locs = ds.key_item_locs
 
+    return {"dreamers": dreamer_locs, "key_items": key_item_locs}
 
-# @app.get("/")
-# async def main():
-#     content = """
-# <body>
-# <form action="/hkr/uploadspoiler/" enctype="multipart/form-data" method="post">
-# <input name="files" type="file">
-# <input type="submit">
-# </form>
-# </body>
-#     """
-#     return HTMLResponse(content=content)
