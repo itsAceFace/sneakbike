@@ -73,8 +73,9 @@ export default {
       };
     },
     parseWithAPI() {
+    console.log(`${process.env.VUE_APP_API_LOCATION}`)
       axios
-        .post("http://localhost:8000/hkr/uploadspoiler/", {
+        .post(`${process.env.VUE_APP_API_LOCATION}/hkr/uploadspoiler/`, {
           files: this.spoiler_txt,
         })
         .then((response) => {
