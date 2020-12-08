@@ -32,19 +32,20 @@
             hide-default-footer
             disable-pagination
             item-key="item"
+            show-select
             :headers="tableHeaders"
             :items="spoilersList"
             :mobile-breakpoint="200"
             class="elevation-1"
           >
-            <template v-slot:body>
+            <!-- <template v-slot:body>
               <tbody>
-                <tr :class="selectedRows.includes(k) ? 'selected-row' : ''" @click="rowSelect(k)" v-for="(v, k) in spoilersList" :key="v.item">
+                <tr :class="selectedRows.includes(v.item) ? 'selected-row' : ''" @click="rowSelect(v)" v-for="v in spoilersList" :key="v.item">
                   <td>{{ v.item }}</td>
                   <td>{{ v.location }}</td>
                 </tr>
               </tbody>
-            </template>
+            </template> -->
           </v-data-table>
         </div>
       </v-col>
@@ -109,14 +110,14 @@ export default {
           console.log(error);
         });
     },
-    rowSelect(idx) {
-      const index = this.selectedRows.indexOf(idx);
-      if (index > -1) {
-        this.selectedRows.splice(index, 1);
-      } else {
-        this.selectedRows.push(idx);
-      }
-    }
+    // rowSelect(item) {
+    //   const index = this.selectedRows.indexOf(item);
+    //   if (index > -1) {
+    //     this.selectedRows.splice(index, 1);
+    //   } else {
+    //     this.selectedRows.push(item);
+    //   }
+    // }
   },
 
 
