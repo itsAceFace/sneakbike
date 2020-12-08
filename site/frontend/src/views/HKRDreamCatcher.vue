@@ -73,7 +73,7 @@ export default {
       };
     },
     parseWithAPI() {
-    console.log(`${process.env.VUE_APP_API_LOCATION}`)
+    console.log(`${process.env.VUE_APP_API_LOCATION}/hkr/uploadspoiler/`)
       axios
         .post(`${process.env.VUE_APP_API_LOCATION}/hkr/uploadspoiler/`, {
           files: this.spoiler_txt,
