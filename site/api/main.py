@@ -23,7 +23,7 @@ class HKRSpoilerUpload(BaseModel):
     files: str
 
 
-@app.post("/hkr/uploadspoiler/")
+@app.post("/api/hkr/uploadspoiler/")
 async def hkr_upload_spoiler(data: HKRSpoilerUpload):
     ds = DreamerSpoiler(data.files)
 
