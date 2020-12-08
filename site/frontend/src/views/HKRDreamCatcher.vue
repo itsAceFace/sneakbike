@@ -2,8 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12" sm="8" offset-sm="2">
-        
-        <div v-if="Object.keys(spoilers).length === 0">
+        <div v-if="!spoilerRetrieved">
           <v-file-input
             truncate-length="120"
             accept=".txt"
@@ -14,27 +13,39 @@
         </div>
 
         <div v-else>
-          <v-card>
-            <v-card-title>
-              <v-text-field
-                v-model="search"
-                append-icon="mdi-magnify"
-                label="Search"
-                single-line
-                hide-details
+          <v-row>
+            <v-col>
+              <v-switch
+                v-model="switchDreamers"
+                :label="'Dreamers?'"
               />
-            </v-card-title>
-            <v-data-table
-              dense
-              :headers="tableHeaders"
-              :items="spoilers"
-              item-key="spoiler"
-              hide-default-footer
-              :items-per-page="1000"
-              :mobile-breakpoint="200"
-              class="elevation-1"
-            />
-          </v-card>
+              <v-switch
+                v-model="switchKeyItems"
+                :label="'Major Items?'"
+              />
+            </v-col>
+            <v-col></v-col>
+          </v-row>
+
+          <v-data-table
+            dense
+            hide-default-footer
+            disable-pagination
+            item-key="item"
+            :headers="tableHeaders"
+            :items="spoilersList"
+            :mobile-breakpoint="200"
+            class="elevation-1"
+          >
+            <template v-slot:body>
+              <tbody>
+                <tr :class="selectedRows.includes(k) ? 'selected-row' : ''" @click="rowSelect(k)" v-for="(v, k) in spoilersList" :key="v.item">
+                  <td>{{ v.item }}</td>
+                  <td>{{ v.location }}</td>
+                </tr>
+              </tbody>
+            </template>
+          </v-data-table>
         </div>
       </v-col>
     </v-row>
@@ -49,15 +60,27 @@ export default {
   data: function () {
     return {
       spoiler_txt: "",
+      spoilerRetrieved: false,
       dreamers: "",
       keyItems: "",
       tableHeaders: [{text: 'Item', align: 'start', sortable: true, value: 'item'}, {text: 'Location', align: 'start', sortable: true, value: 'location'}],
-      search: ""
+      search: "",
+      selectedRows: [],
+      switchDreamers: true,
+      switchKeyItems: false
     };
   },
   computed: {
-    spoilers() {
-      return this.dreamers.concat(this.keyItems);
+    spoilersList() {
+      var arraysToConcat = []
+      if (this.switchDreamers) {
+        arraysToConcat.push(this.dreamers)
+      }
+      if (this.switchKeyItems) {
+        arraysToConcat.push(this.keyItems)
+      }
+      console.log(arraysToConcat)
+      return [].concat(...arraysToConcat)
     },
   },
   methods: {
@@ -73,7 +96,6 @@ export default {
       };
     },
     parseWithAPI() {
-    console.log(`${process.env.VUE_APP_API_LOCATION}/hkr/uploadspoiler/`)
       axios
         .post(`${process.env.VUE_APP_API_LOCATION}/hkr/uploadspoiler/`, {
           files: this.spoiler_txt,
@@ -82,11 +104,45 @@ export default {
           const resp = response["data"];
           this.dreamers = resp.dreamers;
           this.keyItems = resp.key_items;
+          console.log(this.dreamers)
+          this.spoilerRetrieved = true
         })
         .catch(function (error) {
           console.log(error);
         });
     },
+    rowSelect(idx) {
+      const index = this.selectedRows.indexOf(idx);
+      if (index > -1) {
+        this.selectedRows.splice(index, 1);
+      } else {
+        this.selectedRows.push(idx);
+      }
+    }
   },
+
+
 };
 </script>
+
+<style>
+.selected-row {
+  background-color: #444444;
+  color: #999999;
+}
+
+.selected-row:hover {
+  background-color: #404040 !important;
+  color: #999999;
+}
+
+th.text-start {
+  background-color: #9cccff !important;
+}
+.v-input--selection-controls {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+
+</style>

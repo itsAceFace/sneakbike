@@ -1,6 +1,5 @@
-FROM node:latest as build-stage
+FROM node:latest
+
 WORKDIR /app
-COPY package.json ./
-RUN npm install
-COPY ./ .
+# RUN npm install -g @vue/cli @vue/cli-service-global
 CMD ["npm", "run", "serve"]
