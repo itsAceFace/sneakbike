@@ -79,7 +79,6 @@ export default {
       if (this.switchKeyItems) {
         arraysToConcat.push(this.keyItems)
       }
-      console.log(arraysToConcat)
       return [].concat(...arraysToConcat)
     },
   },
@@ -104,7 +103,6 @@ export default {
           const resp = response["data"];
           this.dreamers = resp.dreamers;
           this.keyItems = resp.key_items;
-          console.log(this.dreamers)
           this.spoilerRetrieved = true
         })
         .catch(function (error) {
