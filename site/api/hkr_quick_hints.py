@@ -12,6 +12,7 @@ KEY_ITEMS = [
     "Shade Cloak",
     "Abyss Shriek",
     "Vengeful Spirit",
+    "Mothwing Cloak",
 ]
 KEYS = ["Simple Key"]
 
