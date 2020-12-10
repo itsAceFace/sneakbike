@@ -1,55 +1,86 @@
 <template>
   <div>
-    <v-row>
-      <v-col cols="12" sm="8" offset-sm="2">
-        <div v-if="!spoilerRetrieved">
+    <div v-if="!spoilerRetrieved">
+      <row>
+        <v-col cols="12" sm="8" offset-sm="2">
+          <h2>Hollow Knight Randomizer "Quick Seed" Tool</h2>
+          <p>This tool allows for a "quick play" seed by showing the location of important items and abilities. You may customize what is shown below with "Show Item Options".</p>
+
+          <p>
+            <b>Upload your Hollow Knight Randomizer Spoiler below. This is usually located (on Windows) at:</b>
+          </p>
+
+          <p>
+            <code>C:\Users\yourname\AppData\LocalLow\Team Cherry\Hollow Knight\RandomizerSpoilerLog.txt</code>
+          </p>
+        </v-col>
+      </row>
+
+      <v-row>
+        <v-col cols="12" sm="8" offset-sm="2">
+          <!-- TODO: DRY HERE -->
+          <v-expansion-panels>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
+                <v-switch v-model="showBasicAbilities" :label="'Show Basic Abilities?'" />
+                <v-switch v-model="showAdvancedAbilities" :label="'Show Advanced Abilities?'" />
+                <v-switch v-model="showStandardItems" :label="'Show Standard Items?'" />
+                <v-switch v-model="showOtherKeys" :label="'Show Other Keys?'" />
+                <v-switch v-model="showPaleOre" :label="'Pale Ore?'" />
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col cols="6" offset-sm="2">
           <v-file-input
             truncate-length="120"
             accept=".txt"
             label="File input"
             @change="onFileChange"
           />
+        </v-col>
+        <v-col cols="2">
           <v-btn v-if="spoiler_txt" @click="parseWithAPI">Submit</v-btn>
-        </div>
+        </v-col>
+      </v-row>
+    </div>
 
-        <div v-else>
-          <v-row>
-            <v-col>
-              <v-switch
-                v-model="switchDreamers"
-                :label="'Dreamers?'"
-              />
-              <v-switch
-                v-model="switchKeyItems"
-                :label="'Major Items?'"
-              />
-            </v-col>
-            <v-col></v-col>
-          </v-row>
+    <div v-else>
+      <v-row>
+        <v-col>
+          <v-expansion-panels>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
+                <v-switch v-model="showBasicAbilities" :label="'Show Basic Abilities?'" />
+                <v-switch v-model="showAdvancedAbilities" :label="'Show Advanced Abilities?'" />
+                <v-switch v-model="showStandardItems" :label="'Show Standard Items?'" />
+                <v-switch v-model="showOtherKeys" :label="'Show Other Keys?'" />
+                <v-switch v-model="showPaleOre" :label="'Pale Ore?'" />
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-col>
+      </v-row>
 
-          <v-data-table
-            dense
-            hide-default-footer
-            disable-pagination
-            item-key="item"
-            show-select
-            :headers="tableHeaders"
-            :items="spoilersList"
-            :mobile-breakpoint="200"
-            class="elevation-1"
-          >
-            <!-- <template v-slot:body>
-              <tbody>
-                <tr :class="selectedRows.includes(v.item) ? 'selected-row' : ''" @click="rowSelect(v)" v-for="v in spoilersList" :key="v.item">
-                  <td>{{ v.item }}</td>
-                  <td>{{ v.location }}</td>
-                </tr>
-              </tbody>
-            </template> -->
-          </v-data-table>
-        </div>
-      </v-col>
-    </v-row>
+      <v-data-table
+        dense
+        hide-default-footer
+        disable-pagination
+        item-key="item"
+        show-select
+        :headers="tableHeaders"
+        :items="spoilersList"
+        :mobile-breakpoint="200"
+        class="elevation-1"
+      />
+    </div>
   </div>
 </template>
 
@@ -62,25 +93,49 @@ export default {
     return {
       spoiler_txt: "",
       spoilerRetrieved: false,
-      dreamers: "",
-      keyItems: "",
-      tableHeaders: [{text: 'Item', align: 'start', sortable: true, value: 'item'}, {text: 'Location', align: 'start', sortable: true, value: 'location'}],
-      search: "",
+      locsDreamers: () => [],
+      locsBasicAbilities: () => [],
+      locsAdvancedAbilities: () => [],
+      locsStandardItems: () => [],
+      locsOtherKeys: () => [],
+      locsPaleOre: () => [],
+      showDreamers: true,
+      showBasicAbilities: true,
+      showAdvancedAbilities: false,
+      showStandardItems: false,
+      showOtherKeys: false,
+      showPaleOre: false,
+      tableHeaders: [
+        { text: "Item", align: "start", sortable: true, value: "item" },
+        { text: "Location", align: "start", sortable: true, value: "location" },
+      ],
       selectedRows: [],
-      switchDreamers: true,
-      switchKeyItems: false
     };
   },
   computed: {
     spoilersList() {
-      var arraysToConcat = []
-      if (this.switchDreamers) {
-        arraysToConcat.push(this.dreamers)
+      var arraysToConcat = [];
+
+      if (this.showDreamers) {
+        arraysToConcat.push(this.locsDreamers);
       }
-      if (this.switchKeyItems) {
-        arraysToConcat.push(this.keyItems)
+      if (this.showBasicAbilities) {
+        arraysToConcat.push(this.locsBasicAbilities);
       }
-      return [].concat(...arraysToConcat)
+      if (this.showAdvancedAbilities) {
+        arraysToConcat.push(this.locsAdvancedAbilities);
+      }
+      if (this.showStandardItems) {
+        arraysToConcat.push(this.locsStandardItems);
+      }
+      if (this.showOtherKeys) {
+        arraysToConcat.push(this.locsOtherKeys);
+      }
+      if (this.showPaleOre) {
+        arraysToConcat.push(this.locsPaleOre);
+      }
+
+      return [].concat(...arraysToConcat);
     },
   },
   methods: {
@@ -102,46 +157,29 @@ export default {
         })
         .then((response) => {
           const resp = response["data"];
-          this.dreamers = resp.dreamers;
-          this.keyItems = resp.key_items;
-          this.spoilerRetrieved = true
+          this.locsDreamers = resp.dreamers;
+          this.locsBasicAbilities = resp.basic_abilities;
+          this.locsAdvancedAbilities = resp.advanced_abilities;
+          this.locsStandardItems = resp.standard_items;
+          this.locsOtherKeys = resp.other_keys;
+          this.locsPaleOre = resp.pale_ore;
+
+          this.spoilerRetrieved = true;
         })
         .catch(function (error) {
           console.log(error);
         });
     },
-    // rowSelect(item) {
-    //   const index = this.selectedRows.indexOf(item);
-    //   if (index > -1) {
-    //     this.selectedRows.splice(index, 1);
-    //   } else {
-    //     this.selectedRows.push(item);
-    //   }
-    // }
   },
-
-
 };
 </script>
 
 <style>
-.selected-row {
-  background-color: #444444;
-  color: #999999;
-}
-
-.selected-row:hover {
-  background-color: #404040 !important;
-  color: #999999;
-}
-
 th.text-start {
   background-color: #9cccff !important;
 }
 .v-input--selection-controls {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
-
-
 </style>

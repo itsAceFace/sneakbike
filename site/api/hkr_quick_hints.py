@@ -1,29 +1,66 @@
 import re
 
 DREAMERS = ["Herrah", "Monomon", "Lurien", "Dreamer"]
-KEY_ITEMS = [
+
+BASIC_ABILITIES = [
+    "Vengeful Spirit",
+    "Desolate Dive",
     "Isma's Tear",
-    "Descending Dark",
-    "Monarch Wings",
+    "Mothwing Cloak",
     "Crystal Heart",
+    "Mantis Claw",
+    "Dream Nail",
+    "Monarch Wings",
+]
+ADVANCED_ABILITIES = [
+    "Abyss Shriek",
     "Shade Soul",
     "Howling Wraiths",
-    "Mantis Claw",
     "Shade Cloak",
-    "Abyss Shriek",
-    "Vengeful Spirit",
-    "Mothwing Cloak",
+    "Awoken Dream Nail",
+    "Great Slash",
+    "Descending Dark",
 ]
-KEYS = ["Simple Key"]
+
+STANDARD_ITEMS = [
+    "Lumafly Lantern",
+    "Simple Key-Sly",
+    "Simple Key-Lurker",
+    "Simple Key-Basin",
+    "Simple Key-City",
+    "Grimmchild",
+]
+
+OTHER_KEYS = [
+    "Elegant Key",
+    "King's Brand",
+    "Shopkeeper's Key",
+    "City Crest",
+    "Tram Pass",
+    "Love Key",
+]
+
+PALE_ORE = [
+    "Pale Ore-Seer",
+    "Pale Ore-Colosseum",
+    "Pale Ore-Nosk",
+    "Pale Ore-Grubs",
+    "Pale Ore-Basin",
+    "Pale Ore-Crystal Peak",
+]
 
 
 class DreamerSpoiler:
     def __init__(self, spoiler_txt):
         self.spoiler_txt = spoiler_txt
-
         self.parse_spoiler_data()
-        self.dreamer_locs = self.find_items(DREAMERS)
-        self.key_item_locs = self.find_items(KEY_ITEMS)
+
+        self.dreamers = self.find_items(DREAMERS)
+        self.basic_abilities = self.find_items(BASIC_ABILITIES)
+        self.advanced_abilities = self.find_items(ADVANCED_ABILITIES)
+        self.standard_items = self.find_items(STANDARD_ITEMS)
+        self.other_keys = self.find_items(OTHER_KEYS)
+        self.pale_ore = self.find_items(PALE_ORE)
 
     def parse_spoiler_data(self):
         pat_all_items = "ALL ITEMS.*"
@@ -37,15 +74,28 @@ class DreamerSpoiler:
         self.data_dict = {}
         for k, v in data_3.items():
             for vv in v:
-                if self.data_dict.get(vv.split("<---at--->")[0]):
-                    pass  # TODO: what to do with dupes?
+                item = self.data_dict.get(vv.split("<---at--->")[0])
+                if item is not None:
+                    if item.count("_") == 0:
+                        # if it has no suffix add a _1 to the end.
+                        item_w_new_suffix = f"{item}_1"
+                        self.data_dict[item_w_new_suffix] = k
+                    else:
+                        # If the item is already has a suffix, incredment it by 1.
+                        item_parts = item.split("_")
+                        item_w_new_suffix = (
+                            f"{item_parts[0]}_{str(int(item_parts[1]) + 1)}"
+                        )
+                        self.data_dict[item_w_new_suffix] = k
+
                 else:
                     self.data_dict[vv.split("<---at--->")[0]] = k
 
     def find_items(self, item_list):
         list_of_locs = [
-            {"item": item, "location": self.data_dict.get(item, "???")}
+            {"item": item, "location": self.data_dict.get(item)}
             for item in item_list
+            if self.data_dict.get(item) is not None
         ]
 
         return list_of_locs

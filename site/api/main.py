@@ -27,8 +27,14 @@ class HKRSpoilerUpload(BaseModel):
 async def hkr_upload_spoiler(data: HKRSpoilerUpload):
     ds = DreamerSpoiler(data.files)
 
-    dreamer_locs = ds.dreamer_locs
-    key_item_locs = ds.key_item_locs
+    payload = {
+        "dreamers": ds.dreamers,
+        "basic_abilities": ds.basic_abilities,
+        "advanced_abilities": ds.advanced_abilities,
+        "standard_items": ds.standard_items,
+        "other_keys": ds.other_keys,
+        "pale_ore": ds.pale_ore,
+    }
 
-    return {"dreamers": dreamer_locs, "key_items": key_item_locs}
+    return payload
 
