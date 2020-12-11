@@ -59,21 +59,69 @@ ALL_ITEMS = (
     + PALE_ORE
 )
 
+LOCATIONS_GENERAL_DICT = {
+    "Abyss": "Abyss",
+    "Ancestral Mound": "Forgotten Crossroads",
+    "Ancient Basin": "Ancient Basin",
+    "Beast's Den": "Deepnest",
+    "Black Egg Temple": "Forgotten Crossroads",
+    "Blue Lake": "Resting Grounds",
+    "Cast Off Shell": "Kingdom's Edge",
+    "City of Tears": "City of Tears",
+    "Colosseum": "Kingdom's Edge",
+    "Crystal Peak": "Crystal Peak",
+    "Crystallized Mound": "Crystal Peak",
+    "Deepnest": "Deepnest",
+    "Dirtmouth": "Dirtmouth",
+    "Distant Village": "Deepnest",
+    "Failed Tramway": "Deepnest",
+    "Fog Canyon": "Fog Canyon",
+    "Forgotten Crossroads": "Forgotten Crossroads",
+    "Fungal Core": "Fungal Wastes",
+    "Fungal Wastes": "Fungal Wastes",
+    "Greenpath": "Greenpath",
+    "Hallownest's Crown": "Crystal Peak",
+    "Hive": "Hive",
+    "Howling Cliffs": "Howling Cliffs",
+    "Iselda": "Forgotten Crossroads",
+    "Isma's Grove": "Royal Waterways",
+    "Junk Pit": "Royal Waterways",
+    "King's Pass": "Dirtmouth",
+    "King's Station": "City of Tears",
+    "Kingdom's Edge": "Kingdom's Edge",
+    "Lake of Unn": "Greenpath",
+    "Leg Eater": "Fungal Wastes",
+    "Mantis Village": "Fungal Wastes",
+    "Overgrown Mound": "Fog Canyon",
+    "Palace Grounds": "Ancient Basin",
+    "Pleasure House": "City of Tears",
+    "Queen's Gardens": "Queen's Gardens",
+    "Queen's Station": "Fungal Wastes",
+    "Resting Grounds": "Resting Grounds",
+    "Royal Waterways": "Royal Waterways",
+    "Salubra": "Forgotten Crossroads",
+    "Sly (Key)": "Dirtmouth",
+    "Sly": "Dirtmouth",
+    "Soul Sanctum": "City of Tears",
+    "Spirit's Glade": "Resting Grounds",
+    "Stag Nest": "Howling Cliffs",
+    "Stone Sanctuary": "Greenpath",
+    "Teacher's Archives": "Fog Canyon",
+    "Tower of Love": "City of Tears",
+    "Weaver's Den": "Deepnest",
+}
+
 
 class DreamerSpoiler:
     def __init__(self, spoiler_txt):
         self.spoiler_txt = spoiler_txt
         self.parse_spoiler_data()
 
-        self.dreamers = self.find_items(DREAMERS)
-        self.basic_abilities = self.find_items(BASIC_ABILITIES)
-        self.advanced_abilities = self.find_items(ADVANCED_ABILITIES)
-        self.standard_items = self.find_items(STANDARD_ITEMS)
-        self.other_keys = self.find_items(OTHER_KEYS)
-        self.pale_ore = self.find_items(PALE_ORE)
-
         self.all_items = self.find_items(ALL_ITEMS)
         self.all_items_gb_loc = self.groupby_location(self.all_items)
+        self.all_items_gb_general_loc = self.groupby_location(
+            self.all_items, generalize=True
+        )
 
     def parse_spoiler_data(self):
         pat_all_items = "ALL ITEMS.*"
@@ -113,11 +161,16 @@ class DreamerSpoiler:
 
         return list_of_locs
 
-    def groupby_location(self, item_list):
+    def groupby_location(self, item_list, generalize=False):
         loc_dict = defaultdict(list)
 
         for item in item_list:
-            loc_dict[item["location"]].append(item["item"])
+            if generalize:
+                item_loc = LOCATIONS_GENERAL_DICT[item["location"]]
+            else:
+                item_loc = item["location"]
+
+            loc_dict[item_loc].append(item["item"])
 
         return loc_dict
 

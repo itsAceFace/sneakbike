@@ -28,13 +28,8 @@ async def hkr_upload_spoiler(data: HKRSpoilerUpload):
     ds = DreamerSpoiler(data.files)
 
     payload = {
-        "dreamers": ds.dreamers,
-        "basic_abilities": ds.basic_abilities,
-        "advanced_abilities": ds.advanced_abilities,
-        "standard_items": ds.standard_items,
-        "other_keys": ds.other_keys,
-        "pale_ore": ds.pale_ore,
         "all_items_gb_loc": ds.all_items_gb_loc,
+        "all_items_gb_general_loc": ds.all_items_gb_general_loc,
     }
 
     return payload

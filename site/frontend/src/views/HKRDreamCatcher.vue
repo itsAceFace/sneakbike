@@ -31,26 +31,32 @@
         </v-col>
       </v-row>
     </div>
-
+    <div>
+      <v-row>
+        <v-col cols="12" sm="8" offset-sm="2">
+          <v-expansion-panels>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
+                <v-switch v-model="showBasicAbilities" :label="'Show Basic Abilities?'" />
+                <v-switch v-model="showAdvancedAbilities" :label="'Show Advanced Abilities?'" />
+                <v-switch v-model="showStandardItems" :label="'Show Standard Items?'" />
+                <v-switch v-model="showOtherKeys" :label="'Show Other Keys?'" />
+                <v-switch v-model="showPaleOre" :label="'Pale Ore?'" />
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-col>
+      </v-row>
+    </div>
     <div v-if="spoilerRetrieved">
       <v-col cols="12" sm="8" offset-sm="2">
-        <table>
-          <tr v-for="(itemList, loc, idx) in locationsOfItems" :key="`${loc}-${idx}`">
-            <th>{{ loc }}</th>
-            <td>
-              <v-card class="d-flex flex-wrap item-wrapper" flat tile>
-                <div v-for="(item, jdx) in itemList" :key="`${item}-${idx}-${jdx}`">
-                  <tracker-image
-                    :src="`assets/hollow_knight/${mapItemToBaseItem(parseImageName(item))}.png`"
-                    :alt="`${item}`"
-                    :height="48"
-                    :width="48"
-                  />
-                </div>
-              </v-card>
-            </td>
-          </tr>
-        </table>
+        <HKRItemTable
+          :locationOfItems="locationOfItems"
+          :itemsToShow="itemsToShow"
+          :locationsToShow="locationsToShow"
+        />
       </v-col>
     </div>
   </div>
@@ -59,27 +65,110 @@
 
 <script>
 import axios from "axios";
-import TrackerImage from "@/components/TrackerImage.vue";
+import { intersection } from "lodash";
+import HKRItemTable from "@/components/HKRItemTable.vue";
 
-// TODO: Maybe we can trim these item names and map them to the item picture.
+const arrayDreamers = ["Herrah", "Monomon", "Lurien", "Dreamer"];
+const arrayBasicAbilities = [
+  "Vengeful_Spirit",
+  "Desolate_Dive",
+  "Ismas_Tear",
+  "Mothwing_Cloak",
+  "Crystal_Heart",
+  "Mantis_Claw",
+  "Dream_Nail",
+  "Monarch_Wings",
+];
+const arrayAdvancedAbilities = [
+  "Abyss_Shriek",
+  "Shade_Soul",
+  "Howling_Wraiths",
+  "Shade_Cloak",
+  "Dream_Gate",
+  "Awoken_Dream_Nail",
+  "Great_Slash",
+  "Descending_Dark",
+];
+const arrayStandardItems = ["Lumafly_Lantern", "Simple_Key", "Grimmchild"];
+const arrayOtherKeys = [
+  "Elegant_Key",
+  "Kings_Brand",
+  "Shopkeepers Key",
+  "City_Crest",
+  "Tram_Pass",
+  "Love_Key",
+];
+const arrayPaleOre = ["Pale_Ore"];
+
 const itemToImageMapping = {
   Mothwing_Cloak: "Shade_Cloak",
   Shade_Soul: "Vengeful_Spirit",
   Descending_Dark: "Desolate_Dive",
   Abyss_Shriek: "Howling_Wraiths",
+  Awoken_Dream_Nail: "Dream_Nail",
+  Dream_Gate: "Dream_Gate",
 };
 
 export default {
   name: "HKRDreamCatcher",
-  components: { TrackerImage },
+  components: { HKRItemTable },
   data: function () {
     return {
       spoiler_txt: "",
       spoilerRetrieved: false,
-      locationsOfItems: () => {},
-      numLocations: 0,
+      showDreamers: true,
+      showBasicAbilities: true,
+      showAdvancedAbilities: false,
+      showStandardItems: false,
+      showOtherKeys: false,
+      showPaleOre: false,
+      locationOfItems: () => {},
+      arrayStandardItems,
+      arrayOtherKeys,
+      arrayPaleOre,
+      arrayDreamers,
+      arrayBasicAbilities,
+      arrayAdvancedAbilities,
       itemToImageMapping,
     };
+  },
+  computed: {
+    itemsToShow() {
+      var arraysToConcat = [];
+      if (this.showDreamers) {
+        arraysToConcat.push(this.arrayDreamers);
+      }
+      if (this.showBasicAbilities) {
+        arraysToConcat.push(this.arrayBasicAbilities);
+      }
+      if (this.showAdvancedAbilities) {
+        arraysToConcat.push(this.arrayAdvancedAbilities);
+      }
+      if (this.showStandardItems) {
+        arraysToConcat.push(this.arrayStandardItems);
+      }
+      if (this.showOtherKeys) {
+        arraysToConcat.push(this.arrayOtherKeys);
+      }
+      if (this.showPaleOre) {
+        arraysToConcat.push(this.arrayPaleOre);
+      }
+      return [].concat(...arraysToConcat);
+    },
+    locationsToShow() {
+      const locs = Object.keys(this.locationOfItems);
+      const locsToShow = [];
+
+      for (var idx = 0; idx < locs.length; idx++) {
+        let parsedItems = this.locationOfItems[locs[idx]].map((item) =>
+          this.mapItemToBaseItem(this.parseImageName(item))
+        );
+        if (intersection(this.itemsToShow, parsedItems).length > 0) {
+          locsToShow.push(locs[idx]);
+        }
+      }
+      return locsToShow;
+    },
   },
   methods: {
     onFileChange(file) {
@@ -100,9 +189,7 @@ export default {
         })
         .then((response) => {
           const resp = response["data"];
-          this.locationsOfItems = resp.all_items_gb_loc;
-          this.numLocations = Object.keys(this.locationsOfItems).length;
-          this.panel = [...Array(this.numLocations).keys()];
+          this.locationOfItems = resp.all_items_gb_general_loc;
 
           this.spoilerRetrieved = true;
         })
@@ -138,10 +225,6 @@ th.text-start {
 
 .v-expansion-panel--active > .v-expansion-panel-header {
   min-height: 0 !important;
-}
-
-.v-expansion-panel-content__wrap {
-  padding: 0 !important;
 }
 
 td,
