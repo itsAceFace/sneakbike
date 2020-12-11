@@ -1,4 +1,5 @@
 import re
+from collections import defaultdict
 
 DREAMERS = ["Herrah", "Monomon", "Lurien", "Dreamer"]
 
@@ -49,6 +50,15 @@ PALE_ORE = [
     "Pale Ore-Crystal Peak",
 ]
 
+ALL_ITEMS = (
+    DREAMERS
+    + BASIC_ABILITIES
+    + ADVANCED_ABILITIES
+    + STANDARD_ITEMS
+    + OTHER_KEYS
+    + PALE_ORE
+)
+
 
 class DreamerSpoiler:
     def __init__(self, spoiler_txt):
@@ -61,6 +71,9 @@ class DreamerSpoiler:
         self.standard_items = self.find_items(STANDARD_ITEMS)
         self.other_keys = self.find_items(OTHER_KEYS)
         self.pale_ore = self.find_items(PALE_ORE)
+
+        self.all_items = self.find_items(ALL_ITEMS)
+        self.all_items_gb_loc = self.groupby_location(self.all_items)
 
     def parse_spoiler_data(self):
         pat_all_items = "ALL ITEMS.*"
@@ -99,3 +112,12 @@ class DreamerSpoiler:
         ]
 
         return list_of_locs
+
+    def groupby_location(self, item_list):
+        loc_dict = defaultdict(list)
+
+        for item in item_list:
+            loc_dict[item["location"]].append(item["item"])
+
+        return loc_dict
+

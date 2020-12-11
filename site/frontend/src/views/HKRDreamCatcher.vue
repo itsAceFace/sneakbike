@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!spoilerRetrieved">
-      <row>
+      <v-row>
         <v-col cols="12" sm="8" offset-sm="2">
           <h2>Hollow Knight Randomizer "Quick Seed" Tool</h2>
           <p>This tool allows for a "quick play" seed by showing the location of important items and abilities. You may customize what is shown below with "Show Item Options".</p>
@@ -14,27 +14,9 @@
             <code>C:\Users\yourname\AppData\LocalLow\Team Cherry\Hollow Knight\RandomizerSpoilerLog.txt</code>
           </p>
         </v-col>
-      </row>
-
-      <v-row>
-        <v-col cols="12" sm="8" offset-sm="2">
-          <!-- TODO: DRY HERE -->
-          <v-expansion-panels>
-            <v-expansion-panel>
-              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
-                <v-switch v-model="showBasicAbilities" :label="'Show Basic Abilities?'" />
-                <v-switch v-model="showAdvancedAbilities" :label="'Show Advanced Abilities?'" />
-                <v-switch v-model="showStandardItems" :label="'Show Standard Items?'" />
-                <v-switch v-model="showOtherKeys" :label="'Show Other Keys?'" />
-                <v-switch v-model="showPaleOre" :label="'Pale Ore?'" />
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-col>
       </v-row>
-
+    </div>
+    <div>
       <v-row>
         <v-col cols="6" offset-sm="2">
           <v-file-input
@@ -45,98 +27,59 @@
           />
         </v-col>
         <v-col cols="2">
-          <v-btn v-if="spoiler_txt" @click="parseWithAPI">Submit</v-btn>
+          <v-btn :disabled="spoiler_txt.length === 0" @click="parseWithAPI">Submit</v-btn>
         </v-col>
       </v-row>
     </div>
 
-    <div v-else>
-      <v-row>
-        <v-col>
-          <v-expansion-panels>
-            <v-expansion-panel>
-              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
-                <v-switch v-model="showBasicAbilities" :label="'Show Basic Abilities?'" />
-                <v-switch v-model="showAdvancedAbilities" :label="'Show Advanced Abilities?'" />
-                <v-switch v-model="showStandardItems" :label="'Show Standard Items?'" />
-                <v-switch v-model="showOtherKeys" :label="'Show Other Keys?'" />
-                <v-switch v-model="showPaleOre" :label="'Pale Ore?'" />
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-col>
-      </v-row>
-
-      <v-data-table
-        dense
-        hide-default-footer
-        disable-pagination
-        item-key="item"
-        show-select
-        :headers="tableHeaders"
-        :items="spoilersList"
-        :mobile-breakpoint="200"
-        class="elevation-1"
-      />
+    <div v-if="spoilerRetrieved">
+      <v-col cols="12" sm="8" offset-sm="2">
+        <table>
+          <tr v-for="(itemList, loc, idx) in locationsOfItems" :key="`${loc}-${idx}`">
+            <th>{{ loc }}</th>
+            <td>
+              <v-card class="d-flex flex-wrap item-wrapper" flat tile>
+                <div v-for="(item, jdx) in itemList" :key="`${item}-${idx}-${jdx}`">
+                  <tracker-image
+                    :src="`assets/hollow_knight/${mapItemToBaseItem(parseImageName(item))}.png`"
+                    :alt="`${item}`"
+                    :height="48"
+                    :width="48"
+                  />
+                </div>
+              </v-card>
+            </td>
+          </tr>
+        </table>
+      </v-col>
     </div>
   </div>
 </template>
 
+
 <script>
 import axios from "axios";
+import TrackerImage from "@/components/TrackerImage.vue";
+
+// TODO: Maybe we can trim these item names and map them to the item picture.
+const itemToImageMapping = {
+  Mothwing_Cloak: "Shade_Cloak",
+  Shade_Soul: "Vengeful_Spirit",
+  Descending_Dark: "Desolate_Dive",
+  Abyss_Shriek: "Howling_Wraiths",
+};
 
 export default {
   name: "HKRDreamCatcher",
+  components: { TrackerImage },
   data: function () {
     return {
       spoiler_txt: "",
       spoilerRetrieved: false,
-      locsDreamers: () => [],
-      locsBasicAbilities: () => [],
-      locsAdvancedAbilities: () => [],
-      locsStandardItems: () => [],
-      locsOtherKeys: () => [],
-      locsPaleOre: () => [],
-      showDreamers: true,
-      showBasicAbilities: true,
-      showAdvancedAbilities: false,
-      showStandardItems: false,
-      showOtherKeys: false,
-      showPaleOre: false,
-      tableHeaders: [
-        { text: "Item", align: "start", sortable: true, value: "item" },
-        { text: "Location", align: "start", sortable: true, value: "location" },
-      ],
-      selectedRows: [],
+      locationsOfItems: () => {},
+      numLocations: 0,
+      itemToImageMapping,
     };
-  },
-  computed: {
-    spoilersList() {
-      var arraysToConcat = [];
-
-      if (this.showDreamers) {
-        arraysToConcat.push(this.locsDreamers);
-      }
-      if (this.showBasicAbilities) {
-        arraysToConcat.push(this.locsBasicAbilities);
-      }
-      if (this.showAdvancedAbilities) {
-        arraysToConcat.push(this.locsAdvancedAbilities);
-      }
-      if (this.showStandardItems) {
-        arraysToConcat.push(this.locsStandardItems);
-      }
-      if (this.showOtherKeys) {
-        arraysToConcat.push(this.locsOtherKeys);
-      }
-      if (this.showPaleOre) {
-        arraysToConcat.push(this.locsPaleOre);
-      }
-
-      return [].concat(...arraysToConcat);
-    },
   },
   methods: {
     onFileChange(file) {
@@ -157,18 +100,28 @@ export default {
         })
         .then((response) => {
           const resp = response["data"];
-          this.locsDreamers = resp.dreamers;
-          this.locsBasicAbilities = resp.basic_abilities;
-          this.locsAdvancedAbilities = resp.advanced_abilities;
-          this.locsStandardItems = resp.standard_items;
-          this.locsOtherKeys = resp.other_keys;
-          this.locsPaleOre = resp.pale_ore;
+          this.locationsOfItems = resp.all_items_gb_loc;
+          this.numLocations = Object.keys(this.locationsOfItems).length;
+          this.panel = [...Array(this.numLocations).keys()];
 
           this.spoilerRetrieved = true;
         })
         .catch(function (error) {
           console.log(error);
         });
+    },
+    mapItemToBaseItem(itemName) {
+      if (Object.keys(itemToImageMapping).includes(itemName)) {
+        return itemToImageMapping[itemName];
+      } else {
+        return itemName;
+      }
+    },
+    parseImageName(itemName) {
+      itemName = itemName.replace(/['\\]/g, "");
+      itemName = itemName.replace(/ /g, "_");
+      itemName = itemName.replace(/-.*/g, "");
+      return itemName;
     },
   },
 };
@@ -181,5 +134,33 @@ th.text-start {
 .v-input--selection-controls {
   margin-top: 0 !important;
   padding-top: 0 !important;
+}
+
+.v-expansion-panel--active > .v-expansion-panel-header {
+  min-height: 0 !important;
+}
+
+.v-expansion-panel-content__wrap {
+  padding: 0 !important;
+}
+
+td,
+th {
+  border: 1px solid #ccc;
+  text-align: center;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+th {
+  background: rgb(227, 240, 255);
+  border-color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.item-wrapper {
+  margin-bottom: 0 !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  background: rgb(249, 249, 249) !important;
 }
 </style>
