@@ -6,7 +6,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel  # pylint: disable=no-name-in-module
 
-from hkr_quick_hints import DreamerSpoiler
+from hkr_quick_seed_tracker import DreamerSpoiler
 
 app = FastAPI()
 
@@ -28,8 +28,11 @@ async def hkr_upload_spoiler(data: HKRSpoilerUpload):
     ds = DreamerSpoiler(data.files)
 
     payload = {
-        "all_items_gb_loc": ds.all_items_gb_loc,
-        "all_items_gb_general_loc": ds.all_items_gb_general_loc,
+        "dreamers": ds.dreamers,
+        "main_abilities": ds.main_abilities,
+        "advanced_abilities": ds.advanced_abilities,
+        "useful_items": ds.useful_items,
+        "other_useful_items": ds.other_useful_items,
     }
 
     return payload

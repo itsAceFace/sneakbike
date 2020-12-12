@@ -1,15 +1,14 @@
 <template>
   <div class="hkr-item-table">
     <table>
-      <tr v-for="(itemList, loc, idx) in locationOfItems" :key="`${loc}-${idx}`">
-        <th v-if="locationsToShow.includes(loc)">{{ loc }}</th>
-        <td v-if="locationsToShow.includes(loc)">
+      <tr v-for="(itemList, loc, idx) in dataToShow" :key="`${loc}-${idx}`">
+        <th>{{ prettifyLocationName(loc) }}</th>
+        <td>
           <v-card class="d-flex flex-wrap item-wrapper" flat tile>
             <div v-for="(item, jdx) in itemList" :key="`${item}-${idx}-${jdx}`">
               <tracker-image
-                v-if="itemsToShow.includes(mapItemToBaseItem(parseImageName(item)))"
-                :src="`assets/hollow_knight/${mapItemToBaseItem(parseImageName(item))}.png`"
-                :alt="`${mapItemToBaseItem(parseImageName(item))}`"
+                :src="`assets/hollow_knight/${item}.png`"
+                :alt="`${item}`"
                 :width="48"
                 :height="48"
               />
@@ -24,44 +23,37 @@
 <script>
 import TrackerImage from "@/components/TrackerImage.vue";
 
-// Add dreamer nail stuff.
-// TODO: WE CANT HAVE TWO OF THESE IN THIS AND HKRDREAMERCATCHER
-// DRY THIS.
-const itemToImageMapping = {
-  Mothwing_Cloak: "Shade_Cloak",
-  Shade_Soul: "Vengeful_Spirit",
-  Descending_Dark: "Desolate_Dive",
-  Abyss_Shriek: "Howling_Wraiths",
-  Awoken_Dream_Nail: "Dream_Nail",
-  Dream_Gate: "Dream_Gate",
+const prettifyLocationMapping = {
+  Royal_Waterways: "Royal Waterways",
+  Howling_Cliffs: "Howling Cliffs",
+  Dirtmouth: "Dirtmouth",
+  Resting_Grounds: "Resting Grounds",
+  Kingdoms_Edge: "Kingdoms Edge",
+  City_of_Tears: "City of Tears",
+  Greenpath: "Greenpath",
+  Deepnest: "Deepnest",
+  Forgotten_Crossroads: "Forgotten Crossroads",
+  Fog_Canyon: "Fog Canyon",
+  Fungal_Wastes: "Fungal Wastes",
+  Ancient_Basin: "Ancient Basin",
+  Crystal_Peak: "Crystal Peak",
+  Queens_Gardens: "Queen's Gardens",
 };
 
 export default {
   name: "HKRItemTable",
-  data() {
-    return {
-      itemToImageMapping,
-    };
-  },
   props: {
-    locationOfItems: Object,
-    itemsToShow: Array,
-    locationsToShow: Array,
+    dataToShow: Object,
+  },
+  computed: {
+    locationsToShow() {
+      return Object.keys(this.dataToShow);
+    },
   },
   components: { TrackerImage },
   methods: {
-    mapItemToBaseItem(itemName) {
-      if (Object.keys(itemToImageMapping).includes(itemName)) {
-        return itemToImageMapping[itemName];
-      } else {
-        return itemName;
-      }
-    },
-    parseImageName(itemName) {
-      itemName = itemName.replace(/['\\]/g, "");
-      itemName = itemName.replace(/ /g, "_");
-      itemName = itemName.replace(/-.*/g, "");
-      return itemName;
+    prettifyLocationName(loc) {
+      return prettifyLocationMapping[loc];
     },
   },
 };

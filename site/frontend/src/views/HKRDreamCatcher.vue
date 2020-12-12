@@ -39,11 +39,10 @@
               <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
               <v-expansion-panel-content>
                 <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
-                <v-switch v-model="showBasicAbilities" :label="'Show Basic Abilities?'" />
+                <v-switch v-model="showMainAbilities" :label="'Show Main Abilities?'" />
                 <v-switch v-model="showAdvancedAbilities" :label="'Show Advanced Abilities?'" />
-                <v-switch v-model="showStandardItems" :label="'Show Standard Items?'" />
-                <v-switch v-model="showOtherKeys" :label="'Show Other Keys?'" />
-                <v-switch v-model="showPaleOre" :label="'Pale Ore?'" />
+                <v-switch v-model="showUsefulItems" :label="'Show Useful Items?'" />
+                <v-switch v-model="showOtherUsefulItems" :label="'Show Other Useful Items?'" />
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
@@ -52,62 +51,16 @@
     </div>
     <div v-if="spoilerRetrieved">
       <v-col cols="12" sm="8" offset-sm="2">
-        <HKRItemTable
-          :locationOfItems="locationOfItems"
-          :itemsToShow="itemsToShow"
-          :locationsToShow="locationsToShow"
-        />
+        <HKRItemTable :dataToShow="dataToShow" />
       </v-col>
     </div>
   </div>
 </template>
 
-
 <script>
 import axios from "axios";
-import { intersection } from "lodash";
+import { reduce } from "lodash";
 import HKRItemTable from "@/components/HKRItemTable.vue";
-
-const arrayDreamers = ["Herrah", "Monomon", "Lurien", "Dreamer"];
-const arrayBasicAbilities = [
-  "Vengeful_Spirit",
-  "Desolate_Dive",
-  "Ismas_Tear",
-  "Mothwing_Cloak",
-  "Crystal_Heart",
-  "Mantis_Claw",
-  "Dream_Nail",
-  "Monarch_Wings",
-];
-const arrayAdvancedAbilities = [
-  "Abyss_Shriek",
-  "Shade_Soul",
-  "Howling_Wraiths",
-  "Shade_Cloak",
-  "Dream_Gate",
-  "Awoken_Dream_Nail",
-  "Great_Slash",
-  "Descending_Dark",
-];
-const arrayStandardItems = ["Lumafly_Lantern", "Simple_Key", "Grimmchild"];
-const arrayOtherKeys = [
-  "Elegant_Key",
-  "Kings_Brand",
-  "Shopkeepers Key",
-  "City_Crest",
-  "Tram_Pass",
-  "Love_Key",
-];
-const arrayPaleOre = ["Pale_Ore"];
-
-const itemToImageMapping = {
-  Mothwing_Cloak: "Shade_Cloak",
-  Shade_Soul: "Vengeful_Spirit",
-  Descending_Dark: "Desolate_Dive",
-  Abyss_Shriek: "Howling_Wraiths",
-  Awoken_Dream_Nail: "Dream_Nail",
-  Dream_Gate: "Dream_Gate",
-};
 
 export default {
   name: "HKRDreamCatcher",
@@ -117,57 +70,50 @@ export default {
       spoiler_txt: "",
       spoilerRetrieved: false,
       showDreamers: true,
-      showBasicAbilities: true,
+      showMainAbilities: true,
       showAdvancedAbilities: false,
-      showStandardItems: false,
-      showOtherKeys: false,
-      showPaleOre: false,
-      locationOfItems: () => {},
-      arrayStandardItems,
-      arrayOtherKeys,
-      arrayPaleOre,
-      arrayDreamers,
-      arrayBasicAbilities,
-      arrayAdvancedAbilities,
-      itemToImageMapping,
+      showUsefulItems: false,
+      showOtherUsefulItems: false,
+      arrayDreamers: () => [],
+      arrayMainAbilities: () => [],
+      arrayAdvancedAbilities: () => [],
+      arrayUsefulItems: () => [],
+      arrayOtherUsefulItems: () => [],
     };
   },
   computed: {
-    itemsToShow() {
+    dataToShow() {
       var arraysToConcat = [];
       if (this.showDreamers) {
         arraysToConcat.push(this.arrayDreamers);
       }
-      if (this.showBasicAbilities) {
-        arraysToConcat.push(this.arrayBasicAbilities);
+      if (this.showMainAbilities) {
+        arraysToConcat.push(this.arrayMainAbilities);
       }
       if (this.showAdvancedAbilities) {
         arraysToConcat.push(this.arrayAdvancedAbilities);
       }
-      if (this.showStandardItems) {
-        arraysToConcat.push(this.arrayStandardItems);
+      if (this.showUsefulItems) {
+        arraysToConcat.push(this.arrayUsefulItems);
       }
-      if (this.showOtherKeys) {
-        arraysToConcat.push(this.arrayOtherKeys);
+      if (this.showOtherUsefulItems) {
+        arraysToConcat.push(this.arrayOtherUsefulItems);
       }
-      if (this.showPaleOre) {
-        arraysToConcat.push(this.arrayPaleOre);
-      }
-      return [].concat(...arraysToConcat);
-    },
-    locationsToShow() {
-      const locs = Object.keys(this.locationOfItems);
-      const locsToShow = [];
-
-      for (var idx = 0; idx < locs.length; idx++) {
-        let parsedItems = this.locationOfItems[locs[idx]].map((item) =>
-          this.mapItemToBaseItem(this.parseImageName(item))
-        );
-        if (intersection(this.itemsToShow, parsedItems).length > 0) {
-          locsToShow.push(locs[idx]);
-        }
-      }
-      return locsToShow;
+      const dataNotGrouped = [].concat(...arraysToConcat);
+      // const data = groupBy(dataNotGrouped, (s) => s[0]);
+      const data = reduce(
+        dataNotGrouped,
+        function (result, item) {
+          if (result[item[0]]) {
+            result[item[0]].push(item[1]);
+          } else {
+            result[item[0]] = [item[1]];
+          }
+          return result;
+        },
+        {}
+      );
+      return data;
     },
   },
   methods: {
@@ -189,26 +135,17 @@ export default {
         })
         .then((response) => {
           const resp = response["data"];
-          this.locationOfItems = resp.all_items_gb_general_loc;
+          this.arrayDreamers = resp["dreamers"];
+          this.arrayMainAbilities = resp["main_abilities"];
+          this.arrayAdvancedAbilities = resp["advanced_abilities"];
+          this.arrayUsefulItems = resp["useful_items"];
+          this.arrayOtherUsefulItems = resp["other_useful_items"];
 
           this.spoilerRetrieved = true;
         })
         .catch(function (error) {
           console.log(error);
         });
-    },
-    mapItemToBaseItem(itemName) {
-      if (Object.keys(itemToImageMapping).includes(itemName)) {
-        return itemToImageMapping[itemName];
-      } else {
-        return itemName;
-      }
-    },
-    parseImageName(itemName) {
-      itemName = itemName.replace(/['\\]/g, "");
-      itemName = itemName.replace(/ /g, "_");
-      itemName = itemName.replace(/-.*/g, "");
-      return itemName;
     },
   },
 };
@@ -234,7 +171,7 @@ th {
   border-color: rgba(0, 0, 0, 0.15);
 }
 th {
-  background: rgb(227, 240, 255);
+  background: #669ede;
   border-color: white;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -244,6 +181,6 @@ th {
   margin-bottom: 0 !important;
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
-  background: rgb(249, 249, 249) !important;
+  background: #5f5f5f !important;
 }
 </style>
