@@ -2,8 +2,6 @@ import re
 import typing
 from collections import defaultdict
 
-import pandas as pd
-
 from hkr_standardize_names import standardized_items, standardized_locations
 
 DREAMERS = set(["Herrah", "Monomon", "Lurien", "Dreamer"])
