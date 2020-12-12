@@ -7,6 +7,8 @@ all_items = [
     "Awoken Dream Nail",
     "City Crest",
     "Crystal Heart",
+    "Cyclone Slash",
+    "Dash Slash",
     "Descending Dark",
     "Desolate Dive",
     "Dream Gate",
