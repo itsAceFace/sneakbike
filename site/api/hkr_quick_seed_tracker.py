@@ -20,11 +20,6 @@ MAIN_ABILITIES = set(
         "Shade_Cloak",
         "Shade_Soul",
         "Vengeful_Spirit",
-    ]
-)
-
-ADVANCED_ABILITIES = set(
-    [
         "Abyss_Shriek",
         "Cyclone_Slash",
         "Dash_Slash",
@@ -34,10 +29,11 @@ ADVANCED_ABILITIES = set(
     ]
 )
 
-USEFUL_ITEMS = set(["Grimmchild", "Lumafly_Lantern", "Simple_Key"])
-
-OTHER_USEFUL_ITEMS = set(
+USEFUL_ITEMS = set(
     [
+        "Grimmchild",
+        "Lumafly_Lantern",
+        "Simple_Key",
         "City_Crest",
         "Elegant_Key",
         "Kings_Brand",
@@ -60,14 +56,8 @@ class DreamerSpoiler:
         self.main_abilities = self.restrict_items(
             self.data_standardized, restricted_set=MAIN_ABILITIES
         )
-        self.advanced_abilities = self.restrict_items(
-            self.data_standardized, restricted_set=ADVANCED_ABILITIES
-        )
         self.useful_items = self.restrict_items(
             self.data_standardized, restricted_set=USEFUL_ITEMS
-        )
-        self.other_useful_items = self.restrict_items(
-            self.data_standardized, restricted_set=OTHER_USEFUL_ITEMS
         )
 
     def parse_spoiler_data(self):

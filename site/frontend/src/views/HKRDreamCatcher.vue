@@ -15,8 +15,6 @@
           </p>
         </v-col>
       </v-row>
-    </div>
-    <div>
       <v-row>
         <v-col cols="6" offset-sm="2">
           <v-file-input
@@ -39,10 +37,8 @@
               <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
               <v-expansion-panel-content>
                 <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
-                <v-switch v-model="showMainAbilities" :label="'Show Main Abilities?'" />
-                <v-switch v-model="showAdvancedAbilities" :label="'Show Advanced Abilities?'" />
+                <v-switch v-model="showAbilities" :label="'Show Abilities?'" />
                 <v-switch v-model="showUsefulItems" :label="'Show Useful Items?'" />
-                <v-switch v-model="showOtherUsefulItems" :label="'Show Other Useful Items?'" />
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
@@ -59,7 +55,6 @@
 
 <script>
 import axios from "axios";
-import { reduce } from "lodash";
 import HKRItemTable from "@/components/HKRItemTable.vue";
 
 export default {
@@ -70,15 +65,11 @@ export default {
       spoiler_txt: "",
       spoilerRetrieved: false,
       showDreamers: true,
-      showMainAbilities: true,
-      showAdvancedAbilities: false,
+      showAbilities: true,
       showUsefulItems: false,
-      showOtherUsefulItems: false,
       arrayDreamers: () => [],
-      arrayMainAbilities: () => [],
-      arrayAdvancedAbilities: () => [],
+      arrayAbilities: () => [],
       arrayUsefulItems: () => [],
-      arrayOtherUsefulItems: () => [],
     };
   },
   computed: {
@@ -87,33 +78,28 @@ export default {
       if (this.showDreamers) {
         arraysToConcat.push(this.arrayDreamers);
       }
-      if (this.showMainAbilities) {
-        arraysToConcat.push(this.arrayMainAbilities);
-      }
-      if (this.showAdvancedAbilities) {
-        arraysToConcat.push(this.arrayAdvancedAbilities);
+      if (this.showAbilities) {
+        arraysToConcat.push(this.arrayAbilities);
       }
       if (this.showUsefulItems) {
         arraysToConcat.push(this.arrayUsefulItems);
       }
-      if (this.showOtherUsefulItems) {
-        arraysToConcat.push(this.arrayOtherUsefulItems);
-      }
       const dataNotGrouped = [].concat(...arraysToConcat);
-      // const data = groupBy(dataNotGrouped, (s) => s[0]);
-      const data = reduce(
-        dataNotGrouped,
-        function (result, item) {
-          if (result[item[0]]) {
-            result[item[0]].push(item[1]);
-          } else {
-            result[item[0]] = [item[1]];
-          }
-          return result;
-        },
-        {}
-      );
-      return data;
+      const data = dataNotGrouped.reduce((result, item) => {
+        if (result[item[0]]) {
+          result[item[0]].push(item[1]);
+        } else {
+          result[item[0]] = [item[1]];
+        }
+        return result;
+      }, {});
+      const orderedData = Object.keys(data)
+        .sort()
+        .reduce(
+          (result, item) => ((result[item] = data[item].sort()), result),
+          {}
+        );
+      return orderedData;
     },
   },
   methods: {
@@ -136,10 +122,8 @@ export default {
         .then((response) => {
           const resp = response["data"];
           this.arrayDreamers = resp["dreamers"];
-          this.arrayMainAbilities = resp["main_abilities"];
-          this.arrayAdvancedAbilities = resp["advanced_abilities"];
+          this.arrayAbilities = resp["abilities"];
           this.arrayUsefulItems = resp["useful_items"];
-          this.arrayOtherUsefulItems = resp["other_useful_items"];
 
           this.spoilerRetrieved = true;
         })

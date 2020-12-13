@@ -9,8 +9,8 @@
               <tracker-image
                 :src="`assets/hollow_knight/${item}.png`"
                 :alt="`${item}`"
-                :width="48"
-                :height="48"
+                :width="40"
+                :height="40"
               />
             </div>
           </v-card>
@@ -24,20 +24,21 @@
 import TrackerImage from "@/components/TrackerImage.vue";
 
 const prettifyLocationMapping = {
-  Royal_Waterways: "Royal Waterways",
-  Howling_Cliffs: "Howling Cliffs",
-  Dirtmouth: "Dirtmouth",
-  Resting_Grounds: "Resting Grounds",
-  Kingdoms_Edge: "Kingdoms Edge",
-  City_of_Tears: "City of Tears",
-  Greenpath: "Greenpath",
-  Deepnest: "Deepnest",
-  Forgotten_Crossroads: "Forgotten Crossroads",
-  Fog_Canyon: "Fog Canyon",
-  Fungal_Wastes: "Fungal Wastes",
+  Abyss: "Abyss",
   Ancient_Basin: "Ancient Basin",
+  City_of_Tears: "City of Tears",
   Crystal_Peak: "Crystal Peak",
+  Deepnest: "Deepnest",
+  Dirtmouth: "Dirtmouth",
+  Fog_Canyon: "Fog Canyon",
+  Forgotten_Crossroads: "Forgotten Crossroads",
+  Fungal_Wastes: "Fungal Wastes",
+  Greenpath: "Greenpath",
+  Howling_Cliffs: "Howling Cliffs",
+  Kingdoms_Edge: "Kingdoms Edge",
   Queens_Gardens: "Queen's Gardens",
+  Resting_Grounds: "Resting Grounds",
+  Royal_Waterways: "Royal Waterways",
 };
 
 export default {
@@ -60,4 +61,12 @@ export default {
 </script>
 
 <style>
+th {
+  font-size: 1rem;
+  max-width: 150px;
+  padding: 2px;
+}
+td {
+  max-width: 250px;
+}
 </style>
