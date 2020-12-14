@@ -134,37 +134,3 @@ export default {
   },
 };
 </script>
-
-<style>
-th.text-start {
-  background-color: #9cccff !important;
-}
-.v-input--selection-controls {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-.v-expansion-panel--active > .v-expansion-panel-header {
-  min-height: 0 !important;
-}
-
-td,
-th {
-  border: 1px solid #ccc;
-  text-align: center;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-th {
-  background: #669ede;
-  border-color: white;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.item-wrapper {
-  margin-bottom: 0 !important;
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
-  background: #5f5f5f !important;
-}
-</style>
