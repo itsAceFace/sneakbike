@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import SetupDevText from "@/components/SetupDevText.vue";
-import SetupRunnerText from "@/components/SetupRunnerText.vue";
-import SetupHostText from "@/components/SetupHostText.vue";
+import SetupDevText from "@/components/Setup/DevText.vue";
+import SetupRunnerText from "@/components/Setup/RunnerText.vue";
+import SetupHostText from "@/components/Setup/HostText.vue";
 
 export default {
   name: "Setup",

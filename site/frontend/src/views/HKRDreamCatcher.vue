@@ -55,7 +55,7 @@
 
 <script>
 import axios from "axios";
-import HKRItemTable from "@/components/HKRItemTable.vue";
+import HKRItemTable from "@/components/HollowKnight/HKRItemTable.vue";
 
 export default {
   name: "HKRDreamCatcher",

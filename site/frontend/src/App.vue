@@ -41,7 +41,7 @@
             </v-list-group>
           </div>
 
-        <!-- HKR Resources -->
+          <!-- HKR Resources -->
           <div class="sidebar-list">
             <v-list-group no-action>
               <template v-slot:activator>
@@ -61,7 +61,6 @@
               </v-list-item>
             </v-list-group>
           </div>
-
         </v-list>
       </v-navigation-drawer>
     </div>
@@ -90,11 +89,11 @@ const resourcesPages = [
 ];
 
 const hollowKnightRandoPages = [
-{name: "QuickMode Spoiler Tool", route: "/hkr/dream-catcher"
-}]
+  { name: "QuickMode Spoiler Tool", route: "/hkr/dream-catcher" },
+];
 
-import ToolbarIcons from "@/components/ToolbarIcons.vue";
-import SidebarList from "@/components/SidebarList.vue";
+import ToolbarIcons from "@/components/BaseSection/ToolbarIcons.vue";
+import SidebarList from "@/components/BaseSection/SidebarList.vue";
 
 export default {
   name: "App",
@@ -106,7 +105,7 @@ export default {
       infoPages,
       setupPages,
       resourcesPages,
-      hollowKnightRandoPages
+      hollowKnightRandoPages,
     };
   },
 };

@@ -34,7 +34,7 @@ export default {
 img {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-  padding-left: 2px !important;
-  padding-right: 2px !important;
+  padding-left: 1px !important;
+  padding-right: 1px !important;
 }
 </style>

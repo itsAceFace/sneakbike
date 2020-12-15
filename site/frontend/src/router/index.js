@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import Schedule from "@/views/Schedule.vue";
-import Quiz from "@/views/Quiz.vue";
 
 import ResolutionStandards from "@/views/ResolutionStandards.vue";
 import Team from "@/views/Team.vue";
@@ -42,11 +41,6 @@ const routes = [
     path: "/team",
     name: "Team",
     component: Team,
-  },
-  {
-    path: "/quiz",
-    name: "Quiz",
-    component: Quiz,
   },
   { path: "/readme", name: "GameReadmeGen", component: GameReadmeGen },
   { path: "/checklist", name: "RacedayChecklist", component: RacedayChecklist },
