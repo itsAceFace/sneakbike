@@ -6,13 +6,32 @@
           <h2>Hollow Knight Randomizer "Quick Seed" Tool</h2>
           <p>This tool allows for a "quick play" seed by showing the location of important items and abilities. You may customize what is shown below with "Show Item Options".</p>
 
+          <p>Thanks to BearsAndBeets for design and color help and the Sneakbike Community for various ideas and improvements.</p>
+
+          <hr />
+          <br />
+          <h2>Quickstart</h2>
           <p>
-            <b>Upload your Hollow Knight Randomizer Spoiler below. This is usually located (on Windows) at:</b>
+            <b>Pick what things you want displayed in "Show Item Options". Then upload your Hollow Knight Randomizer Spoiler below. This is usually located (on Windows) at:</b>
           </p>
 
           <p>
             <code>C:\Users\yourname\AppData\LocalLow\Team Cherry\Hollow Knight\RandomizerSpoilerLog.txt</code>
           </p>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" sm="8" offset-sm="2">
+          <v-expansion-panels>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
+                <v-switch v-model="showAbilities" :label="'Show Abilities?'" />
+                <v-switch v-model="showUsefulItems" :label="'Show Useful Items?'" />
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
         </v-col>
       </v-row>
       <v-row>
@@ -29,7 +48,8 @@
         </v-col>
       </v-row>
     </div>
-    <div>
+
+    <div v-if="spoilerRetrieved">
       <v-row>
         <v-col cols="12" sm="8" offset-sm="2">
           <v-expansion-panels>
@@ -44,8 +64,6 @@
           </v-expansion-panels>
         </v-col>
       </v-row>
-    </div>
-    <div v-if="spoilerRetrieved">
       <v-col cols="12" sm="8" offset-sm="2">
         <HKRItemTable :dataToShow="dataToShow" />
       </v-col>

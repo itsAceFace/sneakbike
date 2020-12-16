@@ -121,7 +121,7 @@ locations_secondary_mapping = {
     "Fungal_Core": "Fungal_Wastes",
     "Hallownests_Crown": "Crystal_Peak",
     "Howling_Cliffs": "Howling_Cliffs",
-    "Iselda": "Forgotten_Crossroads",
+    "Iselda": "Dirtmouth",
     "Ismas_Grove": "Royal_Waterways",
     "Junk_Pit": "Royal_Waterways",
     "Kings_Pass": "Dirtmouth",

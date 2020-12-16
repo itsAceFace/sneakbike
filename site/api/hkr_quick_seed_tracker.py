@@ -11,6 +11,7 @@ MAIN_ABILITIES = set(
         "Awoken_Dream_Nail",
         "Crystal_Heart",
         "Desolate_Dive",
+        "Descending_Dark",
         "Dream_Gate",
         "Dream_Nail",
         "Ismas_Tear",
@@ -21,16 +22,15 @@ MAIN_ABILITIES = set(
         "Shade_Soul",
         "Vengeful_Spirit",
         "Abyss_Shriek",
-        "Cyclone_Slash",
-        "Dash_Slash",
-        "Descending_Dark",
-        "Great_Slash",
         "Howling_Wraiths",
     ]
 )
 
 USEFUL_ITEMS = set(
     [
+        "Cyclone_Slash",
+        "Dash_Slash",
+        "Great_Slash",
         "Grimmchild",
         "Lumafly_Lantern",
         "Simple_Key",
