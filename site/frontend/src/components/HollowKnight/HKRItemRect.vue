@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="loc-div" :style="styleLocDiv">
-      <div class="loc-circle" :style="styleLocCircle" @click="hideItems = !hideItems">
+      <div class="loc-circle" :style="styleLocCircle">
         <div class="loc-title-div">
-          <span class="loc-title-text">{{ locAbbr }}</span>
+          <span class="loc-title-text">{{ locData['abbr'] }}</span>
         </div>
       </div>
-      <div class="item-div" v-if="!hideItems">
+      <div class="item-div">
         <v-flex class="d-flex flex-wrap">
           <div v-for="(item, jdx) in itemList" :key="`${item}-${jdx}`">
             <tracker-image
@@ -34,22 +34,21 @@ export default {
   },
   components: { TrackerImage },
   props: {
-    locAbbr: String,
+    locData: Object,
     itemList: Array,
-    colors: Object,
     zindex: Number,
   },
   computed: {
     styleLocDiv() {
       return `background-color: ${
-        this.hideItems ? "transparent" : this.colors.background
+        this.hideItems ? "transparent" : this.locData.background
       }; 
-      border: 6px solid ${this.hideItems ? "transparent" : this.colors.border};
-      width: ${70 + this.itemList.length * 41}px;`;
+      border: 6px solid ${this.hideItems ? "transparent" : this.locData.border};
+      width: ${80 + this.itemList.length * 41}px;`;
     },
     styleLocCircle() {
-      return `background-color: ${this.colors.border};
-      border: 2px solid ${this.colors.border};`;
+      return `background-color: ${this.locData.border};
+      border: 2px solid ${this.locData.border};`;
     },
   },
 };
@@ -58,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 $height: 62px;
 $large-radius: 4rem;
-$item-starting-offset-left: 54px;
+$item-starting-offset-left: 65px;
 $item-starting-offset-top: 3px;
 
 .loc-div {
@@ -68,7 +67,7 @@ $item-starting-offset-top: 3px;
 }
 .loc-circle {
   position: absolute;
-  width: $height - 6px;
+  width: $height + 6px;
   height: $height - 0px;
   top: -6px;
   left: -6px;

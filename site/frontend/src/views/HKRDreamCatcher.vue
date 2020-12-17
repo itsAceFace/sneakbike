@@ -67,6 +67,8 @@
       <v-col cols="12" sm="8" offset-sm="2">
         <HKRItemTable :dataToShow="dataToShow" />
       </v-col>
+      <br />
+      <br />
     </div>
   </div>
 </template>
