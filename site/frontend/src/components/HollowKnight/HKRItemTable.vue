@@ -7,7 +7,7 @@
             class="ma-1"
             :class="{'dimmed-chip': !locData[loc]['show']}"
             :color="locData[loc]['background']"
-            @click="toggleRectangle(loc)"
+            @click="toggleLoc(loc)"
           >
             <span class="chip-text">{{ prettifyLocNames(loc) }}</span>
           </v-chip>
@@ -20,6 +20,7 @@
       <div v-for="(itemList, loc, idx) in dataToShow" :key="`rect-${loc}-${idx}`">
         <HKRItemRect
           v-if="locData[loc]['show']"
+          @circleClicked="toggleLoc(loc, item)"
           :locData="locData[loc]"
           :itemList="itemList"
           :zindex="idx + 10"
@@ -33,7 +34,8 @@
 <script>
 import HKRItemRect from "@/components/HollowKnight/HKRItemRect.vue";
 
-// 303030 and 000001 are placeholders.
+// 303030 and000001 are placeholders.
+
 const locData = {
   Abyss: {
     background: "#707170",
@@ -44,49 +46,49 @@ const locData = {
   Ancient_Basin: {
     background: "#73747d",
     border: "#282a37",
-    abbr: "Basin",
+    abbr: "AnBsn",
     show: true,
   },
   City_of_Tears: {
     background: "#6b89a9",
     border: "#1b4a7b",
-    abbr: "CoT",
+    abbr: "CityT",
     show: true,
   },
   Crystal_Peak: {
-    background: "#303030",
-    border: "#000001",
-    abbr: "Cry",
+    background: "#b588b0",
+    border: "#95568f",
+    abbr: "CryPk",
     show: true,
   },
   Deepnest: {
     background: "#666b80",
     border: "#141c3c",
-    abbr: "Deep",
+    abbr: "DNest",
     show: true,
   },
   Dirtmouth: {
     background: "#787994",
     border: "#2f315b",
-    abbr: "Dirt",
+    abbr: "Dirtm",
     show: true,
   },
   Fog_Canyon: {
-    background: "#303030",
-    border: "#000001",
-    abbr: "Fog",
+    background: "#9da3bd",
+    border: "#5b6591",
+    abbr: "FogCn",
     show: true,
   },
   Forgotten_Crossroads: {
     background: "#687796",
     border: "#202d5d",
-    abbr: "xRoad",
+    abbr: "FxRds",
     show: true,
   },
   Fungal_Wastes: {
-    background: "#303030",
-    border: "#000001",
-    abbr: "Fung",
+    background: "#58747c",
+    border: "#113945",
+    abbr: "FungW",
     show: true,
   },
   Greenpath: {
@@ -95,35 +97,35 @@ const locData = {
     abbr: "GPath",
     show: true,
   },
-  Hive: { background: "#303030", border: "#000001", abbr: "Hive", show: true },
+  Hive: { background: "#303030", border: "#000001", abbr: "", show: true },
   Howling_Cliffs: {
-    background: "#303030",
-    border: "#000001",
-    abbr: "Howl",
+    background: "#75809a",
+    border: "#3b4a6f",
+    abbr: "HClif",
     show: true,
   },
   Kingdoms_Edge: {
-    background: "#303030",
-    border: "#000001",
+    background: "#768384",
+    border: "#3c4e50",
     abbr: "KEdge",
     show: true,
   },
   Queens_Gardens: {
-    background: "#303030",
-    border: "#000001",
-    abbr: "QuGa",
+    background: "#559f9d",
+    border: "#0d7673",
+    abbr: "QGdn",
     show: true,
   },
   Resting_Grounds: {
     background: "#84799d",
     border: "#423169",
-    abbr: "Rest",
+    abbr: "RestG",
     show: true,
   },
   Royal_Waterways: {
     background: "#6d919d",
     border: "#1e5669",
-    abbr: "Water",
+    abbr: "RWatr",
     show: true,
   },
 };
@@ -160,7 +162,7 @@ export default {
         return loc.replaceAll("_", " ");
       }
     },
-    toggleRectangle(loc) {
+    toggleLoc(loc) {
       this.$set(this.locData[loc], "show", !this.locData[loc]["show"]);
     },
   },

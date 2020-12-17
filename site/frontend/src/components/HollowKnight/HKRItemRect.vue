@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="loc-div" :style="styleLocDiv">
-      <div class="loc-circle" :style="styleLocCircle">
+      <div class="loc-circle" :style="styleLocCircle" @click="emitCircleClicked">
         <div class="loc-title-div">
           <span class="loc-title-text">{{ locData['abbr'] }}</span>
         </div>
@@ -49,6 +49,11 @@ export default {
     styleLocCircle() {
       return `background-color: ${this.locData.border};
       border: 2px solid ${this.locData.border};`;
+    },
+  },
+  methods: {
+    emitCircleClicked() {
+      this.$emit("circleClicked");
     },
   },
 };
