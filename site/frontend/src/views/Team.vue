@@ -40,7 +40,7 @@ export default {
   name: "Team",
   data() {
     return {
-      team
+      team,
     };
   },
   components: { TeamPortrait },

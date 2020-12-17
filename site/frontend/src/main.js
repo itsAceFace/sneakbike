@@ -15,8 +15,8 @@ import "prismjs/plugins/autolinker/prism-autolinker.min";
 import "prismjs/plugins/autolinker/prism-autolinker.css";
 import Prism from "vue-prism-component";
 
-import InfoCard from "@/components/InfoCard.vue";
-import WarningCard from "@/components/WarningCard.vue";
+import InfoCard from "@/components/Common/InfoCard.vue";
+import WarningCard from "@/components/Common/WarningCard.vue";
 
 Vue.config.productionTip = false;
 

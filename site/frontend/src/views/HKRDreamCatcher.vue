@@ -6,13 +6,32 @@
           <h2>Hollow Knight Randomizer "Quick Seed" Tool</h2>
           <p>This tool allows for a "quick play" seed by showing the location of important items and abilities. You may customize what is shown below with "Show Item Options".</p>
 
+          <p>Thanks to BearsAndBeets for design and color help and the Sneakbike Community for various ideas and improvements.</p>
+
+          <hr />
+          <br />
+          <h2>Quickstart</h2>
           <p>
-            <b>Upload your Hollow Knight Randomizer Spoiler below. This is usually located (on Windows) at:</b>
+            <b>Pick what things you want displayed in "Show Item Options". Then upload your Hollow Knight Randomizer Spoiler below. This is usually located (on Windows) at:</b>
           </p>
 
           <p>
             <code>C:\Users\yourname\AppData\LocalLow\Team Cherry\Hollow Knight\RandomizerSpoilerLog.txt</code>
           </p>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" sm="8" offset-sm="2">
+          <v-expansion-panels>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
+                <v-switch v-model="showAbilities" :label="'Show Abilities?'" />
+                <v-switch v-model="showUsefulItems" :label="'Show Useful Items?'" />
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
         </v-col>
       </v-row>
       <v-row>
@@ -29,7 +48,8 @@
         </v-col>
       </v-row>
     </div>
-    <div>
+
+    <div v-if="spoilerRetrieved">
       <v-row>
         <v-col cols="12" sm="8" offset-sm="2">
           <v-expansion-panels>
@@ -44,18 +64,18 @@
           </v-expansion-panels>
         </v-col>
       </v-row>
-    </div>
-    <div v-if="spoilerRetrieved">
       <v-col cols="12" sm="8" offset-sm="2">
         <HKRItemTable :dataToShow="dataToShow" />
       </v-col>
+      <br />
+      <br />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import HKRItemTable from "@/components/HKRItemTable.vue";
+import HKRItemTable from "@/components/HollowKnight/HKRItemTable.vue";
 
 export default {
   name: "HKRDreamCatcher",
@@ -134,37 +154,3 @@ export default {
   },
 };
 </script>
-
-<style>
-th.text-start {
-  background-color: #9cccff !important;
-}
-.v-input--selection-controls {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-.v-expansion-panel--active > .v-expansion-panel-header {
-  min-height: 0 !important;
-}
-
-td,
-th {
-  border: 1px solid #ccc;
-  text-align: center;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-th {
-  background: #669ede;
-  border-color: white;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.item-wrapper {
-  margin-bottom: 0 !important;
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
-  background: #5f5f5f !important;
-}
-</style>
