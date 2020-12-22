@@ -4,9 +4,13 @@ import vuetify from "./plugins/vuetify";
 import VueAnalytics from "vue-router";
 import router from "./router";
 
+import Vuex from 'vuex'
+import hkrStore from '@/store/hkr.js'
+
 import VueLodash from "vue-lodash";
 import lodash from "lodash";
 
+// Prism -- Highlighting Syntax.
 import "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-powershell.min";
@@ -15,6 +19,7 @@ import "prismjs/plugins/autolinker/prism-autolinker.min";
 import "prismjs/plugins/autolinker/prism-autolinker.css";
 import Prism from "vue-prism-component";
 
+// Common Cards
 import InfoCard from "@/components/Common/InfoCard.vue";
 import WarningCard from "@/components/Common/WarningCard.vue";
 
@@ -25,6 +30,7 @@ Vue.component("info-card", InfoCard);
 Vue.component("warning-card", WarningCard);
 Vue.use(VueLodash, { lodash: lodash });
 
+Vue.use(Vuex)
 Vue.use(VueAnalytics, {
   appName: "Sneakbike Website",
   appVersion: "1.0",
@@ -32,8 +38,14 @@ Vue.use(VueAnalytics, {
   vueRouter: router,
 });
 
+const store = new Vuex.Store({
+  modules: { 'hkr': hkrStore },
+  strict: true
+})
+
 new Vue({
   vuetify,
   router,
+  store,
   render: (h) => h(App),
 }).$mount("#app");

@@ -1,19 +1,20 @@
 <template>
   <div>
     <div class="loc-div" :style="styleLocDiv">
-      <div class="loc-circle" :style="styleLocCircle" @click="emitCircleClicked">
+      <div class="loc-circle" :style="styleLocCircle">
         <div class="loc-title-div">
           <span class="loc-title-text">{{ locData['abbr'] }}</span>
         </div>
       </div>
       <div class="item-div">
         <v-flex class="d-flex flex-wrap">
-          <div v-for="(item, jdx) in itemList" :key="`${item}-${jdx}`">
+          <div v-for="(item, name, jdx) in distinctItems" :key="`${item}-${jdx}`">
             <tracker-image
-              :src="`assets/hollow_knight/${item}.png`"
-              :alt="`${item}`"
+              :item="item"
+              :name="name"
               :width="40"
               :height="40"
+              @itemToggled="isRectangleClear"
               class="tracker-image"
             />
           </div>
@@ -24,14 +25,10 @@
 </template>
 <script>
 import TrackerImage from "@/components/HollowKnight/TrackerImage.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "HKRItemRect",
-  data() {
-    return {
-      hideItems: false,
-    };
-  },
   components: { TrackerImage },
   props: {
     locData: Object,
@@ -39,21 +36,37 @@ export default {
     zindex: Number,
   },
   computed: {
+    ...mapState("hkr", ["itemFoundState"]),
     styleLocDiv() {
-      return `background-color: ${
-        this.hideItems ? "transparent" : this.locData.background
-      }; 
-      border: 6px solid ${this.hideItems ? "transparent" : this.locData.border};
+      return `background-color: ${this.locData.background}; 
+      border: 6px solid ${this.locData.border};
       width: ${80 + this.itemList.length * 41}px;`;
     },
     styleLocCircle() {
       return `background-color: ${this.locData.border};
       border: 2px solid ${this.locData.border};`;
     },
+    distinctItems() {
+      const eItems = {};
+      for (var i = 0; i < this.itemList.length; i++) {
+        eItems[
+          `${this.locData["abbr"]}-${this.itemList[i]}-${i}`
+        ] = this.itemList[i];
+      }
+      return eItems;
+    },
   },
   methods: {
-    emitCircleClicked() {
-      this.$emit("circleClicked");
+    emitHideRow() {
+      this.$emit("hideRow");
+    },
+    isRectangleClear() {
+      const allHidden = Object.keys(this.distinctItems).every(
+        (x) => this.itemFoundState[x]
+      );
+      if (allHidden) {
+        this.emitHideRow();
+      }
     },
   },
 };

@@ -1,28 +1,46 @@
 <template>
   <div class="tracker-image">
     <img
-      :src="require(`@/${src}`)"
+      :src="require(`@/assets/hollow_knight/${item}.png`)"
       :class="{ 'item-found': itemFound }"
-      @click="itemFound = !itemFound"
+      @click="toggleItemFound()"
       :width="width"
       :height="height"
-      :alt="`${alt}`"
-      :title="`${alt}`"
+      :alt="`${item}`"
+      :title="`${item}`"
     />
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+
 export default {
   name: "TrackerImage",
   props: {
-    src: String,
-    alt: String,
+    item: String,
+    name: String,
     width: Number,
     height: Number,
   },
-  data() {
-    return { itemFound: false };
+  computed: {
+    ...mapState("hkr", ["itemFoundState"]),
+    itemFound() {
+      return this.itemFoundState[this.name];
+    },
+  },
+  methods: {
+    ...mapMutations("hkr", ["setItemFoundState"]),
+    toggleItemFound() {
+      this.setItemFoundState({
+        name: this.name,
+        value: !this.itemFoundState[this.name],
+      });
+      this.$emit("itemToggled");
+    },
+  },
+  created() {
+    this.setItemFoundState({ name: this.name, value: false });
   },
 };
 </script>

@@ -20,7 +20,7 @@
       <div v-for="(itemList, loc, idx) in dataToShow" :key="`rect-${loc}-${idx}`">
         <HKRItemRect
           v-if="locData[loc]['show']"
-          @circleClicked="toggleLoc(loc, item)"
+          @hideRow="toggleLoc(loc)"
           :locData="locData[loc]"
           :itemList="itemList"
           :zindex="idx + 10"
@@ -97,7 +97,7 @@ const locData = {
     abbr: "GPath",
     show: true,
   },
-  Hive: { background: "#303030", border: "#000001", abbr: "", show: true },
+  Hive: { background: "#C17F6E", border: "#A64830", abbr: "Hive", show: true },
   Howling_Cliffs: {
     background: "#75809a",
     border: "#3b4a6f",
