@@ -8,14 +8,10 @@
             <v-btn @click="downloadHTML">Download HTML</v-btn>
           </v-row>
           <v-row justify="center" align="center">
-          <p></p>
+            <p></p>
           </v-row>
           <v-row justify="center" align="center">
-            <v-select
-              v-model="console"
-              :items="consoles"
-              label="Console"
-              outlined/>
+            <v-select v-model="console" :items="consoles" label="Console" outlined />
           </v-row>
         </v-col>
         <v-col cols="2" />
@@ -32,9 +28,10 @@
               <v-card class="mx-auto" max-width="312" shaped color="#fefefe">
                 <v-list-item>
                   <v-list-item-content>
-                    <div class="overline mb-4" style="max-width: 300px;">
-                      Game {{ gameidx + 1 }}: {{ $data[gameval]["title"] }}
-                    </div>
+                    <div
+                      class="overline mb-4"
+                      style="max-width: 300px;"
+                    >Game {{ gameidx + 1 }}: {{ $data[gameval]["title"] }}</div>
                   </v-list-item-content>
                 </v-list-item>
 
@@ -43,7 +40,8 @@
                   :key="`item-${gameidx + 1}-${index}`"
                   style="padding-left: 4px; padding-right: 4px;"
                 >
-                  <v-textarea v-if="consoleHasButton(key)"
+                  <v-textarea
+                    v-if="consoleHasButton(key)"
                     outlined
                     :label="key.toUpperCase()"
                     placeholder=" "
@@ -68,7 +66,7 @@
 import { saveAs } from "file-saver";
 import gameReadmeRender from "@/utils/gameReadmeRender.js";
 
-var consoles = ["SNES", "NES", "Genesis"]
+var consoles = ["SNES", "NES", "Genesis"];
 
 const gameItems = {
   title: "",
@@ -112,30 +110,45 @@ export default {
       });
       saveAs(file);
     },
-  consoleHasButton(k) {
-    var buttonsStandard = ['title', 'objective', 'hints', 'start', 'select', 'up', 'down', 'left', 'right']
-    var buttonsSNES = ['a', 'b', 'x', 'y', 'l', 'r']
-    var buttonsGenesis = ['a', 'b', 'c', 'x', 'y', 'z']
-    var buttonsNES = ['a', 'b']
-    console.log(k)
-    if (buttonsStandard.includes(k)) { return true }
+    consoleHasButton(k) {
+      var buttonsStandard = [
+        "title",
+        "objective",
+        "hints",
+        "start",
+        "select",
+        "up",
+        "down",
+        "left",
+        "right",
+      ];
+      var buttonsSNES = ["a", "b", "x", "y", "l", "r"];
+      var buttonsGenesis = ["a", "b", "c", "x", "y", "z"];
+      var buttonsNES = ["a", "b"];
+      if (buttonsStandard.includes(k)) {
+        return true;
+      }
 
-    if (this.console === 'SNES') {
-      if (buttonsSNES.includes(k)) { return true }
-    }
+      if (this.console === "SNES") {
+        if (buttonsSNES.includes(k)) {
+          return true;
+        }
+      }
 
-    if (this.console === 'NES') {
-      if (buttonsNES.includes(k)) { return true }
-    }
+      if (this.console === "NES") {
+        if (buttonsNES.includes(k)) {
+          return true;
+        }
+      }
 
-    if (this.console === 'Genesis') {
-      if (buttonsGenesis.includes(k)) { return true }
-    }
-    
-  return false
-  
-  }
+      if (this.console === "Genesis") {
+        if (buttonsGenesis.includes(k)) {
+          return true;
+        }
+      }
 
+      return false;
+    },
   },
 };
 </script>

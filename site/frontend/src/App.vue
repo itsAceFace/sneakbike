@@ -6,11 +6,12 @@
         <v-toolbar-title>
           <router-link to="/">Sneakbike</router-link>
         </v-toolbar-title>
-        <!-- <ToolbarDropdowns /> -->
         <v-spacer />
         <ToolbarIcons />
       </v-app-bar>
     </div>
+
+    <!-- TODO: Yo clean this the heck up. DRY. -->
 
     <div id="sidebar">
       <v-navigation-drawer v-model="drawer" app>
@@ -61,6 +62,27 @@
               </v-list-item>
             </v-list-group>
           </div>
+
+          <!-- Bingo  Resources -->
+          <div class="sidebar-list">
+            <v-list-group no-action>
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>Bingo</v-list-item-title>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item
+                v-for="(item, index) in bingoPages"
+                :key="`${item['name']}-${index}`"
+                :to="item.route"
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.name" />
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </div>
         </v-list>
       </v-navigation-drawer>
     </div>
@@ -92,6 +114,8 @@ const hollowKnightRandoPages = [
   { name: "QuickMode Spoiler Tool", route: "/hkr/dream-catcher" },
 ];
 
+const bingoPages = [{ name: "ALTTP Bingo", route: "/bingo/alttp" }];
+
 import ToolbarIcons from "@/components/BaseSection/ToolbarIcons.vue";
 import SidebarList from "@/components/BaseSection/SidebarList.vue";
 
@@ -106,6 +130,7 @@ export default {
       setupPages,
       resourcesPages,
       hollowKnightRandoPages,
+      bingoPages,
     };
   },
 };
