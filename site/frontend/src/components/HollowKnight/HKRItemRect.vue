@@ -3,7 +3,7 @@
     <div class="loc-div" :style="styleLocDiv">
       <div class="loc-circle" :style="styleLocCircle">
         <div class="loc-title-div">
-          <span class="loc-title-text">{{ locData['abbr'] }}</span>
+          <span class="loc-title-text">{{ arrayLocDataObj[loc]['abbr'] }}</span>
         </div>
       </div>
       <div class="item-div">
@@ -31,27 +31,28 @@ export default {
   name: "HKRItemRect",
   components: { TrackerImage },
   props: {
-    locData: Object,
-    itemList: Array,
+    loc: String,
     zindex: Number,
   },
   computed: {
-    ...mapState("hkr", ["itemFoundState"]),
+    ...mapState("hkr", ["itemFoundState", "arrayLocDataObj"]),
     styleLocDiv() {
-      return `background-color: ${this.locData.background}; 
-      border: 6px solid ${this.locData.border};
-      width: ${80 + this.itemList.length * 41}px;`;
+      return `background-color: ${this.arrayLocDataObj[this.loc].background}; 
+      border: 6px solid ${this.arrayLocDataObj[this.loc].border};
+      width: ${80 + this.arrayLocDataObj[this.loc]["items"].length * 41}px;`;
     },
     styleLocCircle() {
-      return `background-color: ${this.locData.border};
-      border: 2px solid ${this.locData.border};`;
+      return `background-color: ${this.arrayLocDataObj[this.loc].border};
+      border: 2px solid ${this.arrayLocDataObj[this.loc].border};`;
     },
     distinctItems() {
       const eItems = {};
-      for (var i = 0; i < this.itemList.length; i++) {
+      for (var i = 0; i < this.arrayLocDataObj[this.loc]["items"].length; i++) {
         eItems[
-          `${this.locData["abbr"]}-${this.itemList[i]}-${i}`
-        ] = this.itemList[i];
+          `${this.arrayLocDataObj["abbr"]}-${
+            this.arrayLocDataObj[this.loc]["items"][i]
+          }-${i}`
+        ] = this.arrayLocDataObj[this.loc]["items"][i];
       }
       return eItems;
     },

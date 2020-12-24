@@ -23,14 +23,7 @@
       <v-row>
         <v-col cols="12" sm="8" offset-sm="2">
           <v-expansion-panels>
-            <v-expansion-panel>
-              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
-                <v-switch v-model="showAbilities" :label="'Show Abilities?'" />
-                <v-switch v-model="showUsefulItems" :label="'Show Useful Items?'" />
-              </v-expansion-panel-content>
-            </v-expansion-panel>
+            <HKRItemToggle />
           </v-expansion-panels>
         </v-col>
       </v-row>
@@ -50,79 +43,66 @@
     </div>
 
     <div v-if="spoilerRetrieved">
-      <v-row>
-        <v-col cols="12" sm="8" offset-sm="2">
-          <v-expansion-panels>
-            <v-expansion-panel>
-              <v-expansion-panel-header>Show Item Options</v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <v-switch v-model="showDreamers" :label="'Show Dreamers?'" />
-                <v-switch v-model="showAbilities" :label="'Show Abilities?'" />
-                <v-switch v-model="showUsefulItems" :label="'Show Useful Items?'" />
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-col>
-      </v-row>
       <v-col cols="12" sm="8" offset-sm="2">
-        <HKRItemTable :dataToShow="dataToShow" />
+        <v-tooltip transition="slide-x-transition" right :open-delay="500">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon @click="hideOptions = !hideOptions" v-bind="attrs" v-on="on">
+              <v-icon>{{ hideOptions ? 'mdi-chevron-up' : 'mdi-chevron-down'}}</v-icon>
+            </v-btn>
+          </template>
+          <span>Toggle Options Menu</span>
+        </v-tooltip>
+
+        <v-expansion-panels v-show="hideOptions">
+          <HKRItemToggle />
+          <HKRPills />
+        </v-expansion-panels>
       </v-col>
-      <br />
-      <br />
+      <v-col cols="12" sm="8" offset-sm="2">
+        <HKRItemTable />
+      </v-col>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import { mapState, mapMutations } from "vuex";
 import HKRItemTable from "@/components/HollowKnight/HKRItemTable.vue";
+import HKRItemToggle from "@/components/HollowKnight/HKRItemToggle.vue";
+import HKRPills from "@/components/HollowKnight/HKRPills.vue";
 
 export default {
   name: "HKRDreamCatcher",
-  components: { HKRItemTable },
+  components: { HKRItemToggle, HKRItemTable, HKRPills },
   data: function () {
     return {
       spoiler_txt: "",
       spoilerRetrieved: false,
-      showDreamers: true,
-      showAbilities: true,
-      showUsefulItems: false,
-      arrayDreamers: () => [],
-      arrayAbilities: () => [],
-      arrayUsefulItems: () => [],
+      hideOptions: false,
     };
   },
   computed: {
-    dataToShow() {
-      var arraysToConcat = [];
-      if (this.showDreamers) {
-        arraysToConcat.push(this.arrayDreamers);
-      }
-      if (this.showAbilities) {
-        arraysToConcat.push(this.arrayAbilities);
-      }
-      if (this.showUsefulItems) {
-        arraysToConcat.push(this.arrayUsefulItems);
-      }
-      const dataNotGrouped = [].concat(...arraysToConcat);
-      const data = dataNotGrouped.reduce((result, item) => {
-        if (result[item[0]]) {
-          result[item[0]].push(item[1]);
-        } else {
-          result[item[0]] = [item[1]];
-        }
-        return result;
-      }, {});
-      const orderedData = Object.keys(data)
-        .sort()
-        .reduce(
-          (result, item) => ((result[item] = data[item].sort()), result),
-          {}
-        );
-      return orderedData;
-    },
+    ...mapState("hkr", [
+      "showDreamers",
+      "showAbilities",
+      "showUsefulItems",
+      "arrayDreamers",
+      "arrayAbilities",
+      "arrayUsefulItems",
+      "arrayLocDataObj",
+    ]),
   },
   methods: {
+    ...mapMutations("hkr", [
+      "toggleDreamers",
+      "toggleAbilities",
+      "toggleUsefulItems",
+      "setArrayDreamers",
+      "setArrayAbilities",
+      "setArrayUsefulItems",
+      "defineLocObject",
+    ]),
     onFileChange(file) {
       if (!(file.size || file.name === "RandomizerSpoilerLog.txt")) return;
       this.createText(file);
@@ -141,9 +121,10 @@ export default {
         })
         .then((response) => {
           const resp = response["data"];
-          this.arrayDreamers = resp["dreamers"];
-          this.arrayAbilities = resp["abilities"];
-          this.arrayUsefulItems = resp["useful_items"];
+          this.setArrayDreamers({ value: resp["dreamers"] });
+          this.setArrayAbilities({ value: resp["abilities"] });
+          this.setArrayUsefulItems({ value: resp["useful_items"] });
+          this.defineLocObject();
 
           this.spoilerRetrieved = true;
         })
