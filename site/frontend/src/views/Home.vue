@@ -38,7 +38,7 @@
               These Mystery Races are events where
               <b>four players</b> at
               approximately the same skill level race to
-              <b>complete an objective in each of three "mystery games"</b> &mdash; these games
+              <b>complete an objective in each of two or three "mystery games"</b> &mdash; these games
               aren't known to the racers beforehand and are given to them right before
               the race starts!
             </p>
@@ -54,7 +54,7 @@
               In the past we've had
               <i>
                 non-mystery races, casual playthroughs of weird
-                games, learning a speedrun together, teaching streams,
+                games, learning a speedrun together, teaching streams, learning randomizer games, hollow knight randomizer bingo,
               </i> and sometimes we just hang out and play games together.
             </p>
 

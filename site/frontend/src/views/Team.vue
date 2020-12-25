@@ -2,7 +2,7 @@
   <div class="team">
     <v-container>
       <v-row justify="center" align="center">
-        <h1 class="team">Sneakbike Admin!</h1>
+        <h1 class="team">Sneakbike Admin</h1>
       </v-row>
     </v-container>
 
@@ -35,7 +35,7 @@
 
     <v-container>
       <v-row justify="center" align="center">
-        <h1 class="team">Sneak-ops Team!</h1>
+        <h1 class="team">Sneak-ops Team</h1>
       </v-row>
     </v-container>
 

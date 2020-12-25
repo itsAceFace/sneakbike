@@ -6,7 +6,7 @@ import Home from "@/views/Home.vue";
 import ResolutionStandards from "@/views/ResolutionStandards.vue";
 import GameReadmeGen from "@/views/GameReadmeGen.vue";
 import SBChecklist from "@/views/SBChecklist.vue";
-import NightbotCommands from "@/views/NightbotCommands.vue";
+import RaceDataTool from "@/views/RaceDataTool.vue";
 
 // Sneakbike Setup & Sundry
 import Setup from "@/views/Setup.vue";
@@ -50,7 +50,7 @@ const routes = [
   },
   { path: "/readme", name: "GameReadmeGen", component: GameReadmeGen },
   { path: "/checklist", name: "SBChecklist", component: SBChecklist },
-  { path: "/nightbot", name: "NightbotCommands", component: NightbotCommands },
+  { path: "/race-data-tool", name: "RaceDataTool", component: RaceDataTool },
   { path: "/hkr/dream-catcher", name: "HKRDreamCatcher", component: HKRDreamCatcher },
   { path: "/bingo/alttp", name: "BingoALTTPR", component: BingoALTTPR }
 ];
