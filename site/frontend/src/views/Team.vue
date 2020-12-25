@@ -2,7 +2,40 @@
   <div class="team">
     <v-container>
       <v-row justify="center" align="center">
-        <h1 class="team">Team Sneakbike!</h1>
+        <h1 class="team">Sneakbike Admin!</h1>
+      </v-row>
+    </v-container>
+
+    <v-row>
+      <v-col cols="12" sm="8" offset-sm="2">
+        <v-card>
+          <v-container fluid>
+            <v-row :align="'center'" :justify="'center'">
+              <v-col
+                v-for="(item, index) in admin"
+                :key="`portrait-${index}`"
+                style="flex-grow: 0 !important"
+              >
+                <TeamPortrait
+                  :name="item.name"
+                  :imgSrc="item.imgSrc"
+                  :hoverInfo="item.jobs"
+                  :twitchUsername="item.twitchUsername"
+                  :descriptionText="item.descriptionText"
+                />
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <br />
+    <br />
+
+    <v-container>
+      <v-row justify="center" align="center">
+        <h1 class="team">Sneak-ops Team!</h1>
       </v-row>
     </v-container>
 
@@ -34,13 +67,14 @@
 
 <script>
 import TeamPortrait from "@/components/TeamPortrait.vue";
-import team from "@/data/team.js";
+import { team, admin } from "@/data/team.js";
 
 export default {
   name: "Team",
   data() {
     return {
       team,
+      admin,
     };
   },
   components: { TeamPortrait },

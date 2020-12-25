@@ -23,7 +23,7 @@
       scenes and profile.
     </p>
 
-    <img src="@/assets/backup_obs.gif" />
+    <img src="@/assets/setup/backup_obs.gif" />
 
     <p>
       Open OBS, go to
@@ -43,7 +43,10 @@
         <a href="https://obsproject.com/" target="_blank">OBS</a>,
       </li>
       <li>
-        <a href="https://github.com/TASVideos/BizHawk-Prereqs/releases" target="_blank">Bizhawk Emulator Prereqs</a>
+        <a
+          href="https://github.com/TASVideos/BizHawk-Prereqs/releases"
+          target="_blank"
+        >Bizhawk Emulator Prereqs</a>
         <ul>
           <li>
             Download the bizhawk_prereqs zip file under "Assets", unzip,
@@ -80,7 +83,7 @@
     <h2>2. Importing the Sneakbike Profile into OBS.</h2>
 
     <p>With OBS open:</p>
-    <img src="@/assets/sneakbike_import_profile.gif" alt="OBS Profile Import" />
+    <img src="@/assets/setup/sneakbike_import_profile.gif" alt="OBS Profile Import" />
     <ol>
       <li>
         Go into

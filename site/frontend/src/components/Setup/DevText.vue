@@ -3,7 +3,7 @@
     <h1>Developer Setup</h1>
 
     <h2>Basic Structure</h2>
-    <img src="@/assets/sneakbike_architecture.png" alt="Sneakbike Architecture" />
+    <img src="@/assets/setup/sneakbike_architecture.png" alt="Sneakbike Architecture" />
     <p>
       We broadcast from several OBS applications to an
       <a

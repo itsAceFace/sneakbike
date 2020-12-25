@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <v-parallax src="@/assets/bkgd_helma_cropped.png" height="400" />
+    <v-parallax src="@/assets/backgrounds/bkgd_helma_cropped.png" height="400" />
 
     <v-container>
       <v-row justify="center">
@@ -14,14 +14,18 @@
             <p>Sneakbike is a community of people working towards three primary goals:</p>
 
             <ul>
-            <li><b>Community</b>: Making friends, being nice to each other, and friendly competition.</li>
-            <li><b>Learning New Skills</b>: A commitment to helping each other grow and learn new things.</li>
-            <li><b>Usability and Quality of Open-Source Offerings</b>: Striving to make the tools we use as easy as possible for others to pick up and use for their own races.</li>
+              <li>
+                <b>Community</b>: Making friends, being nice to each other, and friendly competition.
+              </li>
+              <li>
+                <b>Learning New Skills</b>: A commitment to helping each other grow and learn new things.
+              </li>
+              <li>
+                <b>Usability and Quality of Open-Source Offerings</b>: Striving to make the tools we use as easy as possible for others to pick up and use for their own races.
+              </li>
             </ul>
 
-            <h1>
-              What does Sneakbike do?
-            </h1>
+            <h1>What does Sneakbike do?</h1>
 
             <p>
               The Sneakbike Community currently hosts two different events:

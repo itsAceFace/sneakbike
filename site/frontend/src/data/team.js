@@ -1,37 +1,55 @@
-const team = [
-  {
-    imgSrc: "melat0nin.png",
-    name: "melat0nin",
-    twitchUsername: "melat0nin",
-    jobs: "cofounder, ops, frontend, production, commentary",
-    descriptionText: '"...and I helped!"',
-  },
+const admin = [
   {
     imgSrc: "cosmicordia.png",
     name: "cosmicordia",
     twitchUsername: "cosmicordia",
-    jobs: "cofounder, production, commentary",
+    jobs: "cofounder, production",
     descriptionText: '"It\'s in the cultural zeitgeist."',
   },
   {
     imgSrc: "jen_thehuman.png",
     name: "Jen_theHuman",
     twitchUsername: "Jen_theHuman",
-    jobs: "social media, commentary",
+    jobs: "social media lead, production",
     descriptionText: "Keeping things wholesome.",
   },
+  {
+    imgSrc: "melat0nin.png",
+    name: "melat0nin",
+    twitchUsername: "melat0nin",
+    jobs: "cofounder, ops, frontend, production",
+    descriptionText: '"...and I helped!"',
+  },
+]
+
+const team = [
+  {
+    name: "Echo",
+    imgSrc: "nijecho.jpg",
+    twitchUsername: "nijecho",
+    jobs: "artist",
+    descriptionText: null,
+  },
+  {
+    name: "ItsAceFace",
+    imgSrc: "itsaceface.png",
+    twitchUsername: "itsaceface",
+    jobs: "production, moderator lead",
+    descriptionText: null,
+  },
+
   {
     imgSrc: "KiA00me.jpg",
     name: "KiA00me",
     twitchUsername: "KiA00me",
-    jobs: "production, commentary",
+    jobs: "production, gamepicker lead",
     descriptionText: '"He scares me."',
   },
   {
-    name: "Borshy",
-    imgSrc: "abortion_shark.jpeg",
-    twitchUsername: "abortion_shark",
-    jobs: "production",
+    name: "Rascalnicough",
+    imgSrc: "rascalnicough.png",
+    twitchUsername: "Rascalnicough",
+    jobs: "overlay design",
     descriptionText: null,
   },
   {
@@ -41,27 +59,6 @@ const team = [
     jobs: "production",
     descriptionText: null,
   },
-  {
-    name: "Rascalnicough",
-    imgSrc: "rascalnicough.png",
-    twitchUsername: "Rascalnicough",
-    jobs: "design, instructor",
-    descriptionText: null,
-  },
-  {
-    name: "ItsAceFace",
-    imgSrc: "itsaceface.png",
-    twitchUsername: "itsaceface",
-    jobs: "head moderation",
-    descriptionText: null,
-  },
-  {
-    name: "Echo",
-    imgSrc: "nijecho.jpg",
-    twitchUsername: "nijecho",
-    jobs: "instructor",
-    descriptionText: null,
-  },
 ];
 
-export default team;
+export { team, admin };
