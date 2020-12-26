@@ -5,6 +5,7 @@ import VueAnalytics from "vue-router";
 import router from "./router";
 
 import Vuex from 'vuex'
+import readmeGeneratorStore from '@/store/readmeGenerator.js'
 import hkrStore from '@/store/hkr.js'
 
 import VueLodash from "vue-lodash";
@@ -39,7 +40,7 @@ Vue.use(VueAnalytics, {
 });
 
 const store = new Vuex.Store({
-  modules: { 'hkr': hkrStore },
+  modules: { 'hkr': hkrStore, 'readmeGenerator': readmeGeneratorStore },
   strict: true
 })
 

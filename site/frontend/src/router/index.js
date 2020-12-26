@@ -4,7 +4,7 @@ import Home from "@/views/Home.vue";
 
 // Sneakops
 import ResolutionStandards from "@/views/ResolutionStandards.vue";
-import GameReadmeGen from "@/views/GameReadmeGen.vue";
+import ReadmeGen from "@/views/ReadmeGen.vue";
 import SBChecklist from "@/views/SBChecklist.vue";
 import RaceDataTool from "@/views/RaceDataTool.vue";
 
@@ -48,7 +48,7 @@ const routes = [
     name: "Team",
     component: Team,
   },
-  { path: "/readme", name: "GameReadmeGen", component: GameReadmeGen },
+  { path: "/readme-gen", name: "ReadmeGen", component: ReadmeGen },
   { path: "/checklist", name: "SBChecklist", component: SBChecklist },
   { path: "/race-data-tool", name: "RaceDataTool", component: RaceDataTool },
   { path: "/hkr/dream-catcher", name: "HKRDreamCatcher", component: HKRDreamCatcher },

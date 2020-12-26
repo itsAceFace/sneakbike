@@ -105,7 +105,7 @@ const setupPages = [{ name: "Sneakbike Setup", route: "/setup" }];
 
 const resourcesPages = [
   { name: "Resolution Standards", route: "/resolution-standards" },
-  { name: "README Generator", route: "/readme" },
+  { name: "README Generator", route: "/readme-gen" },
   { name: "Race Day Checklist", route: "/checklist" },
   { name: "Race Data Tool", route: "/race-data-tool" },
 ];
