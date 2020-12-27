@@ -49,7 +49,7 @@ export default {
       const eItems = {};
       for (var i = 0; i < this.arrayLocDataObj[this.loc]["items"].length; i++) {
         eItems[
-          `${this.arrayLocDataObj["abbr"]}-${
+          `${this.arrayLocDataObj[this.loc]["abbr"]}-${
             this.arrayLocDataObj[this.loc]["items"][i]
           }-${i}`
         ] = this.arrayLocDataObj[this.loc]["items"][i];
