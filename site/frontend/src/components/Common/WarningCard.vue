@@ -1,15 +1,17 @@
 <template>
-  <div class="warning-card">
-    <v-card class="mx-auto" color="#d6382977" outlined>
-      <v-card-text>
-        <div class="overline mb-4">
-          <v-icon>mdi-alert</v-icon>&nbsp;Warning
-        </div>
-        <p class="text--primary">
-          <slot></slot>
-        </p>
-      </v-card-text>
-    </v-card>
+  <div class="warning-card custom-tiny-card">
+    <v-row>
+      <v-col class="ma-4 pa-4">
+        <v-card class="mx-auto warning" outlined>
+          <v-card-text>
+            <div class="text-button">Warning</div>
+            <p class="text-body-2">
+              <slot></slot>
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

@@ -1,88 +1,85 @@
 <template>
   <div class="race-data-tool">
-    <v-container>
-      <v-row justify="center">
-        <v-col cols="2" />
-        <v-col cols="8">
-          <h1>Race Data Tool</h1>
+    <v-row justify="center">
+      <v-col cols="10" offset="1">
+        <h1>Race Data Tool</h1>
 
-          <p>
-            Used to populate Nightbot commands and the
-            <a
-              :href="sneaksquadURL"
-              target="_blank"
-            >Sneaksquad Googledoc</a>.
-          </p>
+        <p class="mb-4">
+          Used to populate Nightbot commands and the
+          <a
+            :href="sneaksquadURL"
+            target="_blank"
+          >Sneaksquad Googledoc</a>.
+        </p>
 
-          <hr />
-          <br />
-
+        <hr />
+        <div class="my-4">
           <v-flex class="d-flex flex-wrap">
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="C1"
               placeholder="Commentator 1"
               v-model="nameC1"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="C2"
               placeholder="Commentator 2"
               v-model="nameC2"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="P1"
               placeholder="Producer 1"
               v-model="nameP1"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="P2"
               placeholder="Producer 2"
               v-model="nameP2"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="Runner1"
               placeholder="Runner 1"
               v-model="nameRunner1"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="Runner2"
               placeholder="Runner 2"
               v-model="nameRunner2"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="Runner3"
               placeholder="Runner 3"
               v-model="nameRunner3"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="Runner4"
               placeholder="Runner 4"
               v-model="nameRunner4"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="GP1"
               placeholder="Game Picker"
               v-model="nameGamePicker"
               outlined
             />
             <v-text-field
-              class="race-data-tool-field"
+              class="px-2"
               label="Race Diffulty Level"
               placeholder="Beginner"
               v-model="difficulty"
@@ -90,32 +87,33 @@
             />
           </v-flex>
           <v-text-field
-            class="race-data-tool-field"
+            class="px-2"
             label="Games and System"
             placeholder="(SNES) Ace Ventura 2, Zombies ate The Mask"
             v-model="gamesAndConsole"
             outlined
           />
+        </div>
+        <hr />
 
-          <br />
-          <hr />
-          <br />
-          <h3>Nightbot Commands:</h3>
+        <div class="my-4">
+          <h3 class="mb-4">Nightbot Commands:</h3>
 
           <ul>
-            <li class="command-item">!game Retro</li>
-            <li class="command-item">!title Sneakbike Mystery Race with Friends! :']</li>
-            <li class="command-item">!commands edit !runners {{runnersString}}</li>
+            <li class="command-item mb-2 accent--text">!game Retro</li>
             <li
-              class="command-item"
+              class="command-item mb-2 accent--text"
+            >!title Sneakbike Mystery Race with Friends! :']</li>
+            <li class="command-item mb-2 accent--text">!commands edit !runners {{runnersString}}</li>
+            <li
+              class="command-item mb-2 accent--text"
             >!commands edit !commentators The lovely voices you're hearing: {{commentatorsString}}</li>
           </ul>
+        </div>
+        <hr />
 
-          <br />
-          <hr />
-          <br />
-
-          <h3>Sneaksquad Row:</h3>
+        <div class="my-4">
+          <h3 class="mb-4">Sneaksquad Row:</h3>
           <p>
             Copy-paste the row values into the
             <a
@@ -143,10 +141,9 @@
               <td>{{ gamesAndConsole }}</td>
             </tr>
           </table>
-        </v-col>
-        <v-col cols="2" />
-      </v-row>
-    </v-container>
+        </div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -198,10 +195,6 @@ export default {
 </script>
 
 <style scoped>
-.race-data-tool-field {
-  margin-right: 1rem;
-}
-
 ul {
   padding: 0;
 }
@@ -209,10 +202,6 @@ ul {
 .command-item {
   list-style: none;
   font-size: 1.2rem;
-  font-family: "Roboto", sans-serif;
-  margin-bottom: 1rem;
-  color: #3c3684;
-  font-weight: bold;
 }
 
 table {
@@ -233,10 +222,5 @@ th {
 td {
   max-width: 150px;
   word-wrap: break-word;
-}
-
-h3 {
-  margin-bottom: 1rem;
-  margin-top: 1rem;
 }
 </style>

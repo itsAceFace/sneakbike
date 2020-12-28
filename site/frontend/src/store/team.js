@@ -61,4 +61,13 @@ const team = [
   },
 ];
 
-export { team, admin };
+
+export default {
+  namespaced: true,
+  state: {
+    admin: admin,
+    team: team
+
+  },
+
+}

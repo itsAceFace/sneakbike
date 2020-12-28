@@ -38,10 +38,6 @@ export default {
     },
     actions:
     {
-        // toggleDreamersAndRefresh: ({ commit }) => {
-        //     commit('toggleDreamers')
-        //     commit('defineLocObject')
-        // },
 
     }
 

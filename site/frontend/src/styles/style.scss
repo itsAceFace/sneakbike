@@ -1,0 +1,36 @@
+#app {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Vollkorn", serif;
+}
+
+a { text-decoration: none; }
+
+pre[class*="language-"] {
+  font-size: 1rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+#site-title {
+  font-family: "Vollkorn", serif;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+// Dark theme fixes.
+.theme--dark.v-application {
+  color: #f1f1f1;
+  background: #222222;
+}
+
+.theme--dark.v-sheet {
+  color: #f1f1f1;
+  background: #222222;
+}

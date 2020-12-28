@@ -1,15 +1,17 @@
 <template>
-  <div class="info-card">
-    <v-card class="mx-auto" color="#e5e2ff" outlined>
-      <v-card-text>
-        <div class="overline mb-4">
-          <v-icon>mdi-gamepad-variant-outline</v-icon>&nbsp;Note
-        </div>
-        <p class="text--primary">
-          <slot></slot>
-        </p>
-      </v-card-text>
-    </v-card>
+  <div class="info-card custom-tiny-card">
+    <v-row>
+      <v-col class="ma-4 pa-4">
+        <v-card class="mx-auto info" outlined>
+          <v-card-text>
+            <div class="text-button">Note</div>
+            <p class="text-body-2">
+              <slot></slot>
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

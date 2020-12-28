@@ -4,9 +4,13 @@ import vuetify from "./plugins/vuetify";
 import VueAnalytics from "vue-router";
 import router from "./router";
 
+//Vuex Stores
 import Vuex from 'vuex'
 import readmeGeneratorStore from '@/store/readmeGenerator.js'
 import hkrStore from '@/store/hkr.js'
+import homepage from '@/store/homepage.js'
+import team from '@/store/team.js'
+import checklist from '@/store/checklist.js'
 
 import VueLodash from "vue-lodash";
 import lodash from "lodash";
@@ -24,6 +28,9 @@ import Prism from "vue-prism-component";
 import InfoCard from "@/components/Common/InfoCard.vue";
 import WarningCard from "@/components/Common/WarningCard.vue";
 
+//Styles
+import './styles/style.scss'
+
 Vue.config.productionTip = false;
 
 Vue.component("prism", Prism);
@@ -40,7 +47,7 @@ Vue.use(VueAnalytics, {
 });
 
 const store = new Vuex.Store({
-  modules: { 'hkr': hkrStore, 'readmeGenerator': readmeGeneratorStore },
+  modules: { 'hkr': hkrStore, 'readmeGenerator': readmeGeneratorStore, 'homepage': homepage, 'team': team, 'checklist': checklist },
   strict: true
 })
 
