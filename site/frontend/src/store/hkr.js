@@ -139,6 +139,7 @@ export default {
         showDreamers: true,
         showAbilities: true,
         showUsefulItems: false,
+        timerValue: 0,
         arrayDreamers: [],
         arrayAbilities: [],
         arrayUsefulItems: [],
@@ -153,6 +154,9 @@ export default {
         },
         setArrayUsefulItems(state, payload) {
             state.arrayUsefulItems = payload.value
+        },
+        setTimerValue(state, payload) {
+            state.timerValue = payload.val
         },
         setItemFoundState(state, payload) {
             Vue.set(state.itemFoundState, payload.name, payload.value)

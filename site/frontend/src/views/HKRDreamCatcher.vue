@@ -2,7 +2,7 @@
   <div>
     <div v-if="!spoilerRetrieved">
       <v-row>
-        <v-col cols="12" sm="8" offset-sm="2">
+        <v-col cols="10" offset="1">
           <h2>Hollow Knight Randomizer "Quick Seed" Tool</h2>
           <p>This tool allows for a "quick play" seed by showing the location of important items and abilities. You may customize what is shown below with "Show Item Options".</p>
 
@@ -21,9 +21,9 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12" sm="8" offset-sm="2">
+        <v-col cols="10" offset="1">
           <v-expansion-panels>
-            <HKRItemToggle />
+            <HKRItemToggle :allowBlueMode="false" />
           </v-expansion-panels>
         </v-col>
       </v-row>
@@ -37,13 +37,13 @@
           />
         </v-col>
         <v-col cols="2">
-          <v-btn :disabled="spoiler_txt.length === 0" @click="parseWithAPI">Submit</v-btn>
+          <v-btn :disabled="spoiler_txt.length === 0" @click="submitSpoilerAndPrepareTracker">Submit</v-btn>
         </v-col>
       </v-row>
     </div>
 
-    <div v-if="spoilerRetrieved">
-      <v-col cols="12" sm="8" offset-sm="2">
+    <div v-if="spoilerRetrieved" class="tracker-page">
+      <v-col cols="10" offset="1">
         <v-tooltip transition="slide-x-transition" right :open-delay="500">
           <template v-slot:activator="{ on, attrs }">
             <v-btn icon @click="hideOptions = !hideOptions" v-bind="attrs" v-on="on">
@@ -54,12 +54,18 @@
         </v-tooltip>
 
         <v-expansion-panels v-show="hideOptions">
-          <HKRItemToggle />
+          <HKRItemToggle :allowSetTimer="false" />
           <HKRPills />
         </v-expansion-panels>
       </v-col>
-      <v-col cols="12" sm="8" offset-sm="2">
-        <HKRItemTable />
+
+      <v-col cols="10" offset="1">
+        <HKRItemTable v-if="showTracker" />
+        <HKRCountdownTimer
+          v-if="!showTracker"
+          :timeLimitMinutes="timerValue"
+          @timerFinished="showTracker = !showTracker"
+        />
       </v-col>
     </div>
   </div>
@@ -71,15 +77,17 @@ import { mapState, mapMutations } from "vuex";
 import HKRItemTable from "@/components/HollowKnight/HKRItemTable.vue";
 import HKRItemToggle from "@/components/HollowKnight/HKRItemToggle.vue";
 import HKRPills from "@/components/HollowKnight/HKRPills.vue";
+import HKRCountdownTimer from "@/components/HollowKnight/HKRCountdownTimer.vue";
 
 export default {
   name: "HKRDreamCatcher",
-  components: { HKRItemToggle, HKRItemTable, HKRPills },
+  components: { HKRItemToggle, HKRItemTable, HKRPills, HKRCountdownTimer },
   data: function () {
     return {
       spoiler_txt: "",
       spoilerRetrieved: false,
       hideOptions: false,
+      showTracker: true,
     };
   },
   computed: {
@@ -87,6 +95,7 @@ export default {
       "showDreamers",
       "showAbilities",
       "showUsefulItems",
+      "timerValue",
       "arrayDreamers",
       "arrayAbilities",
       "arrayUsefulItems",
@@ -101,6 +110,7 @@ export default {
       "setArrayDreamers",
       "setArrayAbilities",
       "setArrayUsefulItems",
+      "setTimer",
       "defineLocObject",
     ]),
     onFileChange(file) {
@@ -114,7 +124,7 @@ export default {
         this.spoiler_txt = e.target.result;
       };
     },
-    parseWithAPI() {
+    submitSpoilerAndPrepareTracker() {
       axios
         .post(`${process.env.VUE_APP_API_LOCATION}/hkr/uploadspoiler/`, {
           files: this.spoiler_txt,
@@ -126,6 +136,8 @@ export default {
           this.setArrayUsefulItems({ value: resp["useful_items"] });
           this.defineLocObject();
 
+          // If there's a timer, don't show the tracker yet.
+          this.showTracker = this.timerValue === 0;
           this.spoilerRetrieved = true;
         })
         .catch(function (error) {

@@ -19,6 +19,9 @@ import HKRDreamCatcher from "@/views/HKRDreamCatcher.vue";
 // Bingo
 import BingoALTTPR from '@/views/BingoALTTPR.vue'
 
+// Testing Pages
+import Test from '@/views/Test.vue'
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -52,7 +55,8 @@ const routes = [
   { path: "/checklist", name: "SBChecklist", component: SBChecklist },
   { path: "/race-data-tool", name: "RaceDataTool", component: RaceDataTool },
   { path: "/hkr/dream-catcher", name: "HKRDreamCatcher", component: HKRDreamCatcher },
-  { path: "/bingo/alttp", name: "BingoALTTPR", component: BingoALTTPR }
+  { path: "/bingo/alttp", name: "BingoALTTPR", component: BingoALTTPR },
+  { path: "/test/test", name: "Test", component: Test }
 ];
 
 const router = new VueRouter({
