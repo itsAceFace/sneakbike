@@ -49,3 +49,22 @@ We're going to do the following things: **clone the sneakbike repo, run the API 
    > `localhost:8080`
 
 You should see the Sneakbike website!  This is all local, meaning only you can see it, but this means you can modify the code to your heart's content before we push it to production.
+
+## Step 3. Making Changes
+
+You make the changes you want.  If you're not sure where to go, ask someone in the Sneakbike discord or open an issue here!
+
+## Step 4. Pushing Your Changes
+
+Alright, you've made changes.  Now you need to push these changes up to github and have someone review them and merge them into the production code if everything looks good.
+
+[This document](https://docs.github.com/en/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/committing-and-reviewing-changes-to-your-project) shows the steps necessary to do this.  Loosely, it's like this:
+
+1. Make a branch,
+2. Add files you wanna push up (it'll show the changed ones),
+3. Title your "commit" something like, "chore: changed names for bingo".
+4. Push to the branch.
+
+Once you do this, you go to [the Sneakbike Github](https://github.com/jsal13/sneakbike), click on the "`Pull Requests`" tab, then the `New Pull Request` button.  Pick your branch and open up a PR.  You can let someone know on the team that you've done so, and they will review your code and either give comments or approve it and merge it.
+
+At this point, your new code will be in the app whenever it is rebuilt (usually weekly, sometimes more often).
